@@ -1,0 +1,14 @@
+<svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="30" height="28.8" rx="10" transform="matrix(0.968205 0.250157 -0.267737 0.963492 7.71094 0)" fill="#FAAD14"/>
+<g clip-path="url(#clip0_577_1529)">
+<rect width="12.3527" height="11.8586" transform="matrix(0.968205 0.250157 -0.267737 0.963492 13.8999 10.6665)" fill="#FAAD14"/>
+<path d="M18.8216 16.0201C21.2986 16.6601 23.4842 16.5394 23.7034 15.7507C23.9226 14.9619 22.0923 13.8037 19.6153 13.1637C17.1384 12.5237 14.9527 12.6443 14.7335 13.4331C14.5143 14.2219 16.3446 15.3801 18.8216 16.0201Z" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22.7771 19.0832C22.5575 19.8735 20.3869 19.9964 17.8952 19.3526C15.4036 18.7088 13.5875 17.5559 13.8071 16.7656" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.7329 13.4331L12.8808 20.0981C12.6612 20.8883 14.4773 22.0413 16.9689 22.685C19.4606 23.3288 21.6312 23.2059 21.8508 22.4156L23.7028 15.7507" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_577_1529">
+<rect width="12.3527" height="11.8586" fill="white" transform="matrix(0.968205 0.250157 -0.267737 0.963492 13.8999 10.6665)"/>
+</clipPath>
+</defs>
+</svg>
