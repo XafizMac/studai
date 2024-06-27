@@ -32,10 +32,10 @@ const Choises: FC = () => {
         <div className={styles.main}>
             <div className="container">
                 <div className={styles.main_row}>
-                    <motion.div 
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        transition={{duration: 0.8}}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8 }}
                         className={styles.title}>
                         <p className="active subtitle">{choiseContent.title}</p>
                         <Image className={styles.icon} src={helloIcon} alt="" />
@@ -44,6 +44,7 @@ const Choises: FC = () => {
                         {ChoiseCard.map((card: Choise) => {
                             return (
                                 <motion.div
+                                    key={card.title}
                                     initial={{ opacity: 0, y: 100 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8 }}

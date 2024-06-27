@@ -13,8 +13,6 @@ import { AllowedLangs } from '@/constants/lang'
 import { motion } from 'framer-motion'
 import Router from "next/router"
 
-const { push } = Router
-
 const Navbar: FC = () => {
     const { lang, translations } = useLang();
     const [isMenuModalOpen, setMenuModalOpen] = useState(false)

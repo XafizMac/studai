@@ -45,6 +45,7 @@ const Services: FC = () => {
                         {CardList.map((card: Card) => {
                             return (
                                 <motion.div
+                                    key={card.title}
                                     initial={{ opacity: 0, y: 100 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{
