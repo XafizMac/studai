@@ -2,16 +2,16 @@
 
 import React, { FC, useEffect, useState } from 'react'
 import styles from "./Navbar.module.scss"
-import { Button, Dropdown, Select, Space } from 'antd'
+import { Button, Select } from 'antd'
 import Image from 'next/image'
-import { CloseOutlined, MenuOutlined, TranslationOutlined } from "@ant-design/icons"
+import { CloseOutlined, MenuOutlined } from "@ant-design/icons"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useLang } from '@/hooks/useLang'
 import { setLang } from '@/context/lang'
 import { AllowedLangs } from '@/constants/lang'
 import { motion } from 'framer-motion'
-import Router from "next/router"
+import { useRouter } from 'next/navigation'
 
 const Navbar: FC = () => {
     const { lang, translations } = useLang();
@@ -27,6 +27,8 @@ const Navbar: FC = () => {
         }
     }, [lastScrollY])
 
+    const { push } = useRouter()
+
     const handleScroll = () => {
         const currentlyScrollY = window.scrollY;
 
@@ -38,18 +40,15 @@ const Navbar: FC = () => {
         }
         setLastScrollY(currentlyScrollY)
     }
-
-    
-
     const handleSwitchLang = (lang: string) => {
         setLang(lang as AllowedLangs);
         localStorage.setItem('lang', JSON.stringify(lang));
     }
     const handleModalSwitch = () => {
         setMenuModalOpen(!isMenuModalOpen);
-        console.log(isMenuModalOpen);
     }
     const pathname = usePathname();
+
     return (
         <motion.div
             initial={{ y: 0 }}
@@ -67,8 +66,10 @@ const Navbar: FC = () => {
                             </div>
                         </Link>
                     </div>
-                    <ul className={styles.ul}>
-                        <CloseOutlined className={styles.closeBtn} />
+                    <ul style={{
+                        left: isMenuModalOpen ? '0%' : '-100%'
+                    }} className={styles.ul}>
+                        <CloseOutlined onClick={handleModalSwitch} className={styles.closeBtn} />
                         <Link className={`${styles.link} ${pathname == '/' && 'active'}`} href={"/"}>{translations[lang].header.menu[0]}</Link>
                         <Link className={`${styles.link} ${pathname == '#services' && 'active'}`} href="#services">{translations[lang].header.menu[1]}</Link>
                         <Link className={`${styles.link} ${pathname == '#inctruction' && 'active'}`} href="#inctruction">{translations[lang].header.menu[2]}</Link>
@@ -98,7 +99,10 @@ const Navbar: FC = () => {
                             <Select.Option value="en">English</Select.Option>
                         </Select>
                         {/* Войти */}
-                        <Button className={styles.btn}>{translations[lang].header.button}</Button>
+
+                        <Button onClick={() => push('/auth/login')} className={styles.btn}>
+                            {translations[lang].header.button}
+                        </Button>
                     </motion.div>
                 </div>
             </div>

@@ -1,15 +1,22 @@
-import type { Metadata } from "next";
+"use client"
+
 import { Exo_2 } from "next/font/google";
 import "./globals.css";
 import logo from "../../public/logo.svg"
+import Store from "@/store/store";
+import { createContext } from "react";
 
 const exo_2 = Exo_2({ subsets: ["cyrillic"] });
 
-export const metadata: Metadata = {
-  title: "Studai - ИИ платформа",
-  description: "Учись легко: генерация учебных работ с помощью ИИ",
-  icons: logo
-};
+interface State {
+  store: Store
+}
+
+const store = new Store();
+
+export const Context = createContext<State>({
+  store,
+})
 
 export default function RootLayout({
   children,
@@ -17,8 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={exo_2.className}>{children}</body>
-    </html>
+    <Context.Provider value={{
+      store
+    }}>
+      <html lang="en">
+        <head>
+          <title>Studai - ИИ платформа</title>
+        </head>
+        <body className={exo_2.className}>{children}</body>
+      </html>
+    </Context.Provider>
   );
 }
