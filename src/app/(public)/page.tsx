@@ -1,6 +1,7 @@
+// src/app/page.tsx
 'use client'
 
-import React, { useContext, useEffect } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Navbar from "@/components/ui/navbar/Navbar";
 import MainPage from "@/components/ui/main/MainPage";
 import Services from "@/components/ui/services/Services";
@@ -9,33 +10,48 @@ import Instruction from "@/components/ui/instruction/Instruction";
 import { Pricing } from "@/components/ui/pricing/Pricing";
 import { Footer } from "@/components/ui/footer/Footer";
 import { Context } from "../layout";
-import { useRouter } from "next/navigation";
+import Dashboard from "@/components/ui/dashboard/page";
+import { Spin } from "antd";
 
 export default function Home() {
   const { store } = useContext(Context);
-  const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      store.checkAuth();
+    const token = localStorage.getItem('token');
+    if (token) {
+      store.checkAuth().finally(() => {
+        setLoading(false);
+      });
+    } else {
+      setLoading(false);
     }
   }, [store]);
 
-  useEffect(() => {
-    if (store.isAuth) {
-      router.replace('/dashboard');
-    }
-  }, [store.isAuth, router]);
+  if (loading) {
+    return (
+      <div>
+        loading...
+        <Spin fullscreen={true} size="large"/>
+      </div>
+    );
+  }
 
   return (
     <main>
-      <Navbar />
-      <MainPage />
-      <Services />
-      <Choises />
-      <Instruction />
-      <Pricing />
-      <Footer />
+      {store.isAuth ? (
+        <Dashboard />
+      ) : (
+        <>
+          <Navbar />
+          <MainPage />
+          <Services />
+          <Choises />
+          <Instruction />
+          <Pricing />
+          <Footer />
+        </>
+      )}
     </main>
   );
 }

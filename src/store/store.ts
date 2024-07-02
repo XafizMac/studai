@@ -1,17 +1,19 @@
 import { API_URL } from "@/http";
-import { IUser } from "@/models/iUser";
+import { IUser, Me } from "@/models/iUser";
+import { AuthStatus } from "@/models/status/IStatus";
 import { AuthResponse } from "@/models/response/AuthResponse";
 import AuthService from "@/services/AuthService";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { makeAutoObservable } from "mobx";
 
 export default class Store {
     user = {} as IUser;
+    me: { id: number, email: string, firstName: string, lastName: string, photo: string } = { id: 0, email: "", firstName: "", lastName: "", photo: "" }
     isAuth = false;
-    registerError = ""
+    status: { status: number; statusText: string } = { status: 0, statusText: '' };
 
     constructor() {
-        makeAutoObservable(this)
+        makeAutoObservable(this);
     }
 
     setAuth(bool: boolean) {
@@ -22,37 +24,48 @@ export default class Store {
         this.user = user;
     }
 
-    setRegisterError(error: string) {
-        this.registerError = error;
+    setMe(id: number, email: string, firstName: string, lastName: string, photo: string) {
+        this.me = { id, email, firstName, lastName, photo };
     }
 
-    async login(email: string, password: string) {
-        try {
-            const response = AuthService.login(email, password);
-            console.log(response);
-            localStorage.setItem('token', (await response).data.access);
-            localStorage.setItem('RT', (await response).data.refresh)
-            this.setAuth(true);
-            this.setUser((await response).data.user);
-        } catch (e) {
-            console.log(e);
-        }
+    setStatus(status: number, statusText: string) {
+        this.status = { status, statusText };
     }
 
-    async registration(email: string, firstName: string, lastName: string, password: string) {
+
+    async login(email: string, password: string): Promise<{ status: number, statusText: string }> {
         try {
-            const response = await AuthService.registration(email, firstName, lastName, password);
+            const response = await AuthService.login(email, password);
             console.log(response);
+            this.setStatus(response.status, response.statusText);
+            localStorage.setItem('token', response.data.access);
+            localStorage.setItem('RT', response.data.refresh)
             this.setAuth(true);
             this.setUser(response.data.user);
+            return { status: response.status, statusText: response.statusText }
         } catch (e) {
-
+            const status = (e as any).response?.status || 500;
+            const statusText = (e as any).response?.data?.details || 'Неизвестная ошибка';
+            this.setStatus(status, statusText);
+            return { status, statusText }
         }
     }
-
+    async registration(email: string, firstName: string, lastName: string, password: string): Promise<{ status: number, statusText: string }> {
+        try {
+            const response = await AuthService.registration(email, firstName, lastName, password);
+            this.setStatus(response.status, response.statusText);
+            this.setUser(response.data.user);
+            return { status: response.status, statusText: response.statusText };
+        } catch (e) {
+            const status = (e as any).response?.status || 500;
+            const statusText = (e as any).response?.data?.email[0] || 'Неизвестная ошибка';
+            this.setStatus(status, statusText);
+            return { status, statusText };
+        }
+    }
     async activation(uid: string, token: string) {
         try {
-            const response = await AuthService.activation(uid, token);
+            await AuthService.activation(uid, token);
         }
         catch (e) {
             console.log("Error activating", e);
@@ -79,7 +92,6 @@ export default class Store {
             console.log("Error refreshing", e);
         }
     }
-
     async logout() {
         try {
             const response = AuthService.logout();
@@ -90,6 +102,26 @@ export default class Store {
         }
         catch (e) {
             console.log();
+        }
+    }
+    async generatePlan(workType: string, languageOfWork: string, workTheme: string, discipline: string, pageCount: string, wishes: string, coverPageData: string, university: string, authorName: string, groupName: string, teacherName: string) {
+        try {
+            const response = await AuthService.generatePlan(workType, languageOfWork, workTheme, discipline, pageCount, wishes, coverPageData, university, authorName, groupName, teacherName);
+            console.log(response.data);
+        }
+        catch (e) {
+            console.log((e as any).data);
+        }
+    }
+    async getUsersMe(): Promise<Me> {
+        try {
+            const response: AxiosResponse<Me> = await AuthService.getUserMe();
+            const data = response.data;
+            this.setMe(data.id, data.email, data.firstName, data.lastName, data.photo);
+            return response.data;
+        } catch (e) {
+            console.log(e);
+            return this.me;
         }
     }
 }

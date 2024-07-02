@@ -4,11 +4,11 @@ import Image from "next/image"
 import styles from "./login.module.scss"
 import logo from "../../../../../public/logo.svg"
 import type { FormProps } from 'antd';
-import { Button, Divider, Form, Input } from 'antd';
-import { GoogleOutlined } from "@ant-design/icons"
+import { Button, Divider, Form, Input, message } from 'antd';
+import { GoogleOutlined, LockOutlined, UserOutlined } from "@ant-design/icons"
 import Link from "next/link"
 import { motion } from "framer-motion";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "@/app/layout";
 import { useRouter } from "next/navigation";
 
@@ -19,43 +19,69 @@ type FieldType = {
 
 export default function Login() {
     const { store } = useContext(Context);
-    const router = useRouter();
+    const { push, replace } = useRouter();
+    const [messageApi, contextHolder] = message.useMessage();
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (localStorage.getItem('token')) {
             store.checkAuth();
         }
-    }, [store]);
+    }, [store, store.isAuth]);
 
-    useEffect(() => {
-        if (store.isAuth) {
-            router.replace('/dashboard');
+    if (store.isAuth) {
+        replace('/')
+    }
+
+    const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
+        setLoading(true)
+        try {
+            const result = await store.login(values.email, values.password)
+            if (result.status == 200) {
+                success();
+                push('/')
+            } else {
+                error(result.statusText)
+            }
         }
-    }, [store.isAuth, router]);
+        catch (e) {
+            error('Unexpected error occurred')
+        }
+        finally {
+            setLoading(false)
+        }
+    }
 
-    const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-        store.login(values.email, values.password)
-        console.log('Success:', values);
+    const success = () => {
+        // setLoading(false)
+        messageApi.open({
+            type: 'success',
+            content: 'Перенаправление на главную страницу...',
+        });
     };
 
-    const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+    const error = (message?: string) => {
+        // setLoading(false)
+        messageApi.open({
+            type: 'error',
+            content: message || 'Ошибка при регистрации',
+        });
     };
 
     return (
         <div className={styles.main}>
+            {contextHolder}
             <div
                 className={styles.form}>
                 <Link href={"/"} className={styles.logo}>
                     <Image width={60} src={logo} alt="Logo" />
                     <p className="active">Studai</p>
                 </Link>
-                <p className={styles.title}>Авторизация</p>
+                <p className={styles.title}>Логин</p>
                 <Form
                     name="basic"
                     initialValues={{ remember: true }}
                     onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
                     autoComplete="off"
                     className={styles.forms}
                 >
@@ -64,12 +90,12 @@ export default function Login() {
                         animate={{ opacity: 1, height: '100%' }}
                         transition={{ duration: 0.2 }}
                     >
-                        <p>Электронная почта</p>
+                        {/* <p>Электронная почта</p> */}
                         <Form.Item<FieldType>
                             rules={[{ required: true, message: 'Пожалуйста, введите адрес электронной!' }]}
                             name={"email"}
                         >
-                            <Input type="email" placeholder="e-mail" size="large" />
+                            <Input prefix={<UserOutlined />} type="email" placeholder="Введите email" size="large" />
                         </Form.Item>
                     </motion.div>
                     <motion.div
@@ -77,16 +103,16 @@ export default function Login() {
                         animate={{ opacity: 1, height: '100%' }}
                         transition={{ duration: 0.8 }}
                     >
-                        <p>Пароль</p>
+                        {/* <p>Пароль</p> */}
                         <Form.Item<FieldType>
                             rules={[{ required: true, message: "Пожалуйста, введите пароль!" }]}
                             name={"password"}
                         >
-                            <Input.Password placeholder="Введите пароль" size="large" />
+                            <Input.Password prefix={<LockOutlined />} placeholder="Введите пароль" size="large" />
                         </Form.Item>
                     </motion.div>
                     <Form.Item>
-                        <Button className={styles.btn} size="large" type="primary" htmlType="submit">
+                        <Button loading={loading} className={styles.btn} size="large" type="primary" htmlType="submit">
                             Войти
                         </Button>
                     </Form.Item>

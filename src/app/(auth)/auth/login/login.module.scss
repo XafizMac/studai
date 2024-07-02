@@ -48,9 +48,19 @@
             }
         }
 
+        .haveAccount {
+            text-align: center;
+            margin-top: -25px;
+            font-weight: 300;
+
+            a {
+                color: $bg-color;
+                font-weight: 400;
+            }
+        }
+
         .devider {
             color: $bg-color;
-            margin-top: -20px;
         }
 
         .googleBtn {
@@ -117,7 +127,6 @@
 
             .devider {
                 color: $bg-color;
-                margin-top: -20px;
             }
 
             .googleBtn {
@@ -185,7 +194,6 @@
 
             .devider {
                 color: $bg-color;
-                margin-top: -20px;
             }
 
             .googleBtn {
@@ -251,9 +259,6 @@
                 }
             }
 
-            .devider {
-                color: $bg-color;
-            }
             .haveAccount {
                 text-align: center;
                 margin-top: -25px;
@@ -263,6 +268,10 @@
                     color: $bg-color;
                     font-weight: 400;
                 }
+            }
+
+            .devider {
+                color: $bg-color;
             }
 
             .googleBtn {

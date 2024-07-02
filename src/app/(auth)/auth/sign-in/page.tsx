@@ -5,12 +5,13 @@ import styles from "./signin.module.scss";
 import logo from "../../../../../public/logo.svg";
 import type { FormProps } from 'antd';
 import { Button, Divider, Form, Input, message } from 'antd';
-import { GoogleOutlined } from "@ant-design/icons";
+import { GoogleOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "@/app/layout";
 import { useRouter } from "next/navigation";
+import { AuthStatus } from "@/models/status/IStatus";
 
 type FieldType = {
     email: string;
@@ -22,8 +23,8 @@ type FieldType = {
 export default function SignIn() {
     const { store } = useContext(Context);
     const { replace, push } = useRouter();
+    const [loading, setLoading] = useState(false);
     const [messageApi, contextHolder] = message.useMessage();
-
 
     useEffect(() => {
         if (localStorage.getItem('token')) {
@@ -31,24 +32,42 @@ export default function SignIn() {
         }
     }, [store, store.isAuth])
 
+    useEffect(() => {
+        if(store.isAuth){
+            replace('/')
+        }
+    }, [store.isAuth])
 
-
-    if (store.isAuth) {
-        push('/dashboard');
-    } else{
-        store.checkAuth();
-    }
-
-
-    const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-        store.registration(values.email, values.firstName, values.lastName, values.password);
-        success();
+    const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
+        setLoading(true);
+        try {
+            const result = await store.registration(values.email, values.firstName, values.lastName, values.password);
+            console.log(result);
+            if (result.status === 201) {
+                success();
+                push('/auth/activation');
+            } else {
+                error(result.statusText);
+            }
+        } catch (e) {
+            console.error('Error during registration:', e);
+            error('Unexpected error occurred');
+        } finally {
+            setLoading(false);
+        }
     };
 
     const success = () => {
         messageApi.open({
             type: 'success',
-            content: 'Регистрация успешно',
+            content: 'Регистрация прошла успешно, перенаправление на страницу активации...',
+        });
+    };
+
+    const error = (message?: string) => {
+        messageApi.open({
+            type: 'error',
+            content: message || 'Ошибка при регистрации',
         });
     };
 
@@ -66,7 +85,7 @@ export default function SignIn() {
                     name="basic"
                     initialValues={{ remember: true }}
                     onFinish={onFinish}
-                    autoComplete="off"
+                    autoComplete="on"
                     className={styles.forms}
                 >
                     <motion.div
@@ -74,12 +93,12 @@ export default function SignIn() {
                         animate={{ opacity: 1, height: '100%' }}
                         transition={{ duration: 0.2 }}
                     >
-                        <p>Электронная почта</p>
+                        {/* <p>Электронная почта</p> */}
                         <Form.Item<FieldType>
                             rules={[{ required: true, message: 'Пожалуйста, введите адрес электронной!' }]}
                             name={"email"}
                         >
-                            <Input type="email" placeholder="e-mail" size="large" />
+                            <Input prefix={<UserOutlined />} type="email" placeholder="e-mail" size="large" />
                         </Form.Item>
                     </motion.div>
                     <motion.div
@@ -87,12 +106,12 @@ export default function SignIn() {
                         animate={{ opacity: 1, height: '100%' }}
                         transition={{ duration: 0.4 }}
                     >
-                        <p>Имя</p>
+                        {/* <p>Имя</p> */}
                         <Form.Item<FieldType>
                             rules={[{ required: true, message: 'Пожалуйста, введите имю!' }]}
                             name={"firstName"}
                         >
-                            <Input type="text" placeholder="Имя" size="large" />
+                            <Input prefix={<UserOutlined />} type="text" placeholder="Имя" size="large" />
                         </Form.Item>
                     </motion.div>
                     <motion.div
@@ -100,12 +119,12 @@ export default function SignIn() {
                         animate={{ opacity: 1, height: '100%' }}
                         transition={{ duration: 0.6 }}
                     >
-                        <p>Фамилия</p>
+                        {/* <p>Фамилия</p> */}
                         <Form.Item<FieldType>
                             name="lastName"
                             rules={[{ required: true, message: 'Пожалуйста, введите фамилию' }]}
                         >
-                            <Input type="text" placeholder="Фамилия" size="large" />
+                            <Input prefix={<UserOutlined />} type="text" placeholder="Фамилия" size="large" />
                         </Form.Item>
                     </motion.div>
 
@@ -114,16 +133,16 @@ export default function SignIn() {
                         animate={{ opacity: 1, height: '100%' }}
                         transition={{ duration: 0.8 }}
                     >
-                        <p>Пароль</p>
+                        {/* <p>Пароль</p> */}
                         <Form.Item<FieldType>
                             rules={[{ required: true, message: "Пожалуйста, введите пароль!" }]}
                             name={"password"}
                         >
-                            <Input.Password placeholder="Введите пароль" size="large" />
+                            <Input.Password prefix={<LockOutlined />} placeholder="Введите пароль" size="large" />
                         </Form.Item>
                     </motion.div>
                     <Form.Item>
-                        <Button className={styles.btn} size="large" type="primary" htmlType="submit">
+                        <Button loading={loading} className={styles.btn} size="large" type="primary" htmlType="submit">
                             Зарегистрироваться
                         </Button>
                     </Form.Item>
