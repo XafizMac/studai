@@ -1,0 +1,11 @@
+.empty{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p{
+        color: rgb(162, 162, 162);
+        text-align: center;
+        font-size: 1.2rem;
+        width: 50%;
+    }
+}

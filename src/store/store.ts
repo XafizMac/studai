@@ -5,13 +5,14 @@ import { AuthResponse } from "@/models/response/AuthResponse";
 import AuthService from "@/services/AuthService";
 import axios, { AxiosResponse } from "axios";
 import { makeAutoObservable } from "mobx";
+import { Work } from "@/models/plan/Plan";
 
 export default class Store {
     user = {} as IUser;
     me: { id: number, email: string, firstName: string, lastName: string, photo: string } = { id: 0, email: "", firstName: "", lastName: "", photo: "" }
     isAuth = false;
     status: { status: number; statusText: string } = { status: 0, statusText: '' };
-
+    works = {} as Work
     constructor() {
         makeAutoObservable(this);
     }
@@ -32,6 +33,9 @@ export default class Store {
         this.status = { status, statusText };
     }
 
+    setWorks(work: Work) {
+        this.works = work;
+    }
 
     async login(email: string, password: string): Promise<{ status: number, statusText: string }> {
         try {
@@ -116,12 +120,22 @@ export default class Store {
     async getUsersMe(): Promise<Me> {
         try {
             const response: AxiosResponse<Me> = await AuthService.getUserMe();
-            const data = response.data;
+            const data = response.data;           
             this.setMe(data.id, data.email, data.firstName, data.lastName, data.photo);
             return response.data;
         } catch (e) {
-            console.log(e);
             return this.me;
+        }
+    }
+    async getWorks(): Promise<Work> {
+        try {
+            const response: AxiosResponse<Work> = await AuthService.getWorks()
+            this.setWorks(response.data)
+            console.log(response); 
+            return response.data
+        }
+        catch (e) {
+            return this.works
         }
     }
 }

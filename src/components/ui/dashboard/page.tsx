@@ -5,13 +5,14 @@ import logo from "../../../../public/logo.svg"
 import { Avatar, Button, Dropdown, MenuProps, Select, Space } from "antd";
 import { setLang } from "@/context/lang";
 import { AllowedLangs } from "@/constants/lang";
-import { Context } from "@/app/layout";
 import Link from "next/link";
-import { DownOutlined } from "@ant-design/icons";
+import { DownOutlined, LogoutOutlined, UserSwitchOutlined } from "@ant-design/icons";
 import referat from "../../../../public/icons/referat-icon.svg"
 import doklad from "../../../../public/icons/referat-icon2.svg"
 import course from "../../../../public/icons/referat-icon3.svg"
 import srs from "../../../../public/icons/referat-icon4.svg"
+import Works from "../works/Works";
+import { Context } from "@/app/clientProvider";
 
 const Dashboard: FC = () => {
 
@@ -31,22 +32,19 @@ const Dashboard: FC = () => {
         setLang(lang as AllowedLangs);
         localStorage.setItem('lang', JSON.stringify(lang));
     }
-
     const items: MenuProps['items'] = [
-        {
-            label: <a href="https://www.antgroup.com">1st menu item</a>,
-            key: '0',
-        },
-        {
-            label: <a href="https://www.aliyun.com">2nd menu item</a>,
-            key: '1',
-        },
+        // {
+        //     label: <a href="https://www.antgroup.com">1st menu item</a>,
+        //     key: '0',
+        // },
         {
             type: 'divider',
         },
         {
-            label: '3rd menu item',
+            label: 'Выйти',
             key: '3',
+            danger: true,
+            icon: <LogoutOutlined />
         },
     ];
 
@@ -73,7 +71,7 @@ const Dashboard: FC = () => {
                     <div className={styles.workTypesBlock}>
                         <div className={styles.author}>
                             <Space>
-                                <Avatar>U</Avatar>
+                                <Avatar>{store.me.firstName.charAt(0)}</Avatar>
                                 <Dropdown menu={{ items }} trigger={['click']}>
                                     <Button>
                                         <Space>
@@ -83,7 +81,7 @@ const Dashboard: FC = () => {
                                     </Button>
                                 </Dropdown>
                             </Space>
-                            <Button type="default">Поддержка</Button>
+                            <Button icon={<UserSwitchOutlined />} iconPosition="start" type="default">Поддержка</Button>
                         </div>
                         <div className={styles.workTypes}>
                             <p className={styles.title}>Что вы создадите сегодня?</p>
@@ -107,7 +105,7 @@ const Dashboard: FC = () => {
                             </div>
                         </div>
                     </div>
-                    {/* Works */}
+                    <Works />
                 </div>
             </div>
         </div>

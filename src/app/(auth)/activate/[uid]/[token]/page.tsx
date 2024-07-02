@@ -3,7 +3,7 @@
 import { useParams, useRouter } from 'next/navigation';
 import styles from "./token.module.scss"
 import { useContext, useEffect, useState } from 'react';
-import { Context } from '@/app/layout';
+import { Context } from '@/app/clientProvider';
 import { Progress } from 'antd';
 
 const VerifyPage = () => {

@@ -9,7 +9,7 @@ import { GoogleOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
-import { Context } from "@/app/layout";
+import { Context } from "@/app/clientProvider";
 import { useRouter } from "next/navigation";
 import { AuthStatus } from "@/models/status/IStatus";
 

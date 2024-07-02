@@ -1,9 +1,30 @@
 import { FC } from "react";
+import styles from "./generation.module.scss";
+import { Breadcrumb, Button } from "antd";
+import { ArrowLeftOutlined, HomeOutlined, UserOutlined } from "@ant-design/icons";
 
 const Generation: FC = () => {
     return (
-        <div>
-            
+        <div className={styles.main}>
+            <div className="container">
+                <div className={styles.main_row}>
+                    <Breadcrumb
+                        items={[
+                            {
+                                href: '',
+                                title:
+                                    <>
+                                        <HomeOutlined />,
+                                        <span>Главная</span>
+                                    </>
+                            },
+                            {
+                                title: "Генерация"
+                            },
+                        ]}
+                    />
+                </div>
+            </div>
         </div>
     )
 }

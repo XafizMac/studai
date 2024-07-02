@@ -9,9 +9,9 @@ import Choises from "@/components/ui/choices/Choises";
 import Instruction from "@/components/ui/instruction/Instruction";
 import { Pricing } from "@/components/ui/pricing/Pricing";
 import { Footer } from "@/components/ui/footer/Footer";
-import { Context } from "../layout";
 import Dashboard from "@/components/ui/dashboard/page";
 import { Spin } from "antd";
+import { Context } from "../clientProvider";
 
 export default function Home() {
   const { store } = useContext(Context);
@@ -36,6 +36,8 @@ export default function Home() {
       </div>
     );
   }
+
+  
 
   return (
     <main>

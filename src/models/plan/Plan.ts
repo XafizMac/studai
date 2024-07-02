@@ -11,3 +11,11 @@ export interface Plan {
     groupName?: string;
     teacherName?: string;
 }
+
+
+export interface Work{
+    workTheme: string;
+    pageCountDisplay: string;
+    workTypeDisplay: string;
+    languageOfWorkDisplay: string;
+}

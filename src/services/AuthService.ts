@@ -1,6 +1,6 @@
 import $api from "@/http";
 import { Me } from "@/models/iUser";
-import { Plan } from "@/models/plan/Plan";
+import { Plan, Work } from "@/models/plan/Plan";
 import { AuthResponse } from "@/models/response/AuthResponse";
 import { AxiosResponse } from "axios";
 
@@ -28,6 +28,10 @@ export default class AuthService {
     }
     static async getUserMe(): Promise<AxiosResponse<Me>> {
         return $api.get<Me>('/users/me/')
+    }
+
+    static async getWorks(): Promise<AxiosResponse<Work>> {
+        return $api.get<Work>('/documents/')
     }
 
 }
