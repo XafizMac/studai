@@ -1,5 +1,3 @@
-"use client"
-
 import { Exo_2 } from "next/font/google";
 import "./globals.css";
 import logo from "../../public/logo.svg"
