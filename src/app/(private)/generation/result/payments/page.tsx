@@ -5,3 +5,4 @@ const Payments: FC = () => {
         <div>Payments</div>
     )
 }
+export default Payments;

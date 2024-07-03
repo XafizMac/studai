@@ -5,3 +5,4 @@ const Work: FC = () => {
         <div>Work</div>
     )
 }
+export default Work;

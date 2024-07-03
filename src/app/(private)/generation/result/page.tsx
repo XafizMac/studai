@@ -5,3 +5,4 @@ const Result: FC = () => {
         <div>Result</div>
     )
 }
+export default Result;
