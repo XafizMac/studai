@@ -7,10 +7,6 @@ import { setLang } from "@/context/lang";
 import { AllowedLangs } from "@/constants/lang";
 import Link from "next/link";
 import { DownOutlined, LogoutOutlined, UserSwitchOutlined } from "@ant-design/icons";
-import referat from "../../../../public/icons/referat-icon.svg"
-import doklad from "../../../../public/icons/referat-icon2.svg"
-import course from "../../../../public/icons/referat-icon3.svg"
-import srs from "../../../../public/icons/referat-icon4.svg"
 import Works from "../works/Works";
 import { Context } from "@/app/clientProvider";
 
@@ -56,31 +52,32 @@ const Dashboard: FC = () => {
                         <div className={styles.logo}>
                             <Image width={60} src={logo} alt="" />
                         </div>
-                        <Select
-                            variant="borderless"
-                            defaultValue="Русский"
-                            style={{ width: 120 }}
-                            onChange={handleSwitchLang}
-                            options={[
-                                { value: 'ru', label: 'Русский' },
-                                { value: 'kg', label: 'Кыргызча' },
-                                { value: 'en', label: 'English' },
-                            ]}
-                        />
+                        <Space>
+                            <Select
+                                className={styles.lang}
+                                variant="borderless"
+                                defaultValue="Русский"
+                                style={{ width: 120 }}
+                                onChange={handleSwitchLang}
+                                options={[
+                                    { value: 'ru', label: 'Русский' },
+                                    { value: 'kg', label: 'Кыргызча' },
+                                    { value: 'en', label: 'English' },
+                                ]}
+                            />
+                            <Avatar>{store.me.firstName.charAt(0)}</Avatar>
+                            <Dropdown menu={{ items }} trigger={['click']}>
+                                <Button type="text">
+                                    <Space>
+                                        <p>{store.me.firstName} {store.me.lastName.charAt(0)}.</p>
+                                        <DownOutlined />
+                                    </Space>
+                                </Button>
+                            </Dropdown>
+                        </Space>
                     </div>
                     <div className={styles.workTypesBlock}>
                         <div className={styles.author}>
-                            <Space>
-                                <Avatar>{store.me.firstName.charAt(0)}</Avatar>
-                                <Dropdown menu={{ items }} trigger={['click']}>
-                                    <Button>
-                                        <Space>
-                                            <p>{store.me.firstName} {store.me.lastName.charAt(0)}.</p>
-                                            <DownOutlined />
-                                        </Space>
-                                    </Button>
-                                </Dropdown>
-                            </Space>
                             <Button icon={<UserSwitchOutlined />} iconPosition="start" type="default">Поддержка</Button>
                         </div>
                         <div className={styles.workTypes}>
@@ -88,19 +85,18 @@ const Dashboard: FC = () => {
                             <div className={styles.cards}>
                                 <Link className={styles.card} href={"/generation"}>
                                     <p>Реферат</p>
-                                    <Image src={referat} alt="" />
+
                                 </Link>
                                 <Link className={styles.card} href={"/generation"}>
                                     <p>Доклад</p>
-                                    <Image src={doklad} alt="" />
+
                                 </Link>
                                 <Link className={styles.card} href={"/generation"}>
                                     <p>Курсовая работа</p>
-                                    <Image src={course} alt="" />
+
                                 </Link>
                                 <Link className={styles.card} href={"/generation"}>
                                     <p>СРС</p>
-                                    <Image src={srs} alt="" />
                                 </Link>
                             </div>
                         </div>

@@ -8,21 +8,6 @@ const Generation: FC = () => {
         <div className={styles.main}>
             <div className="container">
                 <div className={styles.main_row}>
-                    <Breadcrumb
-                        items={[
-                            {
-                                href: '',
-                                title:
-                                    <>
-                                        <HomeOutlined />,
-                                        <span>Главная</span>
-                                    </>
-                            },
-                            {
-                                title: "Генерация"
-                            },
-                        ]}
-                    />
                 </div>
             </div>
         </div>

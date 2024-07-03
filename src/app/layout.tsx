@@ -11,9 +11,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* <title>{metadata.title}</title> */}
-      </head>
       <body className={exo_2.className}>
         <ClientProvider>
           {children}

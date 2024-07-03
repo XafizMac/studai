@@ -20,7 +20,7 @@ const Works: FC = () => {
     }, [])
 
     return (
-        <div>
+        <div className={styles.main}>
             {!empty ? (
                 <div className={styles.empty}>
                     <Image src={emptyImg} alt="" />
