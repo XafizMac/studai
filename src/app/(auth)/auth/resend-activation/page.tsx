@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useContext, useState } from 'react';
-import axios from 'axios';
-import { Context } from '../../layout';
+import axios from 'axios'
+import { Context } from '@/app/clientProvider';
 
 const ResendActivationPage: React.FC = () => {
     const [email, setEmail] = useState('');
