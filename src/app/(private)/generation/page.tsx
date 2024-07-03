@@ -8,6 +8,7 @@ const Generation: FC = () => {
         <div className={styles.main}>
             <div className="container">
                 <div className={styles.main_row}>
+                    generation page
                 </div>
             </div>
         </div>

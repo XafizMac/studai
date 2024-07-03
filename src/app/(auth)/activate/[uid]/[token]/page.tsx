@@ -13,14 +13,14 @@ const VerifyPage = () => {
   const { replace } = useRouter();
   const [count, setCount] = useState<number>(0);
 
-  if (!uid || !token) {
-    return <div>Loading...</div>;
-  }
-
   useEffect(() => {
     activateAccount()
     setInterval(() => setCount(prev => prev + 1), 100)
   }, [])
+
+  if (!uid || !token) {
+    return <div>Loading...</div>;
+  }
 
   const activateAccount = async () => {
     try {
