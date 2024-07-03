@@ -4,7 +4,7 @@ import styles from "./header.module.scss";
 
 export default function AppHeader() {
   return (
-    <div>
+    <div className={styles.main}>
         <Button>Назад</Button>
     </div>
   )
