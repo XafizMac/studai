@@ -9,6 +9,7 @@ import Link from "next/link";
 import { DownOutlined, LogoutOutlined, UserSwitchOutlined } from "@ant-design/icons";
 import Works from "../works/Works";
 import { Context } from "@/app/clientProvider";
+import { strict } from "assert";
 
 const Dashboard: FC = () => {
 
@@ -29,13 +30,6 @@ const Dashboard: FC = () => {
         localStorage.setItem('lang', JSON.stringify(lang));
     }
     const items: MenuProps['items'] = [
-        // {
-        //     label: <a href="https://www.antgroup.com">1st menu item</a>,
-        //     key: '0',
-        // },
-        {
-            type: 'divider',
-        },
         {
             label: 'Выйти',
             key: '3',
@@ -85,11 +79,9 @@ const Dashboard: FC = () => {
                             <div className={styles.cards}>
                                 <Link className={styles.card} href={"/generation"}>
                                     <p>Реферат</p>
-
                                 </Link>
                                 <Link className={styles.card} href={"/generation"}>
                                     <p>Доклад</p>
-
                                 </Link>
                                 <Link className={styles.card} href={"/generation"}>
                                     <p>Курсовая работа</p>

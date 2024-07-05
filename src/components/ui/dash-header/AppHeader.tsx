@@ -5,7 +5,7 @@ import { ArrowLeftOutlined } from '@ant-design/icons';
 
 export default function AppHeader() {
   return (
-    <div className={styles.main}>
+    <div className={styles.btn}>
         <Button href='/' iconPosition='start' icon={<ArrowLeftOutlined />}>Назад</Button>
     </div>
   )

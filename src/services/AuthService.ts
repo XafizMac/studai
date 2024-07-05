@@ -26,6 +26,11 @@ export default class AuthService {
             workType, languageOfWork, workTheme, discipline, pageCount, wishes, coverPageData, university, authorName, groupName, teacherName
         })
     }
+    static async regeneratePlan(id: string, workType: string, languageOfWork: string, workTheme: string, discipline: string, pageCount: string, wishes: string, coverPageData: string, university: string, authorName: string, groupName: string, teacherName: string, subtopics: object, context: object, status: string, file: string, author: string): Promise<AxiosResponse<Plan>> {
+        return $api.post<Plan>(`/documents/plans/${id}/rebuild/`, {
+            workType, languageOfWork, workTheme, discipline, pageCount, wishes, coverPageData, university, authorName, groupName, teacherName, subtopics, context, status, file, author
+        })
+    }
     static async getUserMe(): Promise<AxiosResponse<Me>> {
         return $api.get<Me>('/users/me/')
     }

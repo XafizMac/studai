@@ -5,14 +5,16 @@ import { AuthResponse } from "@/models/response/AuthResponse";
 import AuthService from "@/services/AuthService";
 import axios, { AxiosResponse } from "axios";
 import { makeAutoObservable } from "mobx";
-import { Work } from "@/models/plan/Plan";
+import { Plan, Work } from "@/models/plan/Plan";
 
 export default class Store {
     user = {} as IUser;
     me: { id: number, email: string, firstName: string, lastName: string, photo: string } = { id: 0, email: "", firstName: "", lastName: "", photo: "" }
     isAuth = false;
     status: { status: number; statusText: string } = { status: 0, statusText: '' };
-    works = {} as Work
+    works = {} as Work;
+    plan = {} as Plan;
+
     constructor() {
         makeAutoObservable(this);
     }
@@ -37,6 +39,9 @@ export default class Store {
         this.works = work;
     }
 
+    setPlans(plan: Plan) {
+        this.plan = plan;
+    }
     async login(email: string, password: string): Promise<{ status: number, statusText: string }> {
         try {
             const response = await AuthService.login(email, password);
@@ -108,19 +113,45 @@ export default class Store {
             console.log();
         }
     }
-    async generatePlan(workType: string, languageOfWork: string, workTheme: string, discipline: string, pageCount: string, wishes: string, coverPageData: string, university: string, authorName: string, groupName: string, teacherName: string) {
+    async generatePlan(workType: string, languageOfWork: string, workTheme: string, discipline: string, pageCount: string, wishes: string, coverPageData: string, university: string, authorName: string, groupName: string, teacherName: string): Promise<Plan> {
         try {
             const response = await AuthService.generatePlan(workType, languageOfWork, workTheme, discipline, pageCount, wishes, coverPageData, university, authorName, groupName, teacherName);
+            this.setPlans(response.data)
+            console.log(response);
+            this.setStatus(response.status, response.statusText);
             console.log(response.data);
+            return response.data;
+
         }
         catch (e) {
-            console.log((e as any).data);
+            console.log("Error generating plan", e);
+            const status = (e as any).response?.status || 500;
+            const statusText = (e as any).message || 'Неизвестная ошибка';
+            this.setStatus(status, statusText);
+            return this.plan;
+        }
+    }
+    async regeneratePlan(id: string, workType: string, languageOfWork: string, workTheme: string, discipline: string, pageCount: string, wishes: string, coverPageData: string, university: string, authorName: string, groupName: string, teacherName: string, subtopics: object, context: object, status: string, file: string, author: string): Promise<Plan> {
+        try {
+            const response = await AuthService.regeneratePlan(id, workType, languageOfWork, workTheme, discipline, pageCount, wishes, coverPageData, university, authorName, groupName, teacherName, subtopics, context, status, file, author);
+            this.setPlans(response.data);
+            console.log(response);
+            this.setStatus(response.status, response.statusText);
+            console.log(response.data);
+            return response.data;
+        }
+        catch (e) {
+            console.log("Error generating plan", e);
+            const status = (e as any).response?.status || 500;
+            const statusText = (e as any).message || 'Неизвестная ошибка';
+            this.setStatus(status, statusText);
+            return this.plan;
         }
     }
     async getUsersMe(): Promise<Me> {
         try {
             const response: AxiosResponse<Me> = await AuthService.getUserMe();
-            const data = response.data;           
+            const data = response.data;
             this.setMe(data.id, data.email, data.firstName, data.lastName, data.photo);
             return response.data;
         } catch (e) {
@@ -131,7 +162,7 @@ export default class Store {
         try {
             const response: AxiosResponse<Work> = await AuthService.getWorks()
             this.setWorks(response.data)
-            console.log(response); 
+            console.log(response);
             return response.data
         }
         catch (e) {
