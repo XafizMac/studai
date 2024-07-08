@@ -13,7 +13,7 @@ export const Pricing: FC = () => {
     const { lang, translations } = useLang();
     const pricingLib = translations[lang].pricing;
     const type = translations[lang].mainpage.worktypes;
-    const btn = <Button href="/works" type="link">{pricingLib.table.button}</Button>
+    const btn = <Button href="/dashboard" type="link">{pricingLib.table.button}</Button>
 
     const dataSource = [
         {

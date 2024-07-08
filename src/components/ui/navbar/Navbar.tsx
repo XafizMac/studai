@@ -27,8 +27,6 @@ const Navbar: FC = () => {
         }
     }, [lastScrollY])
 
-    const { push } = useRouter()
-
     const handleScroll = () => {
         const currentlyScrollY = window.scrollY;
 
@@ -100,7 +98,7 @@ const Navbar: FC = () => {
                         </Select>
                         {/* Войти */}
 
-                        <Button onClick={() => push('/auth/login')} className={styles.btn}>
+                        <Button href='/dashboard' className={styles.btn}>
                             {translations[lang].header.button}
                         </Button>
                     </motion.div>

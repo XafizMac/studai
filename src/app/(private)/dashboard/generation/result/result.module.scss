@@ -1,4 +1,4 @@
-@import '../../../variables.scss';
+@import '../../../../variables.scss';
 
 .main {
     background-color: #eef7ff;
@@ -48,6 +48,8 @@
         }
 
         .telegram {
+            width: 94.5%;
+            align-self: flex-end;
             background-color: $bg-color;
             padding: 2rem;
             border-radius: $border-radius;
@@ -78,7 +80,7 @@
         background-color: #eef7ff;
         height: max-content;
         width: 100%;
-        padding: 0 0 2rem 0;
+        padding: 2rem 0;
     
         .main_row {
             display: flex;
@@ -87,7 +89,6 @@
             width: 100%;
     
             .space {
-                align-self: center;
                 p {
                     font-size: 1.6rem;
                     font-weight: 600;
@@ -170,7 +171,8 @@
                     font-weight: 600;
                 }
                 .groza{
-                    display: none;
+                    // display: none;
+                    width: 30px;
                 }
             }
     
@@ -210,6 +212,7 @@
             }
     
             .telegram {
+                width: 100%;
                 background-color: $bg-color;
                 padding: 2rem;
                 border-radius: $border-radius;

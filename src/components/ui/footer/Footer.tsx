@@ -23,13 +23,13 @@ export const Footer: FC = () => {
                     <div className={styles.logoblock}>
                         <Image className={styles.logo} width={150} src={logo} alt="" />
                         <div className={styles.medias}>
-                            <Link className="active" href={"https://wa.me/+996702160703"}>
+                            <Link target="_blank" className="active" href={"https://wa.me/+996702160703"}>
                                 <Image src={whatsapp} alt="" />
                             </Link>
-                            <Link href={"https://te.me/+996702160703"}>
+                            <Link target="_blank" href={"https://te.me/+996702160703"}>
                                 <Image src={telegram} alt="" />
                             </Link>
-                            <Link href={"https://instagram.com/"}>
+                            <Link target="_blank" href={"https://www.instagram.com/studai.kg?igsh=MW15dHdma2o5cHBrNA=="}>
                                 <Image src={instagram} alt="" />
                             </Link>
                         </div>
@@ -53,7 +53,9 @@ export const Footer: FC = () => {
                         <p>
                             {footerLib.details[2]}
                         </p>
-                        <Image className={styles.img} src={instaPhoto} alt="" />
+                        <Link target="_blank" href={"https://www.instagram.com/studai.kg?igsh=MW15dHdma2o5cHBrNA=="}>
+                            <Image className={styles.img} src={instaPhoto} alt="" />
+                        </Link>
                     </div>
                 </div>
             </div>

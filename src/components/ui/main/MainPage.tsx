@@ -54,15 +54,6 @@ const MainPage: FC = () => {
                             initial={{ opacity: 0, y: 100 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{
-                                duration: 1
-                            }}
-                            className={styles.description}>
-                            <p>{page.description}</p>
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, y: 100 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
                                 duration: 1.2,
                             }}
                             className={styles.done_works}>
@@ -110,7 +101,7 @@ const MainPage: FC = () => {
                             }}
                             style={{ width: '100%' }}
                         >
-                            <Button size="large" className={styles.btn}>{translations[lang].mainpage.button}</Button>
+                            <Button href="/dashboard" size="large" className={styles.btn}>{translations[lang].mainpage.button}</Button>
                         </motion.div>
                     </div>
                     <div className={styles.robot}>

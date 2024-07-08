@@ -9,7 +9,6 @@ import Choises from "@/components/ui/choices/Choises";
 import Instruction from "@/components/ui/instruction/Instruction";
 import { Pricing } from "@/components/ui/pricing/Pricing";
 import { Footer } from "@/components/ui/footer/Footer";
-import Dashboard from "@/components/ui/dashboard/page";
 import { Spin } from "antd";
 import { Context } from "../clientProvider";
 
@@ -31,29 +30,20 @@ export default function Home() {
   if (loading) {
     return (
       <div>
-        loading...
-        <Spin fullscreen={true} size="large"/>
+        <Spin fullscreen={true} size="large" />
       </div>
     );
   }
 
-  
-
   return (
-    <main>
-      {store.isAuth ? (
-        <Dashboard />
-      ) : (
-        <>
-          <Navbar />
-          <MainPage />
-          <Services />
-          <Choises />
-          <Instruction />
-          <Pricing />
-          <Footer />
-        </>
-      )}
+    <main className="mainPage">
+      <Navbar />
+      <MainPage />
+      <Services />
+      <Choises />
+      <Instruction />
+      <Pricing />
+      <Footer />
     </main>
   );
 }

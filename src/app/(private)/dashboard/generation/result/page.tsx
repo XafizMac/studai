@@ -1,15 +1,17 @@
 'use client'
 
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, ReactNode, useContext, useEffect, useState } from "react";
 import styles from "./result.module.scss";
 import { Context } from "@/app/clientProvider";
 import { Avatar, Button, Card, List, message, Skeleton, Space } from "antd";
 import { ReloadOutlined } from "@ant-design/icons";
 import Image from "next/image";
-import resultIcon from "../../../../../public/icons/gresult.svg";
-import { motion } from "framer-motion";
-import logo from "../../../../../public/logo.svg";
-import doubt from "../../../../../public/icons/doubt.svg";
+import resultIcon from "../../../../../../public/icons/gresult.svg";
+import { color, motion } from "framer-motion";
+import logo from "../../../../../../public/logo.svg";
+import doubt from "../../../../../../public/icons/doubt.svg";
+import AppHeader from "@/components/ui/dash-header/AppHeader";
+import { useRouter } from "next/navigation";
 
 const Result: FC = () => {
     const [data, setData] = useState<string[]>([])
@@ -17,6 +19,7 @@ const Result: FC = () => {
     const [myWorkType, setMyWorkType] = useState<string>()
     const [messageApi, contextHolder] = message.useMessage();
     const { store } = useContext(Context);
+    const router = useRouter();
     const plan = store.plan;
     const logoUrl = logo.src;
     const workType = plan.workType;
@@ -43,8 +46,9 @@ const Result: FC = () => {
                 break;
         }
 
-        setData(plan.subtopics)
-        try { }
+        try {
+            setData(plan.subtopics)
+        }
         catch (e) {
             console.log(e);
         }
@@ -84,7 +88,7 @@ const Result: FC = () => {
         return (
             <Space className={styles.btns} align="end">
                 <Button className={styles.button} loading={loading} onClick={regeneratePlan} icon={<ReloadOutlined />} size="large" type="default">Перегенерировать</Button>
-                <Button className={styles.button} size="large" type="primary">Продолжить</Button>
+                <Button onClick={() => router.push('result/payments')} className={styles.button} size="large" type="primary">Продолжить</Button>
             </Space>
         )
     }
@@ -94,8 +98,10 @@ const Result: FC = () => {
         )
     }
 
+
     return (
         <div className={styles.main}>
+            <AppHeader />
             <div className="container">
                 <div className={styles.main_row}>
                     <Space size={20} className={styles.space}>
@@ -116,7 +122,14 @@ const Result: FC = () => {
                             footer={footer()}
                             bordered
                             dataSource={data}
-                            renderItem={(item) => <List.Item className={styles.li}>{loading ? <Skeleton style={{ width: '100%' }} paragraph={{ rows: 0 }} active /> : <li style={{ listStyle: 'inside' }}>{item}</li>}</List.Item>}
+                            renderItem={(item, index) =>  <List.Item className={styles.li}>{loading ? <Skeleton style={{ width: '100%' }} paragraph={{ rows: 1 }} active /> : <li style={{
+                                paddingLeft: (index === 2 || index === 3 || index === 4 || index == 6 || index == 7 || index == 8) ? '30px' : undefined,
+                                fontWeight: (index === 2 || index === 3 || index === 4 || index == 6 || index == 7 || index == 8) ? 'normal' : 500,
+                                listStyle: 'inside'
+                            }} >{item}</li>
+
+                            }
+                            </List.Item>}
                             style={{ fontSize: '1.1rem', background: 'white', width: '100%' }}
                         />
                     </div>

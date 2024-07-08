@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Context } from "@/app/clientProvider";
+import axios from "axios";
 
 type FieldType = {
     email: string;
@@ -23,23 +24,15 @@ export default function Login() {
     const [messageApi, contextHolder] = message.useMessage();
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        if (localStorage.getItem('token')) {
-            store.checkAuth();
-        }
-    }, [store, store.isAuth]);
-
-    if (store.isAuth) {
-        replace('/')
-    }
 
     const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
         setLoading(true)
         try {
             const result = await store.login(values.email, values.password)
             if (result.status == 200) {
+                await axios.get('/api/auth/login');
                 success();
-                push('/')
+                replace('/dashboard')
             } else {
                 error(result.statusText)
             }
@@ -53,7 +46,6 @@ export default function Login() {
     }
 
     const success = () => {
-        // setLoading(false)
         messageApi.open({
             type: 'success',
             content: 'Перенаправление на главную страницу...',
@@ -61,7 +53,6 @@ export default function Login() {
     };
 
     const error = (message?: string) => {
-        // setLoading(false)
         messageApi.open({
             type: 'error',
             content: message || 'Ошибка при регистрации',
@@ -118,7 +109,7 @@ export default function Login() {
                     </Form.Item>
                 </Form>
 
-                <p className={styles.haveAccount}>Нет аккаунта? <Link href={"/auth/sign-in"}>Создать сейчас</Link></p>
+                <p className={styles.haveAccount}>Нет аккаунта? <Link href={"/auth/signin"}>Создать сейчас</Link></p>
                 <Divider className={styles.devider} orientation="center" plain>
                     Или
                 </Divider>

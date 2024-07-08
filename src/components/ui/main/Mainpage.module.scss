@@ -2,8 +2,8 @@
 
 .main {
     background-color: $bg-color;
-    height: 100vh;
-
+    height: max-content;
+    padding: 3rem 0 4rem 0;
     .arrow {
         position: absolute;
         left: 50%;
@@ -208,7 +208,7 @@
 @media screen and (max-width: 768px) {
     .main {
         background-color: $bg-color;
-        height: 93vh;
+        height: max-content;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -542,7 +542,6 @@
 @media screen and (max-width: 375px) {
     .main {
         background-color: $bg-color;
-        // max-height: 90vh;
         height: max-content;
     
         .main_row {

@@ -46,7 +46,6 @@ const VerifyPage = () => {
             format={(percent) => `${percent} %`}
             strokeColor={""}
             trailColor='white'
-            // strokeWidth={20}
             strokeLinecap='round'
           />
         </div>

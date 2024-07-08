@@ -5,16 +5,26 @@
     height: 100vh;
     width: 100%;
 
-    .main_row {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
+    .header {
 
-        .header {
+        background-color: $bg-color;
+
+        .header_container {
+            max-width: 1100px;
+            width: 100%;
+            margin: auto;
+            padding: 0 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
+    }
+
+    .main_row {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        margin-top: 2rem;
 
         .workTypesBlock {
             display: flex;
@@ -49,14 +59,15 @@
                     row-gap: 20px;
                     column-gap: 20px;
 
-                    .card{
+                    .card {
                         background-color: white;
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
                         border-radius: 10px;
                         padding: 15px;
-                        p{
+
+                        p {
                             width: 100%;
                             text-align: center;
                             color: black;
@@ -73,29 +84,29 @@
         background-color: #eef7ff;
         height: 100vh;
         width: 100%;
-    
+
         .main_row {
             display: flex;
             flex-direction: column;
             gap: 3rem;
-    
+
             .header {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
             }
-    
+
             .workTypesBlock {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
-    
+
                 .author {
                     width: 100%;
                     display: flex;
                     justify-content: space-between;
                 }
-    
+
                 .workTypes {
                     background-color: $bg-color;
                     width: 100%;
@@ -105,98 +116,27 @@
                     align-items: center;
                     border-radius: $border-radius - 4px;
                     padding: 2rem;
-    
+
                     .title {
                         color: white;
                         font-size: 1.3rem;
                         font-weight: 500;
                     }
-    
+
                     .cards {
                         display: grid;
                         grid-template-columns: 200px 200px;
                         row-gap: 20px;
                         column-gap: 20px;
-    
-                        .card{
-                            background-color: white;
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            border-radius: 10px;
-                            padding: 15px;
-                            p{
-                                width: 100%;
-                                text-align: center;
-                                color: black;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }   
-}
 
-@media screen and (max-width: 500px) {
-    .main {
-        background-color: #eef7ff;
-        height: max-content;
-        width: 100%;
-    
-        .main_row {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-    
-            .header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-    
-            .workTypesBlock {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-    
-                .author {
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-between;
-                }
-    
-                .workTypes {
-                    background-color: $bg-color;
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 2rem;
-                    align-items: center;
-                    border-radius: $border-radius - 4px;
-                    padding: 2rem;
-    
-                    .title {
-                        color: white;
-                        font-size: 1.3rem;
-                        font-weight: 500;
-                    }
-    
-                    .cards {
-                        display: flex;
-                        flex-direction: column;
-                        width: 100%;
-                        row-gap: 20px;
-                        column-gap: 20px;
-    
-                        .card{
+                        .card {
                             background-color: white;
                             display: flex;
                             align-items: center;
                             justify-content: space-between;
                             border-radius: 10px;
                             padding: 15px;
-                            width: 100%;
+
                             p {
                                 width: 100%;
                                 text-align: center;
@@ -207,7 +147,80 @@
                 }
             }
         }
-    }   
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .main {
+        background-color: #eef7ff;
+        height: max-content;
+        width: 100%;
+
+        .main_row {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+
+            .header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .workTypesBlock {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .author {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .workTypes {
+                    background-color: $bg-color;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+                    align-items: center;
+                    border-radius: $border-radius - 4px;
+                    padding: 2rem;
+
+                    .title {
+                        color: white;
+                        font-size: 1.3rem;
+                        font-weight: 500;
+                    }
+
+                    .cards {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        row-gap: 20px;
+                        column-gap: 20px;
+
+                        .card {
+                            background-color: white;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            border-radius: 10px;
+                            padding: 15px;
+                            width: 100%;
+
+                            p {
+                                width: 100%;
+                                text-align: center;
+                                color: black;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 425px) {
@@ -215,18 +228,18 @@
         background-color: #eef7ff;
         height: max-content;
         width: 100%;
-    
+
         .main_row {
             display: flex;
             flex-direction: column;
             gap: 3rem;
-    
+
             .header {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
 
-                .lang{
+                .lang {
                     display: none;
                 }
             }
@@ -235,13 +248,13 @@
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
-    
+
                 .author {
                     width: 100%;
                     display: flex;
                     justify-content: space-between;
                 }
-    
+
                 .workTypes {
                     background-color: $bg-color;
                     width: 100%;
@@ -251,21 +264,21 @@
                     align-items: center;
                     border-radius: $border-radius - 4px;
                     padding: 2rem;
-    
+
                     .title {
                         color: white;
                         font-size: 1.3rem;
                         font-weight: 500;
                     }
-    
+
                     .cards {
                         display: flex;
                         flex-direction: column;
                         width: 100%;
                         row-gap: 20px;
                         column-gap: 20px;
-    
-                        .card{
+
+                        .card {
                             background-color: white;
                             display: flex;
                             align-items: center;
@@ -273,6 +286,7 @@
                             border-radius: 10px;
                             padding: 15px;
                             width: 100%;
+
                             p {
                                 width: 100%;
                                 text-align: center;
@@ -283,6 +297,5 @@
                 }
             }
         }
-    }   
+    }
 }
-

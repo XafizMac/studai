@@ -6,6 +6,7 @@ import AuthService from "@/services/AuthService";
 import axios, { AxiosResponse } from "axios";
 import { makeAutoObservable } from "mobx";
 import { Plan, Work } from "@/models/plan/Plan";
+import { Payments } from "@/models/payments/IPay";
 
 export default class Store {
     user = {} as IUser;
@@ -14,6 +15,7 @@ export default class Store {
     status: { status: number; statusText: string } = { status: 0, statusText: '' };
     works = {} as Work;
     plan = {} as Plan;
+    paymentss = {} as Payments;
 
     constructor() {
         makeAutoObservable(this);
@@ -42,10 +44,12 @@ export default class Store {
     setPlans(plan: Plan) {
         this.plan = plan;
     }
+    setPayments(payments: Payments) {
+        this.paymentss = payments;
+    }
     async login(email: string, password: string): Promise<{ status: number, statusText: string }> {
         try {
             const response = await AuthService.login(email, password);
-            console.log(response);
             this.setStatus(response.status, response.statusText);
             localStorage.setItem('token', response.data.access);
             localStorage.setItem('RT', response.data.refresh)
@@ -82,8 +86,7 @@ export default class Store {
     }
     async resend_activation(email: string) {
         try {
-            const response = AuthService.resend_activation(email);
-            console.log((await response).data);
+            const response = await AuthService.resend_activation(email);
         }
         catch (e) {
             console.log("Error reactivating", e);
@@ -104,7 +107,6 @@ export default class Store {
     async logout() {
         try {
             const response = AuthService.logout();
-            console.log(response);
             localStorage.removeItem('token');
             this.setAuth(false);
             this.setUser({} as IUser);
@@ -117,11 +119,10 @@ export default class Store {
         try {
             const response = await AuthService.generatePlan(workType, languageOfWork, workTheme, discipline, pageCount, wishes, coverPageData, university, authorName, groupName, teacherName);
             this.setPlans(response.data)
-            console.log(response);
+            localStorage.setItem('workPlans', JSON.stringify(response.data))
+            localStorage.setItem('word', response.data.id)
             this.setStatus(response.status, response.statusText);
-            console.log(response.data);
             return response.data;
-
         }
         catch (e) {
             console.log("Error generating plan", e);
@@ -135,9 +136,7 @@ export default class Store {
         try {
             const response = await AuthService.regeneratePlan(id, workType, languageOfWork, workTheme, discipline, pageCount, wishes, coverPageData, university, authorName, groupName, teacherName, subtopics, context, status, file, author);
             this.setPlans(response.data);
-            console.log(response);
             this.setStatus(response.status, response.statusText);
-            console.log(response.data);
             return response.data;
         }
         catch (e) {
@@ -146,6 +145,19 @@ export default class Store {
             const statusText = (e as any).message || 'Неизвестная ошибка';
             this.setStatus(status, statusText);
             return this.plan;
+        }
+    }
+    async payments(photo: File, status: string, word: number): Promise<Payments> {
+        try {
+            const response = await AuthService.payments(photo, status, word);
+            this.setStatus(response.status, response.statusText);
+            return response.data;
+        }
+        catch (e) {
+            const status = (e as any).response?.status || 500;
+            const statusText = (e as any).message || 'Неизвестная ошибка';
+            this.setStatus(status, statusText);
+            return this.paymentss;
         }
     }
     async getUsersMe(): Promise<Me> {
@@ -161,8 +173,9 @@ export default class Store {
     async getWorks(): Promise<Work> {
         try {
             const response: AxiosResponse<Work> = await AuthService.getWorks()
-            this.setWorks(response.data)
             console.log(response);
+            const data = response.data;
+            this.setWorks(data)
             return response.data
         }
         catch (e) {

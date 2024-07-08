@@ -53,7 +53,7 @@ const Services: FC = () => {
                                     }}
                                     className={styles.card}>
                                     <Image className={styles.img} src={card.img} alt="" />
-                                    <Link className={styles.link} href={"/registration"}>
+                                    <Link className={styles.link} href={"/dashboard"}>
                                         <p className={styles.p}>
                                             {card.title}
                                         </p>
