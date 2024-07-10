@@ -42,6 +42,13 @@ const Generation: FC = () => {
   const { store } = useContext(Context);
   const { replace, push, forward } = useRouter();
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      store.checkAuth();
+    }
+  }, [store.isAuth])
+
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     setLoading(true);
     if (isCheckbox) {

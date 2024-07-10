@@ -1,0 +1,64 @@
+@import "../../../../../../variables.scss";
+
+.main {
+  .main_row {
+    padding: 0 4rem;
+    display: grid;
+    grid-template-columns: 20% auto;
+    column-gap: 20px;
+    .navigation {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      p {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: $bg-color;
+      }
+      .anchor {
+        background-color: white;
+        padding: 1rem;
+        border-radius: $border-radius - 5px;
+      }
+    }
+    .document {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .theme {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .title_btns {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: $bg-color;
+          }
+        }
+        .themeContainer {
+          background-color: white;
+          padding: 0.8rem 1rem;
+          border-radius: $border-radius - 5px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgba(211, 211, 211, 0.623);
+        }
+      }
+      .paperScrollable {
+        width: 100%;
+        height: 100vh;
+        overflow-y: auto;
+        .paper {
+          background-color: white;
+          width: 100%;
+          height: 1000px;
+        }
+      }
+    }
+  }
+}

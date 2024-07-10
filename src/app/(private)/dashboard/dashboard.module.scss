@@ -6,9 +6,8 @@
     width: 100%;
 
     .header {
-
-        background-color: $bg-color;
-
+        background: #0D4FAA;
+        padding: .8rem 0;
         .header_container {
             max-width: 1100px;
             width: 100%;
@@ -35,10 +34,13 @@
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
-            }
 
+                .lang {
+                    display: none;
+                }
+            }
             .workTypes {
-                background-color: $bg-color;
+                background: linear-gradient(#0D4FAA, #2d81ca);
                 width: 100%;
                 display: flex;
                 flex-direction: column;
@@ -58,21 +60,6 @@
                     grid-template-columns: 200px 200px 200px 200px;
                     row-gap: 20px;
                     column-gap: 20px;
-
-                    .card {
-                        background-color: white;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        border-radius: 10px;
-                        padding: 15px;
-
-                        p {
-                            width: 100%;
-                            text-align: center;
-                            color: black;
-                        }
-                    }
                 }
             }
         }
@@ -229,20 +216,18 @@
         height: max-content;
         width: 100%;
 
-        .main_row {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-
-            .header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-
+        .header{
+            .header_container{
                 .lang {
                     display: none;
                 }
             }
+        }
+
+        .main_row {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
 
             .workTypesBlock {
                 display: flex;
@@ -253,6 +238,10 @@
                     width: 100%;
                     display: flex;
                     justify-content: space-between;
+
+                    .lang {
+                        display: block;
+                    }
                 }
 
                 .workTypes {

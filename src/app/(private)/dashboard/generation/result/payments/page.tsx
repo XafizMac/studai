@@ -154,8 +154,10 @@ const Payments: FC = () => {
     setLoading(true);
 
     try {
-      const response = await store.payments(imageData, "pending", word);
-      localStorage.removeItem('price')
+      await store.payments(imageData, "pending", word);
+      localStorage.removeItem("price");
+      localStorage.removeItem("workPlans");
+      localStorage.removeItem("word");
       message.success("Файл успешно загружен");
       push("/");
     } catch (error) {
@@ -213,11 +215,7 @@ const Payments: FC = () => {
             </Button>
 
             <form onSubmit={onFinish}>
-              <input
-                onChange={handleImage}
-                type="file"
-                name="photo"
-              />
+              <input onChange={handleImage} type="file" name="photo" />
               <Button
                 loading={loading}
                 type="primary"

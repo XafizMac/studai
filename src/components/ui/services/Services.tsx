@@ -16,7 +16,7 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 interface Card {
     title: string;
     img: StaticImageData;
-    url: string;
+    id: string;
 }
 
 
@@ -26,10 +26,10 @@ const Services: FC = () => {
     const workTypesTitles = translations[lang].mainpage.worktypes;
 
     const CardList: Card[] = [
-        { title: workTypesTitles[0], url: "", img: referat },
-        { title: workTypesTitles[1], url: "", img: doklad },
-        { title: workTypesTitles[2], url: "", img: coursework },
-        { title: workTypesTitles[3], url: "", img: srs }
+        { title: workTypesTitles[0], id: "1", img: referat },
+        { title: workTypesTitles[1], id: "2", img: doklad },
+        { title: workTypesTitles[2], id: "3", img: coursework },
+        { title: workTypesTitles[3], id: "4", img: srs }
     ]
 
 
@@ -45,7 +45,7 @@ const Services: FC = () => {
                         {CardList.map((card: Card) => {
                             return (
                                 <motion.div
-                                    key={card.title}
+                                    key={card.id}
                                     initial={{ opacity: 0, y: 100 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{

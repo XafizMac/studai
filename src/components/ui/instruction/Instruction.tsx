@@ -7,23 +7,10 @@ import Image from "next/image";
 import icon from "../../../../public/img/instruction.svg";
 import lines from "../../../../public/img/instruction-line.svg";
 
-interface InstructionType {
-    number: number;
-    title: string;
-    content?: string;
-}
-
 const Instruction: FC = () => {
 
     const { translations, lang } = useLang();
     const instructionTrans = translations[lang].instruction;
-    const CardList: InstructionType[] = [
-        { number: 1, title: instructionTrans.one[0] },
-        { number: 2, title: instructionTrans.two[0], content: instructionTrans.two[1] },
-        { number: 3, title: instructionTrans.three[0], content: instructionTrans.three[1] },
-        { number: 4, title: instructionTrans.four[0], content: instructionTrans.four[1] },
-        { number: 5, title: instructionTrans.five[0], content: instructionTrans.five[1] },
-    ]
 
     return (
         <div id="inctruction" className={styles.main}>
@@ -86,15 +73,6 @@ const Instruction: FC = () => {
                             </div>
                         </div>
                     </div>
-                    {/* {CardList.map((card: InstructionType) => {
-                        return (
-                            <div className={styles.card}>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                        )
-                    })} */}
                 </div>
             </div>
         </div>

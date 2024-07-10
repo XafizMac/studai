@@ -1,5 +1,4 @@
-// src/app/page.tsx
-'use client'
+"use client";
 
 import React, { useEffect, useContext, useState } from "react";
 import Navbar from "@/components/ui/navbar/Navbar";
@@ -11,14 +10,35 @@ import { Pricing } from "@/components/ui/pricing/Pricing";
 import { Footer } from "@/components/ui/footer/Footer";
 import { Spin } from "antd";
 import { Context } from "../clientProvider";
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
   const { store } = useContext(Context);
   const [loading, setLoading] = useState(true);
+  const searchParams = useSearchParams();
+
+  // Google oAuth params
+  const state = searchParams.get("state");
+  const code = searchParams.get("code");
+
+  if (state && code) {
+    console.log("State: ", state);
+    console.log("Code: ", code);
+    
+    const OAuthCallback = async () => {
+      try {
+        const response = await store.oAuthCallbacks(state, code);
+        console.log(response);
+      } catch (err) {
+        console.log("Error", err);
+      }
+    };
+    OAuthCallback();
+  }
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
+    const token = localStorage.getItem("token");
+    if (!token) {
       store.checkAuth().finally(() => {
         setLoading(false);
       });

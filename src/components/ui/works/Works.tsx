@@ -1,35 +1,156 @@
 "use client";
 
-import { Table } from "antd";
+import { Badge, Button, Dropdown, Table, TableProps } from "antd";
 import { FC, useContext, useEffect, useState } from "react";
 import emptyImg from "../../../../public/icons/empty.svg";
 import Image from "next/image";
 import styles from "./works.module.scss";
 import { Context } from "@/app/clientProvider";
+import {
+  DeleteOutlined,
+  DownloadOutlined,
+  EllipsisOutlined,
+  EyeOutlined,
+} from "@ant-design/icons";
+import { Work } from "@/models/plan/Plan";
+import { motion } from "framer-motion";
+import { MenuProps } from "antd";
+
+interface DataType {
+  key: string;
+  name: string;
+  page: string;
+  workType: string;
+  language: string;
+  status: string;
+  file: string;
+}
 
 const Works: FC = () => {
   const { store } = useContext(Context);
   const [empty, setEmpty] = useState<boolean>(true);
-  const [data, setData] = useState();
+  const [workData, setWorkData] = useState<DataType[]>([]);
+
+  useEffect(() => {
+    if (!store.isAuth) {
+      store.checkAuth();
+    }
+  }, [store.isAuth]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await store.getWorks();
-      console.log(response);
-      
-      setEmpty(false);
+      const response: Work[] = await store.getWorks();
+      const transformedData: DataType[] = response.map((work, index) => ({
+        key: index.toString(),
+        name: work.workTheme,
+        page: work.pageCountDisplay,
+        workType: work.workTypeDisplay,
+        language: work.languageOfWorkDisplay,
+        status: work.status,
+        file: work.file,
+      }));
+      setWorkData(transformedData.reverse());
+      setEmpty(transformedData.length === 0);
     };
     fetchData();
-    // Установка интервала для повторения запроса каждые 5 секунд
+
     const interval = setInterval(fetchData, 5000);
 
-    // Очистка интервала при размонтировании компонента
     return () => clearInterval(interval);
-  }, []);
+  }, [store]);
+
+  const generateMenuItems = (record: DataType): MenuProps['items'] => [
+    { key: "1", label: "Посмотреть", icon: <EyeOutlined />, disabled: record.status === 'approved' ? false : true },
+    { key: "2", label: "Скачать", icon: <DownloadOutlined />, onClick: () => downloadFile(record.file) },
+    { type: "divider" },
+    { key: "3", label: "Удалить", icon: <DeleteOutlined />, danger: true, onClick: () => deleteRecord(record.key) },
+  ];
+
+  const downloadFile = (file: string) => {
+    const link = document.createElement("a");
+    link.href = file
+    link.setAttribute('download', 'StudaiWor.docx')
+    document.body.appendChild(link);
+    link.click()
+    console.log(`Downloading file: ${file}`);
+  };
+
+  const deleteRecord = (key: string) => {
+    // Ваша логика для удаления записи
+    console.log(`Deleting record: ${key}`);
+  };
+
+  const columns: TableProps<DataType>["columns"] = [
+    {
+      title: "Название",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Страница",
+      dataIndex: "page",
+      key: "page",
+    },
+    {
+      title: "Тип работы",
+      dataIndex: "workType",
+      key: "workType",
+    },
+    {
+      title: "Язык работы",
+      key: "language",
+      dataIndex: "language",
+    },
+    {
+      title: "Статус",
+      key: "status",
+      dataIndex: "status",
+      render: (_, record) => (
+        <Badge
+          status={
+            record.status === "approved"
+              ? "processing"
+              : record.status === "rejected"
+              ? "error"
+              : record.status === "pending"
+              ? "default"
+              : record.status === "ready"
+              ? "success"
+              : "default"
+          }
+          text={
+            record.status === "approved"
+              ? "Генерация"
+              : record.status === "rejected"
+              ? "Отклонен"
+              : record.status === "pending"
+              ? "Ожидание"
+              : record.status === "ready" && "Готово"
+          }
+        />
+      ),
+    },
+    {
+      title: "Действие",
+      key: "action",
+      render: (_, record) => (
+        <Dropdown trigger={["click"]} menu={{ items: generateMenuItems(record) }}>
+          <Button shape="circle" type="text">
+            <EllipsisOutlined style={{ fontSize: "1.5rem" }} />
+          </Button>
+        </Dropdown>
+      ),
+    },
+  ];
 
   return (
-    <div className={styles.main}>
-      {!empty ? (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className={styles.main}
+    >
+      {empty ? (
         <div className={styles.empty}>
           <Image src={emptyImg} alt="" />
           <p>
@@ -38,9 +159,20 @@ const Works: FC = () => {
           </p>
         </div>
       ) : (
-        <Table></Table>
+        <div className={styles.tableScroll}>
+          <p className={styles.title}>Все работы ({workData.length})</p>
+          <Table
+            style={{
+              minWidth: 768,
+            }}
+            className={styles.table}
+            columns={columns}
+            dataSource={workData}
+            pagination={false}
+          />
+        </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

@@ -6,7 +6,8 @@ import logo from "../../public/logo.svg";
 
 const exo_2 = Exo_2({ subsets: ["cyrillic"] });
 export const metadata: Metadata = {
-  icons: logo.src
+  icons: logo.src,
+  title: "Studai - ИИ платформа"
 }
 
 export default function RootLayout({

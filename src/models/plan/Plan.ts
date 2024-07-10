@@ -18,10 +18,11 @@ export interface Plan {
     status: string;
 }
 
-
 export interface Work {
     workTheme: string;
     pageCountDisplay: string;
     workTypeDisplay: string;
     languageOfWorkDisplay: string;
+    status: string;
+    file: string;
 }

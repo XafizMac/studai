@@ -34,6 +34,11 @@
             display: flex;
             flex-direction: column;
 
+            .subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+            }
+
             div {
                 p {
                     font-size: 1rem;
@@ -48,32 +53,8 @@
             }
         }
 
-        .forgotPassword{
-            margin-top: -40px;
-            a{
-                color: $bg-color;
-                &:hover{
-                    text-decoration: underline;
-                }
-            }
-        }
-
-        .haveAccount {
+        .remembered{
             text-align: center;
-            font-weight: 300;
-
-            a {
-                color: $bg-color;
-                font-weight: 400;
-            }
-        }
-
-        .devider {
-            color: $bg-color;
-        }
-
-        .googleBtn {
-            font-weight: 600;
         }
     }
 
@@ -116,10 +97,9 @@
                 text-align: center;
             }
 
+            
             .forms {
                 display: flex;
-                flex-direction: column;
-
                 div {
                     p {
                         font-size: 1rem;

@@ -16,7 +16,7 @@ export default class Store {
     works = {} as Work;
     plan = {} as Plan;
     paymentss = {} as Payments;
-
+    
     constructor() {
         makeAutoObservable(this);
     }
@@ -57,8 +57,9 @@ export default class Store {
             this.setUser(response.data.user);
             return { status: response.status, statusText: response.statusText }
         } catch (e) {
+            console.log(e);
             const status = (e as any).response?.status || 500;
-            const statusText = (e as any).response?.data?.details || 'Неизвестная ошибка';
+            const statusText = (e as any).response?.data?.detail || 'Неизвестная ошибка';
             this.setStatus(status, statusText);
             return { status, statusText }
         }
@@ -92,12 +93,32 @@ export default class Store {
             console.log("Error reactivating", e);
         }
     }
+    async oAuth() {
+        try {
+            const response = await AuthService.oAuth();
+            console.log(response)
+            return { data: response.data }
+        }
+        catch (e) {
+            console.log("Error oAuth", e);
+        }
+    }
+    async oAuthCallbacks(state: string, code: string) {
+        try{
+            const response = await AuthService.oAuthCallback(state, code);
+            this.setAuth(true);
+            console.log(response);
+            return response.data;
+        }
+        catch(e){
+            console.log(e);
+        }
+    }
     async checkAuth() {
         const refreshToken = localStorage.getItem('RT');
         try {
             const response = await axios.post(`${API_URL}/jwt/refresh/`, { refresh: refreshToken }, { withCredentials: true });
             this.setAuth(true);
-            this.setUser(response.data.user);
             localStorage.setItem('token', response.data.access);
         }
         catch (e) {
@@ -172,14 +193,37 @@ export default class Store {
     }
     async getWorks(): Promise<Work> {
         try {
-            const response: AxiosResponse<Work> = await AuthService.getWorks()
-            console.log(response);
+            const response: AxiosResponse<Work> = await AuthService.getWorks();
             const data = response.data;
+            console.log(data);
             this.setWorks(data)
             return response.data
         }
         catch (e) {
             return this.works
+        }
+    }
+    async resetPassword(email: string){
+        try{
+            const response = await axios.post(`${API_URL}/users/reset_password/`, {email});
+            this.setStatus(response.status, response.statusText)
+            console.log(response);
+        }
+        catch(e: any){
+            console.log("Error reset password", e);
+            this.setStatus(e.response.status, e.response.data[0])
+        }
+    }
+    async resetPasswordConfirm(uid:string, token:string, newPassword: string){
+        try{
+            const response = await axios.post(`${API_URL}/users/reset_password_confirm/`, { uid, token, newPassword });
+            this.setStatus(response.status, response.statusText)
+            console.log(response);
+        }
+        catch(e: any){
+            console.log("Error reset password", e);
+            this.setStatus(e.response.status, e.response.data[0])
+            
         }
     }
 }

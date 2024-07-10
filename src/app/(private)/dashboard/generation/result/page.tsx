@@ -8,7 +8,7 @@ import { ReloadOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import resultIcon from "../../../../../../public/icons/gresult.svg";
 import { color, motion } from "framer-motion";
-import logo from "../../../../../../public/logo.svg";
+import logo from "../../../../../../public/logo-circle2.svg";
 import doubt from "../../../../../../public/icons/doubt.svg";
 import AppHeader from "@/components/ui/dash-header/AppHeader";
 import { useRouter } from "next/navigation";
@@ -25,7 +25,14 @@ const Result: FC = () => {
     const workType = plan.workType;
 
     useEffect(() => {
-        universal()
+        store.getUsersMe()
+        if (!store.isAuth) {
+          store.checkAuth();
+        }
+      }, [store.isAuth]);
+
+    useEffect(() => {
+        universal();
     }, [store.plan])
 
     const universal = async () => {
@@ -47,11 +54,14 @@ const Result: FC = () => {
         }
 
         try {
-            setData(plan.subtopics)
+            setData(plan.subtopics);
         }
         catch (e) {
             console.log(e);
         }
+        // finally{
+        //     checkPlanLength();
+        // }
     }
 
     const regeneratePlan = async () => {
@@ -59,6 +69,8 @@ const Result: FC = () => {
         try {
             const result = await store.regeneratePlan(plan.id, plan.workType, plan.languageOfWork, plan.workTheme, plan.discipline, plan.pageCount, plan.wishes, plan.coverPageData, plan.university, plan.authorName, plan.groupName, plan.teacherName, plan.subtopics, plan.context, plan.status, plan.file, plan.author);
             success();
+            // setData(result)
+            
         }
         catch (e) {
             console.log(e);
@@ -66,6 +78,7 @@ const Result: FC = () => {
         }
         finally {
             setLoading(false);
+            // checkPlanLength()
         }
     }
 
@@ -84,11 +97,16 @@ const Result: FC = () => {
     };
 
 
+    const handleFinish = () => {
+        router.push('result/payments')
+    }
+
+
     const footer = (): JSX.Element => {
         return (
             <Space className={styles.btns} align="end">
                 <Button className={styles.button} loading={loading} onClick={regeneratePlan} icon={<ReloadOutlined />} size="large" type="default">Перегенерировать</Button>
-                <Button onClick={() => router.push('result/payments')} className={styles.button} size="large" type="primary">Продолжить</Button>
+                <Button onClick={handleFinish} className={styles.button} size="large" type="primary">Продолжить</Button>
             </Space>
         )
     }
@@ -96,6 +114,12 @@ const Result: FC = () => {
         return (
             <p style={{ fontWeight: 500 }}>Содержание</p>
         )
+    }
+
+    const checkPlanLength = () => {
+        if(data.length !== 11){
+            regeneratePlan()
+        }
     }
 
 
@@ -122,7 +146,7 @@ const Result: FC = () => {
                             footer={footer()}
                             bordered
                             dataSource={data}
-                            renderItem={(item, index) =>  <List.Item className={styles.li}>{loading ? <Skeleton style={{ width: '100%' }} paragraph={{ rows: 1 }} active /> : <li style={{
+                            renderItem={(item, index) =>  <List.Item key={index} className={styles.li}>{loading ? <Skeleton style={{ width: '100%' }} paragraph={{ rows: 1 }} active /> : <li style={{
                                 paddingLeft: (index === 2 || index === 3 || index === 4 || index == 6 || index == 7 || index == 8) ? '30px' : undefined,
                                 fontWeight: (index === 2 || index === 3 || index === 4 || index == 6 || index == 7 || index == 8) ? 'normal' : 500,
                                 listStyle: 'inside'

@@ -51,4 +51,11 @@ export default class AuthService {
         return $api.get<Work>('/documents/')
     }
 
+    static async oAuth() {
+        return $api.get('/o/google-oauth2/?redirect_uri=http://localhost:3000')
+    }
+    static async oAuthCallback(state: string, code: string): Promise<AxiosResponse<AuthResponse>> {
+        return $api.post<AuthResponse>(`/o/google-oauth2/?state=${state}&code=${code}`)
+    }
+
 }

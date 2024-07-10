@@ -14,7 +14,8 @@ import { motion } from "framer-motion"
 interface Choise {
     title: string;
     content: string;
-    img: string
+    img: string;
+    id: string
 }
 
 const Choises: FC = () => {
@@ -22,10 +23,10 @@ const Choises: FC = () => {
     const choiseContent = translations[lang].choises
 
     const ChoiseCard: Choise[] = [
-        { title: choiseContent.content.operative[0], content: choiseContent.content.operative[1], img: operative },
-        { title: choiseContent.content.opportunity[0], content: choiseContent.content.opportunity[1], img: opportunity },
-        { title: choiseContent.content.quality[0], content: choiseContent.content.quality[1], img: quality },
-        { title: choiseContent.content.profitably[0], content: choiseContent.content.profitably[1], img: profitably },
+        { id: "1", title: choiseContent.content.operative[0], content: choiseContent.content.operative[1], img: operative },
+        { id: "2", title: choiseContent.content.opportunity[0], content: choiseContent.content.opportunity[1], img: opportunity },
+        { id: "3", title: choiseContent.content.quality[0], content: choiseContent.content.quality[1], img: quality },
+        { id: "4", title: choiseContent.content.profitably[0], content: choiseContent.content.profitably[1], img: profitably },
     ]
 
     return (
@@ -44,7 +45,7 @@ const Choises: FC = () => {
                         {ChoiseCard.map((card: Choise) => {
                             return (
                                 <motion.div
-                                    key={card.title}
+                                    key={card.id}
                                     initial={{ opacity: 0, y: 100 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8 }}
