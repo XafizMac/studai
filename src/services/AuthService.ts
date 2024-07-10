@@ -47,8 +47,8 @@ export default class AuthService {
         return $api.get<Me>('/users/me/')
     }
 
-    static async getWorks(): Promise<AxiosResponse<Work>> {
-        return $api.get<Work>('/documents/')
+    static async getWorks(): Promise<AxiosResponse<Work[]>> {
+        return $api.get<Work[]>('/documents/')
     }
 
     static async oAuth() {

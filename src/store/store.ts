@@ -191,16 +191,13 @@ export default class Store {
             return this.me;
         }
     }
-    async getWorks(): Promise<Work> {
+    async getWorks(): Promise<Work[]> {
         try {
-            const response: AxiosResponse<Work> = await AuthService.getWorks();
-            const data = response.data;
-            console.log(data);
-            this.setWorks(data)
+            const response: AxiosResponse<Work[]> = await AuthService.getWorks();
             return response.data
         }
         catch (e) {
-            return this.works
+            return []
         }
     }
     async resetPassword(email: string){
