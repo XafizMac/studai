@@ -189,8 +189,8 @@ const Payments: FC = () => {
                     copyable={{
                       text: item.number,
                       icon: [
-                        <CopyOutlined style={{ fontSize: "1.3rem" }} />,
-                        <CopyFilled />,
+                        <CopyOutlined style={{ fontSize: "1.3rem" }} key="copy-outlined" />,
+                        <CopyFilled key="copy-filled" />,
                       ],
                       tooltips: ["Скопировать", "Скопировано!"],
                     }}
@@ -200,10 +200,10 @@ const Payments: FC = () => {
                 }
               >
                 <div className={styles.details}>
-                  <Image width={70} src={item.url} alt={item.title} />
-                  <div>
-                    <p>{item.number}</p>
-                    <small>{item.name}</small>
+                  <Image width={70} src={item.url} alt={item.title} key={item.title} />
+                  <div key={`${item.title}-details`}>
+                    <p key={`${item.title}-number`}>{item.number}</p>
+                    <small key={`${item.title}-name`}>{item.name}</small>
                   </div>
                 </div>
               </Card>
