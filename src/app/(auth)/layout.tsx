@@ -1,12 +1,9 @@
-export default function Layout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
+import { Suspense } from "react";
 
-    return (
-        <>
-            {children}
-        </>
-    )
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Suspense>{children}</Suspense>
+    </>
+  );
 }
