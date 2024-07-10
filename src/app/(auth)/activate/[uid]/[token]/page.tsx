@@ -16,7 +16,7 @@ const VerifyPage = () => {
   useEffect(() => {
     activateAccount()
     setInterval(() => setCount(prev => prev + 1), 100)
-  }, [])
+  }, [store])
 
   if (!uid || !token) {
     return <div>Loading...</div>;

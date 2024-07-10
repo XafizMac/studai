@@ -51,7 +51,7 @@ const Dashboard: FC = () => {
     if (token) {
       store.checkAuth();
     }
-  }, [store.isAuth]);
+  }, [store, store.isAuth]);
 
   const handleSwitchLang = (lang: string) => {
     setLang(lang as AllowedLangs);

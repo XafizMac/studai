@@ -33,7 +33,7 @@ const Result: FC = () => {
 
     useEffect(() => {
         universal();
-    }, [store.plan])
+    }, [store.plan, store])
 
     const universal = async () => {
         switch (workType) {

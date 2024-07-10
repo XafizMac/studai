@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
+    "@cyntler/react-doc-viewer": "^1.16.6",
     "@types/axios": "^0.14.0",
     "antd": "^5.18.0",
     "axios": "^1.7.2",

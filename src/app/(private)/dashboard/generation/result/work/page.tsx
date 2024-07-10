@@ -5,11 +5,17 @@ import styles from "./work.module.scss";
 import AppHeader from "@/components/ui/dash-header/AppHeader";
 import { Anchor, Button, Input, Space } from "antd";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
+import { useSearchParams } from "next/navigation";
+import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
+import "@cyntler/react-doc-viewer/dist/index.css";
 
 const Work: FC = () => {
-  const onChange = (link: string) => {
-    console.log("Anchor:OnChange", link);
-  };
+  const params = useSearchParams();
+  const file = params.get("file");
+  const docs = [
+    { uri: 'https://api.studai.online/media/documents/2024/07/10/Doc1_weFmeAs.docx' }
+  ];
+
   return (
     <div className={styles.main}>
       <AppHeader />
@@ -19,7 +25,6 @@ const Work: FC = () => {
           <Anchor
             className={styles.anchor}
             affix={false}
-            onChange={onChange}
             items={[
               {
                 key: "1",
@@ -64,12 +69,10 @@ const Work: FC = () => {
                 </Space>
               </div>
             </div>
-            <div className={styles.themeContainer}>
-                История языка C#
-            </div>
+            <div className={styles.themeContainer}>История языка C#</div>
           </div>
           <div className={styles.paperScrollable}>
-            <div className={styles.paper}></div>
+            <DocViewer documents={docs} pluginRenderers={DocViewerRenderers}/>
           </div>
         </div>
       </div>

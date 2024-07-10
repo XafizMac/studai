@@ -47,7 +47,7 @@ const Generation: FC = () => {
     if (token) {
       store.checkAuth();
     }
-  }, [store.isAuth])
+  }, [store.isAuth, store])
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     setLoading(true);

@@ -178,9 +178,9 @@ const Payments: FC = () => {
             К оплате: <span className="active">{cost} сом</span>
           </p>
           <div className={styles.cards}>
-            {cardList.map((item) => (
+            {cardList.map((item, index) => (
               <Card
-                key={item.title}
+                key={index}
                 title={item.title}
                 className={styles.card}
                 extra={

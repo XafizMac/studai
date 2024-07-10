@@ -15,6 +15,8 @@ import {
 import { Work } from "@/models/plan/Plan";
 import { motion } from "framer-motion";
 import { MenuProps } from "antd";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface DataType {
   key: string;
@@ -30,6 +32,7 @@ const Works: FC = () => {
   const { store } = useContext(Context);
   const [empty, setEmpty] = useState<boolean>(true);
   const [workData, setWorkData] = useState<DataType[]>([]);
+  const { push } = useRouter();
 
   useEffect(() => {
     if (!store.isAuth) {
@@ -59,19 +62,46 @@ const Works: FC = () => {
     return () => clearInterval(interval);
   }, [store]);
 
-  const generateMenuItems = (record: DataType): MenuProps['items'] => [
-    { key: "1", label: "Посмотреть", icon: <EyeOutlined />, disabled: record.status === 'approved' ? false : true },
-    { key: "2", label: "Скачать", icon: <DownloadOutlined />, onClick: () => downloadFile(record.file) },
+  const generateMenuItems = (record: DataType): MenuProps["items"] => [
+    {
+      key: "1",
+      label: (
+        <p
+          onClick={() => {
+            const url = `/dashboard/generation/result/work?file=${encodeURIComponent(
+              record.file
+            )}`;
+            push(url);
+          }}
+        >
+          Посмотреть
+        </p>
+      ),
+      icon: <EyeOutlined />,
+      disabled: record.status === "approved" ? false : true,
+    },
+    {
+      key: "2",
+      label: "Скачать",
+      icon: <DownloadOutlined />,
+      onClick: () => downloadFile(record.file),
+    },
     { type: "divider" },
-    { key: "3", label: "Удалить", icon: <DeleteOutlined />, danger: true, onClick: () => deleteRecord(record.key) },
+    {
+      key: "3",
+      label: "Удалить",
+      icon: <DeleteOutlined />,
+      danger: true,
+      onClick: () => deleteRecord(record.key),
+    },
   ];
 
   const downloadFile = (file: string) => {
     const link = document.createElement("a");
-    link.href = file
-    link.setAttribute('download', 'StudaiWor.docx')
+    link.href = file;
+    link.setAttribute("download", "StudaiWor.docx");
     document.body.appendChild(link);
-    link.click()
+    link.click();
     console.log(`Downloading file: ${file}`);
   };
 
@@ -134,7 +164,10 @@ const Works: FC = () => {
       title: "Действие",
       key: "action",
       render: (_, record) => (
-        <Dropdown trigger={["click"]} menu={{ items: generateMenuItems(record) }}>
+        <Dropdown
+          trigger={["click"]}
+          menu={{ items: generateMenuItems(record) }}
+        >
           <Button shape="circle" type="text">
             <EllipsisOutlined style={{ fontSize: "1.5rem" }} />
           </Button>
