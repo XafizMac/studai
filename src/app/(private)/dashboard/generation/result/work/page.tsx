@@ -13,7 +13,7 @@ const Work: FC = () => {
   const params = useSearchParams();
   const file = params.get("file");
   const docs = [
-    { uri: 'https://api.studai.online/media/documents/2024/07/10/Doc1_weFmeAs.docx' }
+    { uri: 'https://docs.google.com/document/d/e/2PACX-1vSs-ELgCkLvxvnXjPpPhI4HrFFJqrzJJg_aeTWsgV3k2AQfmtsCPwDM-WfW3HYzkyjf9u-Os5yNWYxl/pub' }
   ];
 
   return (
