@@ -17,7 +17,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
 
-  // Google oAuth params
   const state = searchParams.get("state");
   const code = searchParams.get("code");
 

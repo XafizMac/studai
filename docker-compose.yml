@@ -1,0 +1,13 @@
+version: '0.0.1'
+
+services:
+  app: 
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: studai-container
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
