@@ -6,6 +6,9 @@ import { useContext, useEffect, useState } from 'react';
 import { Context } from '@/app/clientProvider';
 import { Progress } from 'antd';
 
+
+
+
 const VerifyPage = () => {
   const params = useParams();
   const { uid, token } = params as { uid: string, token: string };
