@@ -78,12 +78,13 @@ const Works: FC = () => {
         </p>
       ),
       icon: <EyeOutlined />,
-      disabled: record.status === "approved" ? false : true,
+      disabled: record.status === 'ready' ? false : true,
     },
     {
       key: "2",
       label: "Скачать",
       icon: <DownloadOutlined />,
+      disabled: record.status === 'ready' ? false : true,
       onClick: () => downloadFile(record.file),
     },
     { type: "divider" },
