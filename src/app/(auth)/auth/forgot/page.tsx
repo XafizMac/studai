@@ -5,13 +5,12 @@ import styles from "./forgot.module.scss";
 import logo from "../../../../../public/logo.svg";
 import type { FormProps } from "antd";
 import { Button, Form, Input, message } from "antd";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useContext, useState } from "react";
-import { useRouter } from "next/navigation";
 import { Context } from "@/app/clientProvider";
-import axios from "axios";
+
 
 type FieldType = {
   email: string;
@@ -19,7 +18,6 @@ type FieldType = {
 
 export default function ForgotPassword() {
   const { store } = useContext(Context);
-  const { push, replace } = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
   const [successfull, setSuccessfull] = useState(false);
@@ -80,7 +78,6 @@ export default function ForgotPassword() {
               autoComplete="off"
               className={styles.forms}
             >
-              {/* <p className={styles.subtitle}>Возникли проблемы с авторизацией? Введите свой адрес электронной почты ниже, и мы вышлем вам ссылку для его сброса.</p> */}
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "100%" }}
@@ -121,7 +118,6 @@ export default function ForgotPassword() {
           </>
         )}
       </div>
-      {/* Image */}
       <div className={styles.background}></div>
     </div>
   );

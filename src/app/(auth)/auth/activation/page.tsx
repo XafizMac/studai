@@ -14,7 +14,6 @@ export default function Activation() {
         <p className={`${styles.title} active`}>Подтвердите свой адрес электронной почты</p>
         <p className={styles.subtitle}>Чтобы продолжить регистрацию, перейдите по ссылке, которую мы отправили по электронной почте <b>{email}</b></p>
       </div>
-      {/* Image */}
       <div className={styles.background}></div>
     </div>
   );

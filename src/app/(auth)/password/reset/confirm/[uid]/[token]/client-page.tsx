@@ -8,9 +8,8 @@ import { Button, Form, Input, message } from "antd";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useContext, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Context } from "@/app/clientProvider";
-import axios from "axios";
 import { UserOutlined } from "@ant-design/icons";
 
 type FieldType = {
@@ -31,7 +30,7 @@ export default function ResetPasswordConfirm({ uid, token }: ResetPasswordConfir
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     setLoading(true);
     try {
-      const result = await store.resetPasswordConfirm(
+      await store.resetPasswordConfirm(
         uid,
         token,
         values.newPassword
