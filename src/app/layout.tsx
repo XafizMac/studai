@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={exo_2.className}>
         <ClientProvider>
-          <Suspense>{children}</Suspense>
+          {children}
         </ClientProvider>
       </body>
     </html>
