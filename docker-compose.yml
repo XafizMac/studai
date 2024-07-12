@@ -1,13 +1,24 @@
-version: '0.0.1'
+version: '3'
 
 services:
-  app: 
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    container_name: studai-container
+  app:
+    image: final-image
     ports:
-      - '3000:3000'
+      - "3000:3000"
+    networks:
+      - webnet
+
+  nginx:
+    image: nginx
     volumes:
-      - .:/app
-      - /app/node_modules
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - app
+    networks:
+      - webnet
+
+networks:
+  webnet:
