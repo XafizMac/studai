@@ -62,7 +62,6 @@ export default function Login() {
     try {
       const response = await store.oAuth();
       console.log(response?.data.authorizationUrl);
-
       window.location.href = await response?.data.authorizationUrl;
     } catch (e) {
       console.log(e);

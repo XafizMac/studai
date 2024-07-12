@@ -78,13 +78,13 @@ const Works: FC = () => {
         </p>
       ),
       icon: <EyeOutlined />,
-      disabled: record.status === 'ready' ? false : true,
+      disabled: record.status === "approved" ? false : true,
     },
     {
       key: "2",
       label: "Скачать",
       icon: <DownloadOutlined />,
-      disabled: record.status === 'ready' ? false : true,
+      disabled: record.status === "approved" ? false : true,
       onClick: () => downloadFile(record.file),
     },
     { type: "divider" },
@@ -140,23 +140,21 @@ const Works: FC = () => {
         <Badge
           status={
             record.status === "approved"
-              ? "processing"
+              ? "success"
               : record.status === "rejected"
               ? "error"
               : record.status === "pending"
-              ? "default"
-              : record.status === "ready"
-              ? "success"
-              : "default"
+              ? "processing"
+              : "processing"
           }
           text={
             record.status === "approved"
-              ? "Генерация"
+              ? "Готово"
               : record.status === "rejected"
               ? "Отклонен"
               : record.status === "pending"
               ? "Ожидание"
-              : record.status === "ready" && "Готово"
+              : "Ожидание"
           }
         />
       ),
@@ -197,7 +195,7 @@ const Works: FC = () => {
           <p className={styles.title}>Все работы ({workData.length})</p>
           <Table
             style={{
-              minWidth: 768,
+              minWidth: 890,
             }}
             className={styles.table}
             columns={columns}
