@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Используем базовый образ Node.js для финального образа
-FROM node:14 AS runtime
+FROM node:20 AS runtime
 
 # Создаем рабочую директорию в контейнере
 WORKDIR /app
@@ -32,4 +32,4 @@ COPY --from=builder /app/.next ./.next
 EXPOSE 3000
 
 # Команда для запуска приложения
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
