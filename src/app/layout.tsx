@@ -18,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={exo_2.className}>
-        <ClientProvider>
+        {/* <ClientProvider> */}
           {children}
-        </ClientProvider>
+        {/* </ClientProvider> */}
       </body>
     </html>
   );
