@@ -118,7 +118,7 @@ const Generation: FC = () => {
         >
           <Space>
             <p style={{ fontSize: "2rem", fontWeight: 500 }}>
-              Генерировать план
+              Сгенерировать план
             </p>
             <Image src={generateIcon} alt="" />
           </Space>

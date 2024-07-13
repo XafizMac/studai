@@ -12,9 +12,18 @@ import "@cyntler/react-doc-viewer/dist/index.css";
 const Work: FC = () => {
   const params = useSearchParams();
   const file = params.get("file");
-  const docs = [
-    { uri: 'https://docs.google.com/document/d/e/2PACX-1vSs-ELgCkLvxvnXjPpPhI4HrFFJqrzJJg_aeTWsgV3k2AQfmtsCPwDM-WfW3HYzkyjf9u-Os5yNWYxl/pub' }
+  const docs: object[] = [
+    { uri: file }
   ];
+
+  const handleDownloadDoc = (file: string) => {
+    const link = document.createElement("a");
+    link.href = file
+    link.setAttribute("download", "StudaiWor.docx");
+    document.body.appendChild(link);
+    link.click();
+    console.log(`Downloading file: ${file}`);
+  }
 
   return (
     <div className={styles.main}>
@@ -62,8 +71,8 @@ const Work: FC = () => {
               <p className={styles.title}>Тема</p>
               <div className={styles.btns}>
                 <Space>
-                  <Button icon={<PlusOutlined />}>Создать новый</Button>
-                  <Button type="primary" icon={<UploadOutlined />}>
+                  <Button href="/dashboard/generation" icon={<PlusOutlined />}>Создать новый</Button>
+                  <Button onClick={() =>handleDownloadDoc(docs[0].uri)} type="primary" icon={<UploadOutlined />}>
                     Экпорт
                   </Button>
                 </Space>
