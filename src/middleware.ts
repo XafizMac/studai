@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname;
     const token = request.cookies.get('token');
 
-    const publicPaths = ['/', '/auth/login', '/auth/signup'];
+    const publicPaths = ['/', '/auth/login', '/auth/signup', '/auth/:path*'];
 
     const isPublicPath = publicPaths.includes(path);
 
