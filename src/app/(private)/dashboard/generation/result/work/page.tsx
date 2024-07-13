@@ -6,14 +6,14 @@ import AppHeader from "@/components/ui/dash-header/AppHeader";
 import { Anchor, Button, Input, Space } from "antd";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { useSearchParams } from "next/navigation";
-import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
+import DocViewer, { DocViewerRenderers, IDocument } from "@cyntler/react-doc-viewer";
 import "@cyntler/react-doc-viewer/dist/index.css";
 
 const Work: FC = () => {
   const params = useSearchParams();
   const file = params.get("file");
-  const docs: object[] = [
-    { uri: file }
+  const docs: IDocument[] = [
+    { uri: file ?? "" }
   ];
 
   const handleDownloadDoc = (file: string) => {

@@ -74,7 +74,7 @@ const Works: FC = () => {
             push(url);
           }}
         >
-          Посмотреть
+          Посмотреть 
         </p>
       ),
       icon: <EyeOutlined />,
