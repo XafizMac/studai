@@ -15,7 +15,6 @@ import {
 import { Work } from "@/models/plan/Plan";
 import { motion } from "framer-motion";
 import { MenuProps } from "antd";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 interface DataType {
@@ -107,7 +106,6 @@ const Works: FC = () => {
   };
 
   const deleteRecord = (key: string) => {
-    // Ваша логика для удаления записи
     console.log(`Deleting record: ${key}`);
   };
 

@@ -194,6 +194,7 @@ export default class Store {
     async getWorks(): Promise<Work[]> {
         try {
             const response: AxiosResponse<Work[]> = await AuthService.getWorks();
+            console.log(response.data);
             return response.data
         }
         catch (e) {
