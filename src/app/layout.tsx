@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={exo_2.className}>
         {/* <ClientProvider> */}
-          {children}
+          <div>Hello Next JS</div>
         {/* </ClientProvider> */}
       </body>
     </html>
