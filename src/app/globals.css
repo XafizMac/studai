@@ -31,6 +31,7 @@ body {
 .active {
   background: linear-gradient(135deg, #FAB43F, #FF6D05);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
 }
