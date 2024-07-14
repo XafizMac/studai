@@ -12,62 +12,76 @@ import { Spin } from "antd";
 import { useSearchParams } from "next/navigation";
 import { Context } from "./clientProvider";
 
-export default function Home() {
-  const { store } = useContext(Context);
-  const [loading, setLoading] = useState(true);
-  const searchParams = useSearchParams();
+// export default function Home() {
+//   const { store } = useContext(Context);
+//   const [loading, setLoading] = useState(true);
+//   const searchParams = useSearchParams();
 
-  const state = searchParams.get("state");
-  const code = searchParams.get("code");
+//   const state = searchParams.get("state");
+//   const code = searchParams.get("code");
 
-  useEffect(() => {
-    const OAuthCallback = async () => {
-      try {
-        if (state && code) {
-          const response = await store.oAuthCallbacks(state, code);
-          console.log(response);
-        }
-      } catch (err) {
-        console.log("Error", err);
-      }
-    };
+//   useEffect(() => {
+//     const OAuthCallback = async () => {
+//       try {
+//         if (state && code) {
+//           const response = await store.oAuthCallbacks(state, code);
+//           console.log(response);
+//         }
+//       } catch (err) {
+//         console.log("Error", err);
+//       }
+//     };
 
-    if (state && code) {
-      console.log("State: ", state);
-      console.log("Code: ", code);
-      OAuthCallback();
-    }
-  }, [state, code, store]);
+//     if (state && code) {
+//       console.log("State: ", state);
+//       console.log("Code: ", code);
+//       OAuthCallback();
+//     }
+//   }, [state, code, store]);
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        await store.checkAuth();
-      }
-      setLoading(false);
-    };
+//   useEffect(() => {
+//     const checkAuth = async () => {
+//       const token = localStorage.getItem("token");
+//       if (!token) {
+//         await store.checkAuth();
+//       }
+//       setLoading(false);
+//     };
 
-    checkAuth();
-  }, [store]);
+//     checkAuth();
+//   }, [store]);
 
-  if (loading) {
-    return (
-      <div>
-        <Spin size="large" />
-      </div>
-    );
-  }
+//   if (loading) {
+//     return (
+//       <div>
+//         <Spin size="large" />
+//       </div>
+//     );
+//   }
 
+//   return (
+//     <div className="mainPage">
+//       <Navbar />
+//       {/* <MainPage />
+//       <Services />
+//       <Choises />
+//       <Instruction />
+//       <Pricing />
+//       <Footer /> */}
+//     </div>
+//   );
+// }
+
+export default function Home(){
   return (
     <div className="mainPage">
       <Navbar />
-      {/* <MainPage />
+      <MainPage />
       <Services />
       <Choises />
       <Instruction />
       <Pricing />
-      <Footer /> */}
+      <Footer />
     </div>
-  );
+  )
 }
