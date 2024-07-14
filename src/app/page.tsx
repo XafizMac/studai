@@ -8,55 +8,59 @@ import Choises from "@/components/ui/choices/Choises";
 import Instruction from "@/components/ui/instruction/Instruction";
 import { Pricing } from "@/components/ui/pricing/Pricing";
 import { Footer } from "@/components/ui/footer/Footer";
-// import { Spin } from "antd";
-// import { useSearchParams } from "next/navigation";
-// import { Context } from "./clientProvider";
+import { Spin } from "antd";
+import { useSearchParams } from "next/navigation";
+import { Context } from "./clientProvider";
 
 export default function Home() {
-  // const { store } = useContext(Context);
-  // const [loading, setLoading] = useState(true);
-  // const searchParams = useSearchParams();
+  const { store } = useContext(Context);
+  const [loading, setLoading] = useState(true);
+  const searchParams = useSearchParams();
 
-  // const state = searchParams.get("state");
-  // const code = searchParams.get("code");
+  const state = searchParams.get("state");
+  const code = searchParams.get("code");
 
-  // if (state && code) {
-  //   console.log("State: ", state);
-  //   console.log("Code: ", code);
+  useEffect(() => {
+    const OAuthCallback = async () => {
+      try {
+        if (state && code) {
+          const response = await store.oAuthCallbacks(state, code);
+          console.log(response);
+        }
+      } catch (err) {
+        console.log("Error", err);
+      }
+    };
 
-  //   const OAuthCallback = async () => {
-  //     try {
-  //       const response = await store.oAuthCallbacks(state, code);
-  //       console.log(response);
-  //     } catch (err) {
-  //       console.log("Error", err);
-  //     }
-  //   };
-  //   OAuthCallback();
-  // }
+    if (state && code) {
+      console.log("State: ", state);
+      console.log("Code: ", code);
+      OAuthCallback();
+    }
+  }, [state, code, store]);
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (!token) {
-  //     store.checkAuth().finally(() => {
-  //       setLoading(false);
-  //     });
-  //   } else {
-  //     setLoading(false);
-  //   }
-  // }, [store]);
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        await store.checkAuth();
+      }
+      setLoading(false);
+    };
 
-  // if (loading) {
-  //   return (
-  //     <div>
-  //       <Spin fullscreen={true} size="large" />
-  //     </div>
-  //   );
-  // }
+    checkAuth();
+  }, [store]);
+
+  if (loading) {
+    return (
+      <div>
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   return (
     <div className="mainPage">
-      <p>Hello</p>
       <Navbar />
       <MainPage />
       <Services />
