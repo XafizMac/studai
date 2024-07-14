@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useContext, useState } from "react";
-import Navbar from "@/components/ui/navbar/Navbar";
+import Navbar from "@/components/ui/navbar/page";
 import MainPage from "@/components/ui/main/MainPage";
 import Services from "@/components/ui/services/Services";
 import Choises from "@/components/ui/choices/Choises";
@@ -76,7 +76,7 @@ export default function Home(){
   return (
     <div className="mainPage">
       <h1>Hello</h1>
-      {/* <Navbar /> */}
+      <Navbar />
       {/* <MainPage />
       <Services />
       <Choises />
