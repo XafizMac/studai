@@ -1,0 +1,525 @@
+@import "../../../app/variables.scss";
+
+.main {
+    background-image: url("../../../../public/img/watermark.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: max-content;
+    padding: 4rem 0;
+
+    .main_row {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+
+        .logoblock {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .medias {
+                display: flex;
+                gap: 10px;
+            }
+        }
+
+        .forMedia {
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+
+            .menu {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                p {
+                    color: white;
+                    font-weight: 600;
+                }
+
+                a {
+                    color: white;
+                    font-weight: 300;
+                }
+            }
+
+            .contact {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                p {
+                    color: white;
+                    font-weight: 600;
+                }
+
+                a {
+                    color: white;
+                    font-weight: 300;
+                }
+            }
+        }
+
+        .instagram {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            p {
+                color: white;
+            }
+
+            .img {
+                width: 200px;
+                height: 100%;
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        background-image: url("../../../../public/img/watermark.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: max-content;
+        padding: 4rem 0;
+
+        .main_row {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+
+            .logoblock {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .medias {
+                    display: flex;
+                    gap: 10px;
+                }
+            }
+
+            .forMedia {
+                display: flex;
+                width: 100%;
+                justify-content: space-evenly;
+
+                .menu {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    p {
+                        color: white;
+                        font-weight: 600;
+                    }
+
+                    a {
+                        color: white;
+                        font-weight: 300;
+                    }
+                }
+
+                .contact {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    p {
+                        color: white;
+                        font-weight: 600;
+                    }
+
+                    a {
+                        color: white;
+                        font-weight: 300;
+                    }
+                }
+            }
+
+            .instagram {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                p {
+                    color: white;
+                }
+
+                .img {
+                    width: 150px;
+                    height: 100%;
+                }
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .main {
+        background-image: url("../../../../public/img/watermark.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: max-content;
+        padding: 4rem 0;
+
+        .main_row {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+
+            .logoblock {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .medias {
+                    display: flex;
+                    gap: 10px;
+                }
+            }
+
+            .forMedia {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                text-align: start;
+                gap: 20px;
+
+                .menu {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    margin-left: -40px;
+
+                    p {
+                        color: white;
+                        font-weight: 600;
+                    }
+
+                    a {
+                        color: white;
+                        font-weight: 300;
+                    }
+                }
+
+                .contact {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    p {
+                        color: white;
+                        font-weight: 600;
+                    }
+
+                    a {
+                        color: white;
+                        font-weight: 300;
+                    }
+                }
+            }
+
+            .instagram {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                p {
+                    color: white;
+                }
+
+                .img {
+                    width: 150px;
+                    height: 100%;
+                }
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 475px) and (min-width: 452px) {
+    .main {
+        background-image: url("../../../../public/img/watermark.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: max-content;
+        padding: 4rem 0;
+
+        .main_row {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+
+            .logoblock {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .logo {
+                    width: 80px;
+                }
+
+                .medias {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+            }
+
+            .forMedia {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                text-align: start;
+                gap: 20px;
+
+                .menu {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    margin-left: -32px;
+
+                    p {
+                        color: white;
+                        font-weight: 600;
+                        font-size: .8rem;
+                    }
+
+                    a {
+                        color: white;
+                        font-weight: 300;
+                        font-size: .8rem;
+                    }
+                }
+
+                .contact {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    font-size: .8rem;
+
+                    p {
+                        color: white;
+                        font-weight: 600;
+                    }
+
+                    a {
+                        color: white;
+                        font-weight: 300;
+                    }
+                }
+            }
+
+            .instagram {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                p {
+                    color: white;
+                }
+
+                .img {
+                    width: 150px;
+                    height: 100%;
+                }
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 451px) {
+    .main {
+        background-image: url("../../../../public/img/watermark.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: max-content;
+        padding: 4rem 0;
+
+        .main_row {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+
+            .logoblock {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .logo {
+                    width: 80px;
+                }
+
+                .medias {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+            }
+
+            .forMedia {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                text-align: start;
+                gap: 20px;
+
+                .menu {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    margin-left: -32px;
+
+                    p {
+                        color: white;
+                        font-weight: 600;
+                        font-size: .8rem;
+                    }
+
+                    a {
+                        color: white;
+                        font-weight: 300;
+                        font-size: .8rem;
+                    }
+                }
+
+                .contact {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    font-size: .8rem;
+
+                    p {
+                        color: white;
+                        font-weight: 600;
+                    }
+
+                    a {
+                        color: white;
+                        font-weight: 300;
+                    }
+                }
+            }
+
+            .instagram {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                p {
+                    color: white;
+                }
+
+                .img {
+                    width: 150px;
+                    height: 100%;
+                }
+
+            }
+        }
+    }
+}
+@media screen and (max-width: 375px) {
+    .main {
+        background-image: url("../../../../public/img/watermark.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: max-content;
+        padding: 4rem 0;
+
+        .main_row {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+
+            .logoblock {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .logo {
+                    width: 50px;
+                }
+
+                .medias {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+            }
+
+            .forMedia {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                text-align: start;
+                gap: 20px;
+
+                .menu {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    margin-left: -32px;
+
+                    p {
+                        color: white;
+                        font-weight: 600;
+                        font-size: .8rem;
+                    }
+
+                    a {
+                        color: white;
+                        font-weight: 300;
+                        font-size: .8rem;
+                    }
+                }
+
+                .contact {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    font-size: .8rem;
+
+                    p {
+                        color: white;
+                        font-weight: 600;
+                    }
+
+                    a {
+                        color: white;
+                        font-weight: 300;
+                    }
+                }
+            }
+
+            .instagram {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                p {
+                    color: white;
+                    font-weight: .8rem;
+                }
+
+                .img {
+                    width: 100px;
+                    height: 100%;
+                }
+
+            }
+        }
+    }
+}
