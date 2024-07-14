@@ -18,8 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={exo_2.className}>
-        {/* {children} */}
-        <p>Hello</p>
+        {children}
       </body>
     </html>
   );
