@@ -9,7 +9,6 @@ import Instruction from "@/components/ui/instruction/Instruction";
 import { Pricing } from "@/components/ui/pricing/Pricing";
 import { Footer } from "@/components/ui/footer/Footer";
 import { Spin } from "antd";
-import { Context } from "./clientProvider";
 import { useSearchParams } from "next/navigation";
 
 // export default function Home() {
