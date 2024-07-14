@@ -10,7 +10,7 @@ import { Pricing } from "@/components/ui/pricing/Pricing";
 import { Footer } from "@/components/ui/footer/Footer";
 import { Spin } from "antd";
 import { useSearchParams } from "next/navigation";
-import { Context } from "./clientProvider";
+import { Context } from "../clientProvider";
 
 // export default function Home() {
 //   const { store } = useContext(Context);
@@ -77,12 +77,12 @@ export default function Home(){
     <div className="mainPage">
       <h1>Hello</h1>
       <Navbar />
-      {/* <MainPage />
+      <MainPage />
       <Services />
       <Choises />
       <Instruction />
       <Pricing />
-      <Footer /> */}
+      <Footer />
     </div>
   )
 }
