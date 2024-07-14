@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import styles from "./resetpasswordconfirm.module.scss";
-import logo from "../../../../../../../../public/logo.svg";
+import logo from "../../../../../../../public/logo.svg";
 import type { FormProps } from "antd";
 import { Button, Form, Input, message } from "antd";
 import Link from "next/link";
