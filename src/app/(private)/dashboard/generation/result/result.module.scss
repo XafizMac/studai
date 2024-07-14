@@ -1,0 +1,247 @@
+@import '../../../../variables.scss';
+
+.main {
+    background-color: #eef7ff;
+    height: max-content;
+    width: 100%;
+    padding: 0 0 2rem 0;
+
+    .main_row {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 100%;
+
+        .space {
+            p {
+                font-size: 1.6rem;
+                font-weight: 600;
+            }
+        }
+
+        .space2 {
+            display: flex;
+            align-items: start;
+            width: 100%;
+            gap: 20px;
+            // background-color: $bg-color;
+            // padding: 2rem;
+            // border-radius: $border-radius;
+
+            .avatar {
+                margin-top: 5px;
+                // width: 100px;
+            }
+
+            .card {
+                font-size: 1.1rem;
+                width: 100%;
+            }
+        }
+
+        .li {
+            transition: ease-in-out;
+        }
+
+        .li:hover {
+            background-color: rgba(225, 225, 225, 0.608)
+        }
+
+        .telegram {
+            width: 94.5%;
+            align-self: flex-end;
+            background-color: $bg-color;
+            padding: 2rem;
+            border-radius: $border-radius;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+
+            .div {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                p {
+                    font-size: 1.3rem;
+                }
+
+                small {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        background-color: #eef7ff;
+        height: max-content;
+        width: 100%;
+        padding: 2rem 0;
+    
+        .main_row {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+    
+            .space {
+                p {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                }
+            }
+    
+            .space2 {
+                display: flex;
+                align-items: start;
+                width: 100%;
+                gap: 20px;
+
+                .avatar {
+                    margin-top: 5px;
+                }
+    
+                .card {
+                    font-size: 1.1rem;
+                    width: 100%;
+                }
+            }
+    
+            .li {
+                transition: ease-in-out;
+            }
+    
+            .li:hover {
+                background-color: rgba(225, 225, 225, 0.608)
+            }
+    
+            .telegram {
+                background-color: $bg-color;
+                padding: 2rem;
+                border-radius: $border-radius;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: white;
+    
+                .doubt{
+                    display: none;
+                    width: 100px;
+                }
+
+                .div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+    
+                    p {
+                        font-size: 1.3rem;
+                    }
+    
+                    small {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .main {
+        background-color: #eef7ff;
+        height: max-content;
+        width: 100%;
+        padding: 2rem 0 2rem 0;
+    
+        .main_row {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+    
+            .space {
+                align-self: flex-start;
+                p {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                }
+                .groza{
+                    // display: none;
+                    width: 30px;
+                }
+            }
+    
+            .space2 {
+                display: flex;
+                align-items: start;
+                width: 100%;
+                gap: 20px;
+
+                .btns{
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    align-items: center;
+
+                    .button{
+                        width: 87vw;
+                    }
+                }
+
+                .avatar {
+                    display: none;
+                }
+    
+                .card {
+                    font-size: 1.1rem;
+                    width: 100%;
+                }
+            }
+    
+            .li {
+                transition: ease-in-out;
+            }
+    
+            .li:hover {
+                background-color: rgba(225, 225, 225, 0.608)
+            }
+    
+            .telegram {
+                width: 100%;
+                background-color: $bg-color;
+                padding: 2rem;
+                border-radius: $border-radius;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                justify-content: space-between;
+                align-items: center;
+                color: white;
+    
+                .doubt{
+                    display: none;
+                    width: 100px;
+                }
+
+                .div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0px;
+    
+                    p {
+                        font-size: 1.2rem;
+                    }
+    
+                    small {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
