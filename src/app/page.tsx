@@ -75,13 +75,14 @@ import { Context } from "./clientProvider";
 export default function Home(){
   return (
     <div className="mainPage">
-      <Navbar />
-      <MainPage />
+      <h1>Hello</h1>
+      {/* <Navbar /> */}
+      {/* <MainPage />
       <Services />
       <Choises />
       <Instruction />
       <Pricing />
-      <Footer />
+      <Footer /> */}
     </div>
   )
 }
