@@ -56,13 +56,14 @@ export default function Home() {
 
   return (
     <main className="mainPage">
-      <Navbar />
+      <p>Hello</p>
+      {/* <Navbar />
       <MainPage />
       <Services />
       <Choises />
       <Instruction />
       <Pricing />
-      <Footer />
+      <Footer /> */}
     </main>
   );
 }
