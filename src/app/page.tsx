@@ -12,58 +12,64 @@ import { Spin } from "antd";
 import { Context } from "./clientProvider";
 import { useSearchParams } from "next/navigation";
 
-export default function Home() {
-  const { store } = useContext(Context);
-  const [loading, setLoading] = useState(true);
-  const searchParams = useSearchParams();
+// export default function Home() {
+//   const { store } = useContext(Context);
+//   const [loading, setLoading] = useState(true);
+//   const searchParams = useSearchParams();
 
-  const state = searchParams.get("state");
-  const code = searchParams.get("code");
+//   const state = searchParams.get("state");
+//   const code = searchParams.get("code");
 
-  if (state && code) {
-    console.log("State: ", state);
-    console.log("Code: ", code);
-    
-    const OAuthCallback = async () => {
-      try {
-        const response = await store.oAuthCallbacks(state, code);
-        console.log(response);
-      } catch (err) {
-        console.log("Error", err);
-      }
-    };
-    OAuthCallback();
-  }
+//   if (state && code) {
+//     console.log("State: ", state);
+//     console.log("Code: ", code);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      store.checkAuth().finally(() => {
-        setLoading(false);
-      });
-    } else {
-      setLoading(false);
-    }
-  }, [store]);
+//     const OAuthCallback = async () => {
+//       try {
+//         const response = await store.oAuthCallbacks(state, code);
+//         console.log(response);
+//       } catch (err) {
+//         console.log("Error", err);
+//       }
+//     };
+//     OAuthCallback();
+//   }
 
-  if (loading) {
-    return (
-      <div>
-        <Spin fullscreen={true} size="large" />
-      </div>
-    );
-  }
+//   useEffect(() => {
+//     const token = localStorage.getItem("token");
+//     if (!token) {
+//       store.checkAuth().finally(() => {
+//         setLoading(false);
+//       });
+//     } else {
+//       setLoading(false);
+//     }
+//   }, [store]);
 
-  return (
-    <main className="mainPage">
-      <p>Hello</p>
-      {/* <Navbar />
-      <MainPage />
-      <Services />
-      <Choises />
-      <Instruction />
-      <Pricing />
-      <Footer /> */}
-    </main>
-  );
+//   if (loading) {
+//     return (
+//       <div>
+//         <Spin fullscreen={true} size="large" />
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <main className="mainPage">
+//       <p>Hello</p>
+//       {/* <Navbar />
+//       <MainPage />
+//       <Services />
+//       <Choises />
+//       <Instruction />
+//       <Pricing />
+//       <Footer /> */}
+//     </main>
+//   );
+// }
+
+export default function mainPage() {
+  return <div>
+    <p>Home</p>
+  </div>;
 }
