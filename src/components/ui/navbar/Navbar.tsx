@@ -11,7 +11,6 @@ import { useLang } from '@/hooks/useLang'
 import { setLang } from '@/context/lang'
 import { AllowedLangs } from '@/constants/lang'
 import { motion } from 'framer-motion'
-import { useRouter } from 'next/navigation'
 
 const Navbar: FC = () => {
     const { lang, translations } = useLang();

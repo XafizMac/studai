@@ -62,12 +62,12 @@ export default function Home() {
   return (
     <div className="mainPage">
       <Navbar />
-      <MainPage />
+      {/* <MainPage />
       <Services />
       <Choises />
       <Instruction />
       <Pricing />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

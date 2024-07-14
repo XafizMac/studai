@@ -1,6 +1,6 @@
 import { Exo_2 } from "next/font/google";
 import "./globals.css";
-// import ClientProvider from "./clientProvider";
+import ClientProvider from "./clientProvider";
 import { Metadata } from "next";
 import logo from "../../public/logo.svg";
 
