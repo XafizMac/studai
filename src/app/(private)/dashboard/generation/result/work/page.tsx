@@ -10,7 +10,7 @@ import DocViewer, {
   DocViewerRenderers,
   IDocument,
   MSDocRenderer,
-} from "react-doc-viewer";
+} from "@cyntler/react-doc-viewer";
 
 const Work: FC = () => {
   const params = useSearchParams();
@@ -19,7 +19,9 @@ const Work: FC = () => {
   const theme = params.get("theme");
   const subtopicParam = params.get("subtopics");
   const subtopic = subtopicParam ? subtopicParam.split(",") : [];
-  const docs: IDocument[] = [{ uri: file ?? "" }];
+  const docs: IDocument[] = [
+    { uri: file ?? "", fileType: "docx"}
+  ];
 
   const handleDownloadDoc = (file: string) => {
     const link = document.createElement("a");
@@ -124,7 +126,7 @@ const Work: FC = () => {
             <div className={styles.themeContainer}>{theme}</div>
           </div>
           <div className={styles.paperScrollable}>
-            {/* <DocViewer pluginRenderers={DocViewerRenderers} documents={docs} /> */}
+            <DocViewer style={{width: "100%"}} pluginRenderers={DocViewerRenderers} documents={docs} />
           </div>
         </div>
       </div>
