@@ -124,7 +124,7 @@ const Work: FC = () => {
             <div className={styles.themeContainer}>{theme}</div>
           </div>
           <div className={styles.paperScrollable}>
-            <DocViewer pluginRenderers={DocViewerRenderers} documents={docs} />
+            {/* <DocViewer pluginRenderers={DocViewerRenderers} documents={docs} /> */}
           </div>
         </div>
       </div>
