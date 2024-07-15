@@ -10,7 +10,7 @@ import { Pricing } from "@/components/ui/pricing/Pricing";
 import { Footer } from "@/components/ui/footer/Footer";
 import { Spin } from "antd";
 import { useSearchParams } from "next/navigation";
-import { Context } from "./clientProvider";
+import { Context } from "../clientProvider";
 
 export default function Home() {
   const { store } = useContext(Context);

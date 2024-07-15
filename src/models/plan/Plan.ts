@@ -25,4 +25,5 @@ export interface Work {
     languageOfWorkDisplay: string;
     status: string;
     file: string;
+    id: number;
 }

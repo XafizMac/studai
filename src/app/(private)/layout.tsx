@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 const exo_2 = Exo_2({ subsets: ["cyrillic"] });
 export const metadata: Metadata = {
-  title: "Генерация",
+  title: "Studai - ИИ платформа",
 };
 
 export default function DashboardLayout({

@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge, Button, Dropdown, Table, TableProps } from "antd";
+import { Badge, Button, Dropdown, message, Table, TableProps } from "antd";
 import { FC, useContext, useEffect, useState } from "react";
 import emptyImg from "../../../../public/icons/empty.svg";
 import Image from "next/image";
@@ -25,6 +25,7 @@ interface DataType {
   language: string;
   status: string;
   file: string;
+  id: number;
 }
 
 const Works: FC = () => {
@@ -32,6 +33,7 @@ const Works: FC = () => {
   const [empty, setEmpty] = useState<boolean>(true);
   const [workData, setWorkData] = useState<DataType[]>([]);
   const { push } = useRouter();
+  const [messageApi, contextHolder] = message.useMessage();
 
   useEffect(() => {
     if (!store.isAuth) {
@@ -50,6 +52,7 @@ const Works: FC = () => {
         language: work.languageOfWorkDisplay,
         status: work.status,
         file: work.file,
+        id: work.id,
       }));
       setWorkData(transformedData.reverse());
       setEmpty(transformedData.length === 0);
@@ -73,7 +76,7 @@ const Works: FC = () => {
             push(url);
           }}
         >
-          Посмотреть 
+          Посмотреть
         </p>
       ),
       icon: <EyeOutlined />,
@@ -92,7 +95,7 @@ const Works: FC = () => {
       label: "Удалить",
       icon: <DeleteOutlined />,
       danger: true,
-      onClick: () => deleteRecord(record.key),
+      onClick: () => deleteRecord(record.id),
     },
   ];
 
@@ -105,8 +108,13 @@ const Works: FC = () => {
     console.log(`Downloading file: ${file}`);
   };
 
-  const deleteRecord = (key: string) => {
-    console.log(`Deleting record: ${key}`);
+  const deleteRecord = async (id: number) => {
+    try {
+      const response = await store.deleteWork(id.toString());
+      success();
+    } catch (err) {
+      error();
+    }
   };
 
   const columns: TableProps<DataType>["columns"] = [
@@ -173,6 +181,20 @@ const Works: FC = () => {
     },
   ];
 
+  const success = () => {
+    messageApi.open({
+      type: "success",
+      content: "Успешное удаление работы",
+    });
+  };
+
+  const error = () => {
+    messageApi.open({
+      type: "error",
+      content: "Ошибка при удалении работы",
+    });
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -180,6 +202,7 @@ const Works: FC = () => {
       transition={{ duration: 0.6 }}
       className={styles.main}
     >
+      {contextHolder}
       {empty ? (
         <div className={styles.empty}>
           <Image src={emptyImg} alt="" />

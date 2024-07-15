@@ -1,54 +1,42 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./signin.module.scss";
-import logo from "../../../../public/logo.svg";
+import styles from "./login.module.scss";
+import logo from "../../../../../public/logo.svg";
 import type { FormProps } from "antd";
 import { Button, Divider, Form, Input, message } from "antd";
 import { GoogleOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useContext, useEffect, useState } from "react";
-import { Context } from "@/app/clientProvider";
+import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Context } from "@/app/clientProvider";
+import axios from "axios";
 
 type FieldType = {
   email: string;
-  firstName: string;
-  lastName: string;
   password: string;
 };
 
-export default function SignIn() {
+export default function Login() {
   const { store } = useContext(Context);
-  const { replace, push } = useRouter();
-  const [loading, setLoading] = useState(false);
+  const { push, replace } = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      store.checkAuth();
-    }
-  }, [store, store.isAuth]);
+  const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     setLoading(true);
     try {
-      const result = await store.registration(
-        values.email,
-        values.firstName,
-        values.lastName,
-        values.password
-      );
-      console.log(result);
-      if (result.status === 201) {
+      const result = await store.login(values.email, values.password);
+      if (result.status == 200) {
+        await axios.get("/api/auth/login");
         success();
-        push(`/auth/activation?email=${encodeURIComponent(values.email)}`);
+        replace("/dashboard");
       } else {
         error(result.statusText);
       }
     } catch (e) {
-      console.error("Error during registration:", e);
       error("Unexpected error occurred");
     } finally {
       setLoading(false);
@@ -58,8 +46,7 @@ export default function SignIn() {
   const success = () => {
     messageApi.open({
       type: "success",
-      content:
-        "Регистрация прошла успешно, перенаправление на страницу активации...",
+      content: "Перенаправление на главную страницу...",
     });
   };
 
@@ -70,6 +57,19 @@ export default function SignIn() {
     });
   };
 
+  const oAuth = async () => {
+    setGoogleLoading(true);
+    try {
+      const response = await store.oAuth();
+      console.log(response?.data.authorizationUrl);
+      window.location.href = await response?.data.authorizationUrl;
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setGoogleLoading(false);
+    }
+  };
+
   return (
     <div className={styles.main}>
       {contextHolder}
@@ -78,12 +78,12 @@ export default function SignIn() {
           <Image width={60} src={logo} alt="Logo" />
           <p className="active">Studai</p>
         </Link>
-        <p className={styles.title}>Регистрация</p>
+        <p className={styles.title}>Войти</p>
         <Form
           name="basic"
           initialValues={{ remember: true }}
           onFinish={onFinish}
-          autoComplete="on"
+          autoComplete="off"
           className={styles.forms}
         >
           <motion.div
@@ -104,50 +104,11 @@ export default function SignIn() {
               <Input
                 prefix={<UserOutlined />}
                 type="email"
-                placeholder="e-mail"
+                placeholder="Введите email"
                 size="large"
               />
             </Form.Item>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100%" }}
-            transition={{ duration: 0.4 }}
-          >
-            {/* <p>Имя</p> */}
-            <Form.Item<FieldType>
-              rules={[{ required: true, message: "Пожалуйста, введите имю!" }]}
-              name={"firstName"}
-            >
-              <Input
-                prefix={<UserOutlined />}
-                type="text"
-                placeholder="Имя"
-                size="large"
-              />
-            </Form.Item>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100%" }}
-            transition={{ duration: 0.6 }}
-          >
-            {/* <p>Фамилия</p> */}
-            <Form.Item<FieldType>
-              name="lastName"
-              rules={[
-                { required: true, message: "Пожалуйста, введите фамилию" },
-              ]}
-            >
-              <Input
-                prefix={<UserOutlined />}
-                type="text"
-                placeholder="Фамилия"
-                size="large"
-              />
-            </Form.Item>
-          </motion.div>
-
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "100%" }}
@@ -157,17 +118,10 @@ export default function SignIn() {
             <Form.Item<FieldType>
               rules={[
                 { required: true, message: "Пожалуйста, введите пароль!" },
-                {
-                  pattern:
-                    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                  message:
-                    "Пароль должен содержать не менее 8 символов, включая заглавные и строчные буквы, цифру и специальный символ!",
-                },
               ]}
               name={"password"}
             >
               <Input.Password
-                // pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
                 prefix={<LockOutlined />}
                 placeholder="Введите пароль"
                 size="large"
@@ -182,21 +136,26 @@ export default function SignIn() {
               type="primary"
               htmlType="submit"
             >
-              Зарегистрироваться
+              Войти
             </Button>
           </Form.Item>
         </Form>
+        <p className={styles.forgotPassword}>
+          <Link href={"/auth/forgot"}>Забыли пароль?</Link>
+        </p>
         <p className={styles.haveAccount}>
-          Уже есть аккаунт? <Link href={"/auth/login"}>Войти</Link>
+          Нет аккаунта? <Link href={"/auth/signin"}>Создать сейчас</Link>
         </p>
         <Divider className={styles.devider} orientation="center" plain>
           Или
         </Divider>
         <Button
+          onClick={oAuth}
           className={styles.googleBtn}
           size="large"
           icon={<GoogleOutlined />}
           type="default"
+          loading={googleLoading}
         >
           Войти через Google
         </Button>

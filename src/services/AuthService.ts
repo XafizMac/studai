@@ -51,6 +51,10 @@ export default class AuthService {
         return $api.get<Work[]>('/documents/')
     }
 
+    static deleteWork(id: string){
+        return $api.delete(`/documents/${id}/`)
+    }
+
     static async oAuth() {
         return $api.get('/o/google-oauth2/?redirect_uri=http://localhost:3000')
     }

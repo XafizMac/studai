@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname;
     const token = request.cookies.get('token');
 
-    const publicPaths = ['/', '/auth/login', '/auth/signup', '/auth/:path*'];
+    const publicPaths = ['/', '/auth/login', '/auth/signup'];
 
     const isPublicPath = publicPaths.includes(path);
 
@@ -21,5 +21,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/', '/dashboard', '/dashboard/:path*', '/auth'],
+    matcher: ['/', '/dashboard', '/dashboard/:path*', '/auth:path*'],
 };

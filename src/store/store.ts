@@ -171,13 +171,16 @@ export default class Store {
     async payments(photo: File, status: string, word: number): Promise<Payments> {
         try {
             const response = await AuthService.payments(photo, status, word);
+            console.log(response);
+        
             this.setStatus(response.status, response.statusText);
             return response.data;
         }
-        catch (e) {
-            const status = (e as any).response?.status || 500;
-            const statusText = (e as any).message || 'Неизвестная ошибка';
+        catch (e: any) {
+            const status = e.response?.status || 500;
+            const statusText = e.response?.data?.photo || 'Неизвестная ошибка';
             this.setStatus(status, statusText);
+            console.log(e);
             return this.paymentss;
         }
     }
@@ -199,6 +202,17 @@ export default class Store {
         }
         catch (e) {
             return []
+        }
+    }
+    async deleteWork(workId: string){
+        try{
+            const response = await AuthService.deleteWork(workId);
+            this.setStatus(response.status, response.statusText);
+            console.log(response);
+        }
+        catch(e: any){
+            console.log("Error deleting work", e);
+            this.setStatus(e.response.status, e.response.data[0])
         }
     }
     async resetPassword(email: string){

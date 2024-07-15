@@ -142,7 +142,6 @@ const Generation: FC = () => {
                 <Select
                   size="large"
                   defaultValue="Тип работы"
-                  defaultActiveFirstOption
                   style={{ width: "100%" }}
                   options={[
                     { value: "1", label: "Реферат" },

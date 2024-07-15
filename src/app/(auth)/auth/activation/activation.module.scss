@@ -1,68 +1,31 @@
-@import "../../variables.scss";
+@import "../../../../app/variables.scss";
 
 .main {
     display: grid;
     grid-template-columns: 40% auto;
     height: 100vh;
-
     .form {
-        background-color: white;
-        padding: 2rem 6rem;
         display: flex;
-        gap: 30px;
+        padding: 0 4rem;
         flex-direction: column;
-        align-items: normal;
-        overflow: auto;
-
-        .logo{
-            display: flex;
-            align-items: center;
-            p{
-                font-size: 1.6rem;
-            }
-        }
+        // align-items: center;
+        justify-content: center;
 
         .title {
-            font-size: 1.6rem;
-            font-weight: 600;
+            font-size: 2rem;
+            font-weight: 500;
             color: $bg-color;
-            text-align: center;
+            text-align: start;
         }
-
-        .forms {
-            display: flex;
-            flex-direction: column;
-            div {
-                p {
-                    font-size: 1rem;
-                    margin-bottom: 5px;
-                    margin-left: 5px;
-                }
-            }
-            .btn{
-                width: 100%;
-                font-weight: 600;
-            }
-        }
-        .devider{
-            color: $bg-color;
-        }
-        .haveAccount{
-            text-align: center;
-            margin-top: -25px;
-            font-weight: 300;
-            a{
-                color: $bg-color;
-                font-weight: 400;
-            }
-        }
-        .googleBtn{
-            font-weight: 600;
+        .subtitle{
+            font-size: 17px;
+            margin-top: 10px;
+            line-height: 1.4;
         }
     }
 
     .background {
-        background-image: url("../../../../public/bg/registration.jpg");
+        background-image: url("../../../../../public/bg/registration.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
@@ -74,7 +37,7 @@
         display: grid;
         grid-template-columns: 50% auto;
         height: 100vh;
-    
+
         .form {
             background-color: white;
             padding: 2rem 6rem;
@@ -83,25 +46,27 @@
             flex-direction: column;
             align-items: normal;
             overflow: auto;
-    
-            .logo{
+
+            .logo {
                 display: flex;
                 align-items: center;
-                p{
+
+                p {
                     font-size: 1.6rem;
                 }
             }
-    
+
             .title {
                 font-size: 1.6rem;
                 font-weight: 600;
                 color: $bg-color;
                 text-align: center;
             }
-    
+
             .forms {
                 display: flex;
                 flex-direction: column;
+
                 div {
                     p {
                         font-size: 1rem;
@@ -109,27 +74,37 @@
                         margin-left: 5px;
                     }
                 }
-                .btn{
+
+                .btn {
                     width: 100%;
                     font-weight: 600;
                 }
             }
-            .devider{
+
+            .devider {
                 color: $bg-color;
-                margin-top: -20px;
             }
-            .googleBtn{
+
+            .googleBtn {
                 font-weight: 600;
             }
         }
+
+        .background {
+            background-image: url("../../../../../public/bg/registration.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
     }
 }
+
 @media (max-width: 768px) {
     .main {
         display: grid;
         grid-template-columns: 100% 0;
         height: 100vh;
-    
+
         .form {
             background-color: white;
             padding: 2rem 6rem;
@@ -138,25 +113,27 @@
             flex-direction: column;
             align-items: normal;
             overflow: auto;
-    
-            .logo{
+
+            .logo {
                 display: flex;
                 align-items: center;
-                p{
+
+                p {
                     font-size: 1.6rem;
                 }
             }
-    
+
             .title {
                 font-size: 1.6rem;
                 font-weight: 600;
                 color: $bg-color;
                 text-align: center;
             }
-    
+
             .forms {
                 display: flex;
                 flex-direction: column;
+
                 div {
                     p {
                         font-size: 1rem;
@@ -164,27 +141,37 @@
                         margin-left: 5px;
                     }
                 }
-                .btn{
+
+                .btn {
                     width: 100%;
                     font-weight: 600;
                 }
             }
-            .devider{
+
+            .devider {
                 color: $bg-color;
-                margin-top: -20px;
             }
-            .googleBtn{
+
+            .googleBtn {
                 font-weight: 600;
             }
         }
+
+        .background {
+            background-image: url("../../../../../public/bg/registration.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
     }
 }
+
 @media (max-width: 450px) {
     .main {
         display: grid;
         grid-template-columns: 100% 0;
         height: 100vh;
-    
+
         .form {
             background-color: white;
             padding: 2rem 12px;
@@ -193,25 +180,27 @@
             flex-direction: column;
             align-items: normal;
             overflow: auto;
-    
-            .logo{
+
+            .logo {
                 display: flex;
                 align-items: center;
-                p{
+
+                p {
                     font-size: 1.6rem;
                 }
             }
-    
+
             .title {
                 font-size: 1.6rem;
                 font-weight: 600;
                 color: $bg-color;
                 text-align: center;
             }
-    
+
             .forms {
                 display: flex;
                 flex-direction: column;
+
                 div {
                     p {
                         font-size: 1rem;
@@ -219,18 +208,38 @@
                         margin-left: 5px;
                     }
                 }
-                .btn{
+
+                .btn {
                     width: 100%;
                     font-weight: 600;
                 }
             }
-            .devider{
-                color: $bg-color;
-                margin-top: -20px;
+
+            .haveAccount {
+                text-align: center;
+                margin-top: -25px;
+                font-weight: 300;
+
+                a {
+                    color: $bg-color;
+                    font-weight: 400;
+                }
             }
-            .googleBtn{
+
+            .devider {
+                color: $bg-color;
+            }
+
+            .googleBtn {
                 font-weight: 600;
             }
+        }
+
+        .background {
+            background-image: url("../../../../../public/bg/registration.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
         }
     }
 }

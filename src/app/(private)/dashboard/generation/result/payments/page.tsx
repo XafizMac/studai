@@ -155,17 +155,26 @@ const Payments: FC = () => {
 
     try {
       await store.payments(imageData, "pending", word);
-      localStorage.removeItem("price");
-      localStorage.removeItem("workPlans");
-      localStorage.removeItem("word");
-      message.success("Файл успешно загружен");
-      push("/");
+      if (store.status.status === 201) {
+        localStorage.removeItem("price");
+        localStorage.removeItem("workPlans");
+        localStorage.removeItem("word");
+        message.success("Файл успешно загружен");
+        push("/");
+      } else {
+        errorMessage();
+      }
     } catch (error) {
-      console.error("Ошибка загрузки файла:", error);
-      message.error("Произошла ошибка загрузки файла");
     } finally {
       setLoading(false);
     }
+  };
+
+  const errorMessage = () => {
+    messageApi.open({
+      type: "error",
+      content: store.status.statusText,
+    });
   };
 
   return (
@@ -189,7 +198,10 @@ const Payments: FC = () => {
                     copyable={{
                       text: item.number,
                       icon: [
-                        <CopyOutlined style={{ fontSize: "1.3rem" }} key="copy-outlined" />,
+                        <CopyOutlined
+                          style={{ fontSize: "1.3rem" }}
+                          key="copy-outlined"
+                        />,
                         <CopyFilled key="copy-filled" />,
                       ],
                       tooltips: ["Скопировать", "Скопировано!"],
@@ -200,7 +212,12 @@ const Payments: FC = () => {
                 }
               >
                 <div className={styles.details}>
-                  <Image width={70} src={item.url} alt={item.title} key={item.title} />
+                  <Image
+                    width={70}
+                    src={item.url}
+                    alt={item.title}
+                    key={item.title}
+                  />
                   <div key={`${item.title}-details`}>
                     <p key={`${item.title}-number`}>{item.number}</p>
                     <small key={`${item.title}-name`}>{item.name}</small>

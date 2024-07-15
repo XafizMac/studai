@@ -1,4 +1,4 @@
-@import "../../variables.scss";
+@import "../../../variables.scss";
 
 .main {
     display: grid;
@@ -78,7 +78,7 @@
     }
 
     .background {
-        background-image: url("../../../../public/bg/registration.jpg");
+        background-image: url("../../../../../public/bg/registration.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         overflow: hidden;
