@@ -16,6 +16,7 @@ import { Work } from "@/models/plan/Plan";
 import { motion } from "framer-motion";
 import { MenuProps } from "antd";
 import { useRouter } from "next/navigation";
+import { useLang } from "@/hooks/useLang";
 
 interface DataType {
   key: string;
@@ -36,6 +37,8 @@ const Works: FC = () => {
   const [workData, setWorkData] = useState<DataType[]>([]);
   const { push } = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
+  const { lang, translations } = useLang();
+  const tableLang = translations[lang].dashboard;
 
   useEffect(() => {
     if (!store.isAuth) {
@@ -71,22 +74,21 @@ const Works: FC = () => {
   const generateMenuItems = (record: DataType): MenuProps["items"] => [
     {
       key: "1",
-      label: (
-        <p
-          onClick={() => {
-            const url = `/dashboard/generation/result/work?file=${encodeURIComponent(record.file)}&subtopics=${encodeURIComponent(record.subtopics.join(', '))}&theme=${encodeURIComponent(record.workTheme)}`;
-            push(url);
-          }}
-        >
-          Посмотреть
-        </p>
-      ),
+      label: tableLang.table.actions[0],
       icon: <EyeOutlined />,
       disabled: record.status === "approved" ? false : true,
+      onClick: () => {
+        const url = `/dashboard/generation/result/work?file=${encodeURIComponent(
+          record.file
+        )}&subtopics=${encodeURIComponent(
+          record.subtopics.join(", ")
+        )}&theme=${encodeURIComponent(record.workTheme)}`;
+        push(url);
+      },
     },
     {
       key: "2",
-      label: "Скачать",
+      label: tableLang.table.actions[1],
       icon: <DownloadOutlined />,
       disabled: record.status === "approved" ? false : true,
       onClick: () => downloadFile(record.file),
@@ -94,7 +96,7 @@ const Works: FC = () => {
     { type: "divider" },
     {
       key: "3",
-      label: "Удалить",
+      label: tableLang.table.actions[2],
       icon: <DeleteOutlined />,
       danger: true,
       onClick: () => deleteRecord(record.id),
@@ -121,27 +123,27 @@ const Works: FC = () => {
 
   const columns: TableProps<DataType>["columns"] = [
     {
-      title: "Название",
+      title: tableLang.table.head[0],
       dataIndex: "name",
       key: "name",
     },
     {
-      title: "Страница",
+      title: tableLang.table.head[1],
       dataIndex: "page",
       key: "page",
     },
     {
-      title: "Тип работы",
+      title: tableLang.table.head[2],
       dataIndex: "workType",
       key: "workType",
     },
     {
-      title: "Язык работы",
+      title: tableLang.table.head[3],
       key: "language",
       dataIndex: "language",
     },
     {
-      title: "Статус",
+      title: tableLang.table.head[4],
       key: "status",
       dataIndex: "status",
       render: (_, record) => (
@@ -157,18 +159,18 @@ const Works: FC = () => {
           }
           text={
             record.status === "approved"
-              ? "Готово"
+              ? tableLang.table.status[0]
               : record.status === "rejected"
-              ? "Отклонен"
+              ? tableLang.table.status[2]
               : record.status === "pending"
-              ? "Ожидание"
-              : "Ожидание"
+              ? tableLang.table.status[1]
+              : tableLang.table.status[1]
           }
         />
       ),
     },
     {
-      title: "Действие",
+      title: tableLang.table.head[5],
       key: "action",
       render: (_, record) => (
         <Dropdown
@@ -215,7 +217,9 @@ const Works: FC = () => {
         </div>
       ) : (
         <div className={styles.tableScroll}>
-          <p className={styles.title}>Все работы ({workData.length})</p>
+          <p className={styles.title}>
+            {tableLang.workCount} ({workData.length})
+          </p>
           <Table
             style={{
               minWidth: 890,

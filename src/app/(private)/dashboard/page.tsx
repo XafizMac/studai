@@ -22,7 +22,6 @@ import {
   DownOutlined,
   InstagramOutlined,
   LogoutOutlined,
-  UserSwitchOutlined,
   WhatsAppOutlined,
 } from "@ant-design/icons";
 import Works from "../../../components/ui/works/Works";
@@ -30,12 +29,14 @@ import { Context } from "@/app/clientProvider";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useLang } from "@/hooks/useLang";
 
 const Dashboard: FC = () => {
   const { store } = useContext(Context);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const { lang, translations } = useLang();
+  const dashboard = translations[lang].dashboard;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,7 +71,7 @@ const Dashboard: FC = () => {
 
   const items: MenuProps["items"] = [
     {
-      label: <p onClick={logout}>Выйти</p>,
+      label: <p onClick={logout}>{dashboard.logoutbtn}</p>,
       key: "3",
       danger: true,
       icon: <LogoutOutlined />,
@@ -106,7 +107,9 @@ const Dashboard: FC = () => {
             />
             <Space size={0}>
               <Badge dot status="success">
-                <Avatar size="large">{store.me.firstName.charAt(0)}</Avatar>
+                <Avatar src={store.me.photo} size="large">
+                  {store.me.firstName.charAt(0)}
+                </Avatar>
               </Badge>
               <Dropdown menu={{ items }} trigger={["click"]}>
                 <Button type="text">
@@ -126,6 +129,9 @@ const Dashboard: FC = () => {
           </Space>
         </motion.div>
       </div>
+
+      {/* Container */}
+
       <div className="container">
         <div className={styles.main_row}>
           <motion.div
@@ -148,7 +154,7 @@ const Dashboard: FC = () => {
               />
             </div>
             <div className={styles.workTypes}>
-              <p className={styles.title}>Что вы создадите сегодня?</p>
+              <p className={styles.title}>{dashboard.whatWillCreate}</p>
               <div className={styles.cards}>
                 <Button
                   icon={<ArrowRightOutlined />}
@@ -157,7 +163,7 @@ const Dashboard: FC = () => {
                   className={styles.card}
                   href={"/dashboard/generation"}
                 >
-                  Реферат
+                  {translations[lang].mainpage.worktypes[0]}
                 </Button>
                 <Button
                   icon={<ArrowRightOutlined />}
@@ -166,7 +172,7 @@ const Dashboard: FC = () => {
                   className={styles.card}
                   href={"/dashboard/generation"}
                 >
-                  Доклад
+                  {translations[lang].mainpage.worktypes[1]}
                 </Button>
                 <Button
                   icon={<ArrowRightOutlined />}
@@ -175,7 +181,7 @@ const Dashboard: FC = () => {
                   className={styles.card}
                   href={"/dashboard/generation"}
                 >
-                  Курсовая работа
+                  {translations[lang].mainpage.worktypes[2]}
                 </Button>
                 <Button
                   icon={<ArrowRightOutlined />}
@@ -184,7 +190,7 @@ const Dashboard: FC = () => {
                   className={styles.card}
                   href={"/dashboard/generation"}
                 >
-                  СРС
+                  {translations[lang].mainpage.worktypes[3]}
                 </Button>
               </div>
             </div>
