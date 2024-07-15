@@ -211,8 +211,7 @@ const Works: FC = () => {
         <div className={styles.empty}>
           <Image src={emptyImg} alt="" />
           <p>
-            Однажды это пространство будет наполнено мозговыми штурмами и яркими
-            идеями
+            {translations[lang].dashboard.empty}
           </p>
         </div>
       ) : (

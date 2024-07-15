@@ -20,7 +20,7 @@ const Work: FC = () => {
   const subtopicParam = params.get("subtopics");
   const subtopic = subtopicParam ? subtopicParam.split(",") : [];
   const docs: IDocument[] = [
-    { uri: file ?? "", fileType: "docx"}
+    { uri: file ?? "", fileType: "docx", fileName: "Документ"}
   ];
 
   const handleDownloadDoc = (file: string) => {
@@ -45,12 +45,12 @@ const Work: FC = () => {
               {
                 key: "1",
                 href: "#components-anchor-demo-basic",
-                title: subtopic[0],
+                title: <span style={{fontSize: '1.1rem', fontWeight: 400}}>{subtopic[0]}</span>,
               },
               {
                 key: "2",
                 href: "#components-anchor-demo-static",
-                title: subtopic[1],
+                title: <span style={{fontSize: '1.1rem', fontWeight: 400}}>{subtopic[1]}</span>,
                 children: [
                   {
                     key: "3",
@@ -72,7 +72,7 @@ const Work: FC = () => {
               {
                 key: "6",
                 href: "#api",
-                title: subtopic[5],
+                title: <span style={{fontSize: '1.1rem', fontWeight: 400}}>{subtopic[5]}</span>,
                 children: [
                   {
                     key: "7",
@@ -94,12 +94,12 @@ const Work: FC = () => {
               {
                 key: "10",
                 href: "#FAQ",
-                title: subtopic[9],
+                title: <span style={{fontSize: '1.1rem', fontWeight: 400}}>{subtopic[9]}</span>,
               },
               {
                 key: "11",
                 href: "#examples",
-                title: subtopic[10],
+                title: <span style={{fontSize: '1.1rem', fontWeight: 400}}>{subtopic[10]}</span>,
               }
             ]}
           />

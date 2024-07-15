@@ -22,6 +22,7 @@ import {
   DownOutlined,
   InstagramOutlined,
   LogoutOutlined,
+  UserOutlined,
   WhatsAppOutlined,
 } from "@ant-design/icons";
 import Works from "../../../components/ui/works/Works";
@@ -71,10 +72,19 @@ const Dashboard: FC = () => {
 
   const items: MenuProps["items"] = [
     {
-      label: <p onClick={logout}>{dashboard.logoutbtn}</p>,
-      key: "3",
+      label: <p>Мой кабинет</p>,
+      key: "0",
+      icon: <UserOutlined/>
+    },
+    {
+      type: "divider"
+    },
+    {
+      label: dashboard.logoutbtn,
+      key: "1",
       danger: true,
       icon: <LogoutOutlined />,
+      onClick: () => logout()
     },
   ];
 

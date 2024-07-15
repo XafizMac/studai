@@ -15,7 +15,7 @@ import {
 import { useRouter } from "next/navigation";
 import { Context } from "@/app/clientProvider";
 import type { CheckboxProps, FormProps } from "antd";
-import { motion } from "framer-motion";
+import { clamp, motion } from "framer-motion";
 import { CustomerServiceOutlined, StarOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import generateIcon from "../../../../../public/icons/generate.svg";
@@ -117,10 +117,10 @@ const Generation: FC = () => {
           className={styles.main_row}
         >
           <Space>
-            <p style={{ fontSize: "2rem", fontWeight: 500 }}>
+            <p style={{ fontSize: clamp(0.1, 30, 40), fontWeight: 500 }}>
               Сгенерировать план
             </p>
-            <Image src={generateIcon} alt="" />
+            <Image className={styles.title_icon} src={generateIcon} alt="" />
           </Space>
           <Form
             name="basic"
