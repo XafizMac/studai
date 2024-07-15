@@ -72,9 +72,10 @@ const Dashboard: FC = () => {
 
   const items: MenuProps["items"] = [
     {
-      label: <p>Мой кабинет</p>,
+      label: dashboard.profilebtn,
       key: "0",
-      icon: <UserOutlined/>
+      icon: <UserOutlined/>,
+      onClick: () => router.push("/dashboard/profile")
     },
     {
       type: "divider"

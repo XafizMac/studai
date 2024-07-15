@@ -98,7 +98,7 @@
         },
         "dashboard": {
             "logoutbtn": "Чыгуу",
-            "profilebtn": "Менин кабинет",
+            "profilebtn": "Менин кабинетим",
             "empty": "Бир күнү бул боштук мээ чабуулдары жана жаркын идеялар менен толтурулат",
             "whatWillCreate": "Бүгүн эмне түзүүнү каалайсыз?",
             "workCount": "Баардык иштер",
@@ -153,9 +153,10 @@
         },
         "dashboard": {
             "logoutbtn": "Logout",
+            "profilebtn": "My profile",
             "empty": "One day this space will be filled with brainstorming sessions and bright ideas",
-            "whatWillCreate": "Бүгүн эмне түзүүнү каалайсыз?",
-            "workCount": "Баардык иштер",
+            "whatWillCreate": "What would you like to create today?",
+            "workCount": "Total works",
             "table": {
                 "head": ["Name", "Pages", "Work type", "Work language", "Status", "Actions"],
                 "status": ["Ready", "Expectation", "Rejected"],
