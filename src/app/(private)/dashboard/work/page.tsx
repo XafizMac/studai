@@ -1,20 +1,18 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import styles from "./work.module.scss";
 import AppHeader from "@/components/ui/dash-header/AppHeader";
-import { Anchor, Button, Input, Space } from "antd";
+import { Anchor, Button, Space } from "antd";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { useSearchParams } from "next/navigation";
 import DocViewer, {
   DocViewerRenderers,
   IDocument,
-  MSDocRenderer,
 } from "@cyntler/react-doc-viewer";
 
 const Work: FC = () => {
   const params = useSearchParams();
-  const [subtopicData, setSubtopicsData] = useState<string[]>([]);
   const file = params.get("file");
   const theme = params.get("theme");
   const subtopicParam = params.get("subtopics");

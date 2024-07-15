@@ -2,7 +2,7 @@
 
 import React, { FC, useContext, useEffect, useState } from "react";
 import styles from "./payments.module.scss";
-import { Button, Card, Input, Typography, Upload, message } from "antd";
+import { Button, Card, Input, Space, Typography, Upload, message } from "antd";
 import { CopyFilled, CopyOutlined, UploadOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import { Context } from "@/app/clientProvider";
@@ -12,6 +12,7 @@ import optima from "../../../../../../../public/icons/optima.svg";
 import balance from "../../../../../../../public/icons/balance.svg";
 import AppHeader from "@/components/ui/dash-header/AppHeader";
 import { useRouter } from "next/navigation";
+import doubt from "../../../../../../../public/icons/doubt.svg";
 
 interface Data {
   pageCount: string;
@@ -243,6 +244,16 @@ const Payments: FC = () => {
               </Button>
             </form>
           </div>
+          <div className={styles.telegram}>
+                        <Space>
+                            <Image className={styles.doubt} src={doubt} alt="" />
+                            <div className={styles.div}>
+                                <p>Сомневаешься в качестве работы, <br /> сгенерированной роботом?</p>
+                                <small>Свяжитесь с нами на прямую</small>
+                            </div>
+                        </Space>
+                        <Button href="https://t.me/@Ariet_Amanbekov" target="_blank" type="primary" size="large">Перейти в Telegram</Button>
+                    </div>
         </div>
       </div>
     </div>

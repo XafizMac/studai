@@ -78,7 +78,7 @@ const Works: FC = () => {
       icon: <EyeOutlined />,
       disabled: record.status === "approved" ? false : true,
       onClick: () => {
-        const url = `/dashboard/generation/result/work?file=${encodeURIComponent(
+        const url = `/dashboard/work?file=${encodeURIComponent(
           record.file
         )}&subtopics=${encodeURIComponent(
           record.subtopics.join(", ")
