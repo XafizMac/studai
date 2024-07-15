@@ -26,4 +26,5 @@ export interface Work {
     status: string;
     file: string;
     id: number;
+    subtopics: string[];
 }

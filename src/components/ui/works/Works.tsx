@@ -26,6 +26,8 @@ interface DataType {
   status: string;
   file: string;
   id: number;
+  subtopics: string[];
+  workTheme: string;
 }
 
 const Works: FC = () => {
@@ -53,6 +55,8 @@ const Works: FC = () => {
         status: work.status,
         file: work.file,
         id: work.id,
+        subtopics: work.subtopics,
+        workTheme: work.workTheme,
       }));
       setWorkData(transformedData.reverse());
       setEmpty(transformedData.length === 0);
@@ -70,9 +74,7 @@ const Works: FC = () => {
       label: (
         <p
           onClick={() => {
-            const url = `/dashboard/generation/result/work?file=${encodeURIComponent(
-              record.file
-            )}`;
+            const url = `/dashboard/generation/result/work?file=${encodeURIComponent(record.file)}&subtopics=${encodeURIComponent(record.subtopics.join(', '))}&theme=${encodeURIComponent(record.workTheme)}`;
             push(url);
           }}
         >

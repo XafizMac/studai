@@ -4,7 +4,7 @@
   .main_row {
     padding: 0 4rem;
     display: grid;
-    grid-template-columns: 20% auto;
+    grid-template-columns: 25% auto;
     column-gap: 20px;
     .navigation {
       display: flex;
@@ -68,7 +68,8 @@
     .main_row {
       padding: 0 2rem;
       display: grid;
-      grid-template-columns: 20% auto;
+      grid-template-columns: auto;
+      row-gap: 20px;
       column-gap: 20px;
       .navigation {
         display: flex;
@@ -128,16 +129,19 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 620px) {
   .main {
     .main_row {
-      padding: 2rem;
+      padding: 2rem 3rem 2rem 2rem;
       display: grid;
-      grid-template-columns: 20% auto;
+      grid-template-columns: auto;
+      row-gap: 20px;
       column-gap: 20px;
+      width: 100%;
       .navigation {
         display: flex;
         flex-direction: column;
+        width: 99%;
         gap: 20px;
         p {
           font-size: 1.3rem;
@@ -145,6 +149,7 @@
           color: $bg-color;
         }
         .anchor {
+          width: 100%;
           background-color: white;
           padding: 1rem;
           border-radius: $border-radius - 5px;
@@ -196,7 +201,7 @@
 @media screen and (max-width: 500px) {
   .main {
     .main_row {
-      padding: 2rem;
+      padding: 2rem 12px;
       display: grid;
       grid-template-columns: auto;
       row-gap: 20px;
@@ -262,7 +267,7 @@
 @media screen and (max-width: 375px) {
   .main {
     .main_row {
-      padding: 2rem;
+      padding: 2rem 12px;
       display: grid;
       grid-template-columns: auto;
       row-gap: 20px;
