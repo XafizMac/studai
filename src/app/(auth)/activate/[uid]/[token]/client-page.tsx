@@ -51,6 +51,7 @@ const VerifyPage = ({ uid, token }: VerifyPageProps) => {
             }
             extra={[
               <Button
+                key="console"
                 onClick={() => goToLogin()}
                 loading={!isActive}
                 size="large"
