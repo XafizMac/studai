@@ -62,7 +62,7 @@ const Dashboard: FC = () => {
 
   const logout = async () => {
     try {
-      await axios.get("/api/auth/logout");
+      await axios.post("/api/auth/logout");
       localStorage.clear();
       router.push("/auth/login");
     } catch (error) {

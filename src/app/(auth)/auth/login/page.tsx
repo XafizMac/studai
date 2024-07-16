@@ -30,7 +30,7 @@ export default function Login() {
     try {
       const result = await store.login(values.email, values.password);
       if (result.status == 200) {
-        await axios.get("/api/auth/login");
+        await axios.post("/api/auth/login");
         success();
         replace("/dashboard");
       } else {
