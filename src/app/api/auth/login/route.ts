@@ -5,7 +5,7 @@ export async function GET() {
   response.cookies.set('token', 'logged in', { 
     httpOnly: true,
     secure: process.env.NODE_ENV !== 'development',
-    maxAge: 60 * 60, // 1 час
+    maxAge: 60, // 1 час
     path: '/',
     sameSite: 'strict'
   });
