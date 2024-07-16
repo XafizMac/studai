@@ -62,8 +62,8 @@ const Dashboard: FC = () => {
 
   const logout = async () => {
     try {
-      localStorage.clear();
       await axios.get("/api/auth/logout");
+      localStorage.clear();
       router.push("/auth/login");
     } catch (error) {
       console.error("Ошибка при выходе", error);
