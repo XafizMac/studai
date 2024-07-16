@@ -53,7 +53,7 @@ export default function Login() {
   const error = (message?: string) => {
     messageApi.open({
       type: "error",
-      content: message || "Ошибка при регистрации",
+      content: message === "Не найдено активной учетной записи с указанными данными" && "Неправильный логин или пароль" || "Ошибка при входе",
     });
   };
 
