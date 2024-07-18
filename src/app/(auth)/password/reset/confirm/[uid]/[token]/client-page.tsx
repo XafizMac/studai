@@ -21,23 +21,22 @@ interface ResetPasswordConfirmProps {
   token: string;
 }
 
-export default function ResetPasswordConfirm({ uid, token }: ResetPasswordConfirmProps) {
+export default function ResetPasswordConfirm({
+  uid,
+  token,
+}: ResetPasswordConfirmProps) {
   const { store } = useContext(Context);
-  const { push } = useRouter();
+  const { replace } = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState<boolean>(false);
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     setLoading(true);
     try {
-      await store.resetPasswordConfirm(
-        uid,
-        token,
-        values.newPassword
-      );
+      await store.resetPasswordConfirm(uid, token, values.newPassword);
       if (store.status.status == 204) {
         success();
-        push("/auth/login");
+        replace("/auth/login");
       } else {
         error(store.status.statusText);
       }
