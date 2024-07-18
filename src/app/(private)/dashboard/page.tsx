@@ -76,18 +76,18 @@ const Dashboard: FC = () => {
       label: dashboard.profilebtn,
       key: "0",
       disabled: true,
-      icon: <UserOutlined/>,
-      onClick: () => router.push("/dashboard/profile")
+      icon: <UserOutlined />,
+      onClick: () => router.push("/dashboard/profile"),
     },
     {
-      type: "divider"
+      type: "divider",
     },
     {
       label: dashboard.logoutbtn,
       key: "1",
       danger: true,
       icon: <LogoutOutlined />,
-      onClick: () => logout()
+      onClick: () => logout(),
     },
   ];
 
@@ -125,7 +125,7 @@ const Dashboard: FC = () => {
                 </Avatar>
               </Badge>
               <Dropdown menu={{ items }} trigger={["click"]}>
-                <Button type="text">
+                <Button type="link">
                   <Space>
                     <p style={{ color: "white" }}>
                       {store.me.firstName} {store.me.lastName.charAt(0)}.
@@ -232,9 +232,17 @@ const Dashboard: FC = () => {
         />
         <FloatButton
           target="_blank"
-          href="https://te.me/@Ariet_Amanbekov"
+          href="https://t.me/@Ariet_Amanbekov"
           tooltip="Telegram"
-          icon={<Image style={{ translate: '-2px' }} width={20} height={20} src={telegram} alt="telergam"/>}
+          icon={
+            <Image
+              style={{ translate: "-2px" }}
+              width={20}
+              height={20}
+              src={telegram}
+              alt="telergam"
+            />
+          }
         />
       </FloatButton.Group>
     </div>

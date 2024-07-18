@@ -1,273 +1,310 @@
 @import "../../../../../variables.scss";
 
 .main {
-  padding: 1rem 0;
-  .main_row {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    .price {
-      font-size: 1.6rem;
-      font-weight: 500;
-    }
-
-    .steps{
-      margin-top: 40px;
-    }
-
-    .cards {
-      margin-top: 30px;
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, auto);
-      gap: 20px;
-      .card {
-        width: 100%;
-
-        .details {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          div {
-            text-align: right;
-            p {
-              font-size: 1.1rem;
-              font-weight: 500;
-            }
-            small {
-              font-size: 1rem;
-            }
-          }
-        }
-      }
-    }
-    .uploadBlock {
-      margin-top: 30px;
-      display: flex;
-      justify-content: start;
-      gap: 10px;
-      .htmlInput {
-        position: absolute;
-        visibility: hidden;
-      }
-    }
-    .telegram {
-      margin-top: 50px;
-      width: 100%;
-      background-color: $bg-color;
-      padding: 2rem;
-      border-radius: $border-radius;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-
-      .div {
+    padding: 1rem 0;
+    .main_row {
         display: flex;
         flex-direction: column;
-        gap: 20px;
-
-        p {
-          font-size: 1.3rem;
+        gap: 10px;
+        .price {
+            font-size: 1.6rem;
+            font-weight: 500;
         }
 
-        small {
-          font-size: 1.2rem;
+        .warning {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+
+            p {
+                font-size: 1rem;
+                a {
+                    color: blue;
+                    text-decoration: underline;
+                }
+            }
         }
-      }
+
+        .steps {
+            margin-top: 40px;
+        }
+
+        .cards {
+            margin-top: 30px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            gap: 20px;
+            .card {
+                width: 100%;
+
+                .details {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    div {
+                        text-align: right;
+                        p {
+                            font-size: 1.1rem;
+                            font-weight: 500;
+                        }
+                        small {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+        .uploadBlock {
+            margin-top: 30px;
+            display: flex;
+            justify-content: start;
+            gap: 10px;
+            .htmlInput {
+                position: absolute;
+                visibility: hidden;
+            }
+            .btns {
+                display: flex;
+                gap: 10px;
+            }
+        }
+        .telegram {
+            margin-top: 50px;
+            width: 100%;
+            background-color: $bg-color;
+            padding: 2rem;
+            border-radius: $border-radius;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+
+            .div {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                p {
+                    font-size: 1.3rem;
+                }
+
+                small {
+                    font-size: 1.2rem;
+                }
+            }
+        }
     }
-  }
 }
 
 @media screen and (max-width: 935px) {
-  .main {
-    .main_row {
-      .price {
-        font-size: 1.6rem;
-        font-weight: 500;
-      }
-
-      .cards {
-        margin-top: 30px;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 100%;
-        flex-direction: column;
-        gap: 15px;
-        .card {
-          width: 100%;
-
-          .details {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            div {
-              text-align: right;
-              p {
-                font-size: 1.1rem;
+    .main {
+        .main_row {
+            .price {
+                font-size: 1.6rem;
                 font-weight: 500;
-              }
-              small {
-                font-size: 1rem;
-              }
             }
-          }
-        }
-      }
 
-      .telegram {
-        margin-top: 50px;
-        width: 100%;
-        background-color: $bg-color;
-        padding: 2rem;
-        border-radius: $border-radius;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: white;
-  
-        .div {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-  
-          p {
-            font-size: 1.3rem;
-          }
-  
-          small {
-            font-size: 1.2rem;
-          }
+            .cards {
+                margin-top: 30px;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 100%;
+                flex-direction: column;
+                gap: 15px;
+                .card {
+                    width: 100%;
+
+                    .details {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        div {
+                            text-align: right;
+                            p {
+                                font-size: 1.1rem;
+                                font-weight: 500;
+                            }
+                            small {
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .telegram {
+                margin-top: 50px;
+                width: 100%;
+                background-color: $bg-color;
+                padding: 2rem;
+                border-radius: $border-radius;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: white;
+
+                .div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    p {
+                        font-size: 1.3rem;
+                    }
+
+                    small {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }
 
 @media screen and (max-width: 630px) {
-  .main {
-    .main_row {
-      .price {
-        font-size: 1.6rem;
-        font-weight: 500;
-      }
-
-      .cards {
-        margin-top: 30px;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 100%;
-        flex-direction: column;
-        gap: 15px;
-        .card {
-          width: 100%;
-
-          .details {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            div {
-              text-align: right;
-              p {
-                font-size: 1.1rem;
+    .main {
+        .main_row {
+            .price {
+                font-size: 1.6rem;
                 font-weight: 500;
-              }
-              small {
-                font-size: 1rem;
-              }
-            }
-          }
-        }
-      }
-
-      .telegram {
-        width: 100%;
-        background-color: $bg-color;
-        padding: 2rem;
-        border-radius: $border-radius;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        justify-content: space-between;
-        align-items: center;
-        color: white;
-
-        .doubt{
-            display: none;
-            width: 100px;
-        }
-
-        .div {
-            display: flex;
-            flex-direction: column;
-            gap: 0px;
-
-            p {
-                font-size: 1.2rem;
             }
 
-            small {
-                font-size: 1rem;
+            .cards {
+                margin-top: 30px;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 100%;
+                flex-direction: column;
+                gap: 15px;
+                .card {
+                    width: 100%;
+
+                    .details {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        div {
+                            text-align: right;
+                            p {
+                                font-size: 1.1rem;
+                                font-weight: 500;
+                            }
+                            small {
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
             }
-        }
-        .button{
-          width: 100%;
+
+            .telegram {
+                width: 100%;
+                background-color: $bg-color;
+                padding: 2rem;
+                border-radius: $border-radius;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                justify-content: space-between;
+                align-items: center;
+                color: white;
+
+                .doubt {
+                    display: none;
+                    width: 100px;
+                }
+
+                .div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0px;
+
+                    p {
+                        font-size: 1.2rem;
+                    }
+
+                    small {
+                        font-size: 1rem;
+                    }
+                }
+                .button {
+                    width: 100%;
+                }
+            }
         }
     }
-    }
-  }
 }
 
 @media screen and (max-width: 425px) {
-  .main {
-    .main_row {
-      .price {
-        font-size: 1.3rem;
-        font-weight: 500;
-      }
-
-      .uploadBlock{
-        .btns{
-          width: 100%;
-          display: flex;
-          gap: 10px;
-          flex-direction: column;
-          .submitBtn{
-            width: 93vw;
-          }
-        }
-      }
-
-      .cards {
-        margin-top: 30px;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 100%;
-        flex-direction: column;
-        gap: 15px;
-        .card {
-          width: 100%;
-
-          .details {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            img {
-              width: 50px;
-            }
-            div {
-              text-align: right;
-              p {
-                font-size: 0.9rem;
+    .main {
+        .main_row {
+            .price {
+                font-size: 1.3rem;
                 font-weight: 500;
-              }
-              small {
-                font-size: 0.8rem;
-              }
             }
-          }
+
+            .warning {
+                display: flex;
+                align-items: center;
+                margin-top: 20px;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+
+                p {
+                    font-size: 0.8rem;
+                    a {
+                        color: blue;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .uploadBlock {
+                .btns {
+                    width: 100%;
+                    display: flex;
+                    gap: 10px;
+                    flex-direction: column;
+                    .submitBtn {
+                        width: 93vw;
+                    }
+                }
+            }
+
+            .cards {
+                margin-top: 30px;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 100%;
+                flex-direction: column;
+                gap: 15px;
+                .card {
+                    width: 100%;
+
+                    .details {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        img {
+                            width: 50px;
+                        }
+                        div {
+                            text-align: right;
+                            p {
+                                font-size: 0.9rem;
+                                font-weight: 500;
+                            }
+                            small {
+                                font-size: 0.8rem;
+                            }
+                        }
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }

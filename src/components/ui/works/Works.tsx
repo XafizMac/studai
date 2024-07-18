@@ -44,7 +44,7 @@ const Works: FC = () => {
     if (!store.isAuth) {
       store.checkAuth();
     }
-  }, [store.isAuth]);
+  }, [store]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,7 +66,7 @@ const Works: FC = () => {
     };
     fetchData();
 
-    const interval = setInterval(fetchData, 5000);
+    const interval = setInterval(fetchData, 30 * 1000);
 
     return () => clearInterval(interval);
   }, [store]);
@@ -79,9 +79,9 @@ const Works: FC = () => {
       disabled: record.status === "approved" ? false : true,
       onClick: () => {
         const url = `/dashboard/work?file=${encodeURIComponent(
-          record.file
+          record.file,
         )}&subtopics=${encodeURIComponent(
-          record.subtopics.join(", ")
+          record.subtopics.join(", "),
         )}&theme=${encodeURIComponent(record.workTheme)}`;
         push(url);
       },
@@ -152,19 +152,19 @@ const Works: FC = () => {
             record.status === "approved"
               ? "success"
               : record.status === "rejected"
-              ? "error"
-              : record.status === "pending"
-              ? "processing"
-              : "processing"
+                ? "error"
+                : record.status === "pending"
+                  ? "processing"
+                  : "processing"
           }
           text={
             record.status === "approved"
               ? tableLang.table.status[0]
               : record.status === "rejected"
-              ? tableLang.table.status[2]
-              : record.status === "pending"
-              ? tableLang.table.status[1]
-              : tableLang.table.status[1]
+                ? tableLang.table.status[2]
+                : record.status === "pending"
+                  ? tableLang.table.status[1]
+                  : tableLang.table.status[1]
           }
         />
       ),
@@ -210,9 +210,7 @@ const Works: FC = () => {
       {empty ? (
         <div className={styles.empty}>
           <Image src={emptyImg} alt="" />
-          <p>
-            {translations[lang].dashboard.empty}
-          </p>
+          <p>{translations[lang].dashboard.empty}</p>
         </div>
       ) : (
         <div className={styles.tableScroll}>

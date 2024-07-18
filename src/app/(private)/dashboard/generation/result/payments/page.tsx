@@ -2,27 +2,15 @@
 
 import React, { FC, useContext, useEffect, useState } from "react";
 import styles from "./payments.module.scss";
-import {
-  Button,
-  Card,
-  Input,
-  Space,
-  Steps,
-  Typography,
-  Upload,
-  message,
-} from "antd";
+import { Button, Card, Space, Steps, Typography, message } from "antd";
 import {
   CheckCircleOutlined,
   CopyFilled,
   CopyOutlined,
   CreditCardOutlined,
-  LoadingOutlined,
   PayCircleOutlined,
   SmileOutlined,
-  SolutionOutlined,
   UploadOutlined,
-  UserOutlined,
 } from "@ant-design/icons";
 import Image from "next/image";
 import { Context } from "@/app/clientProvider";
@@ -32,6 +20,8 @@ import balance from "../../../../../../../public/icons/balance.svg";
 import AppHeader from "@/components/ui/dash-header/AppHeader";
 import { useRouter } from "next/navigation";
 import doubt from "../../../../../../../public/icons/doubt.svg";
+import warning from "../../../../../../../public/img/warning.webp";
+import Link from "next/link";
 
 interface Data {
   pageCount: string;
@@ -200,6 +190,15 @@ const Payments: FC = () => {
           <p className={styles.price}>
             К оплате: <span className="active">{cost} сом</span>
           </p>
+          <div className={styles.warning}>
+            <Image width={90} height={90} src={warning} alt="" />
+            <p>
+              Перед оплаты рекомендуем внимательно прочитать{" "}
+              <Link href={"/dashboard/privacy-policy/"}>
+                Политику конфиденциальности!
+              </Link>
+            </p>
+          </div>
           <Steps
             className={styles.steps}
             items={[
@@ -289,9 +288,9 @@ const Payments: FC = () => {
                     }}
                     type="default"
                   >
-                    Выбрать файл
+                    {!imageData ? "Выбрать файл" : "Выбрать другой"}
                   </Button>
-                  <p>{imageData?.name}</p>
+                  {imageData && <p>Выбран файл {imageData?.name}</p>}
                 </Space>
                 <Button
                   loading={loading}
