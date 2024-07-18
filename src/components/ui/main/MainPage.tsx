@@ -60,19 +60,19 @@ const MainPage: FC = () => {
                             <div className={styles.workTypes}>
                                 <div className={styles.type}>
                                     <p className="active"><CountUp duration={4} end={200} />+</p>
-                                    <span>{page.worktypes[0]}</span>
+                                    <span className={styles.workTypesTitle}>{page.worktypes[0]}</span>
                                 </div>
                                 <div className={styles.type}>
-                                    <p className="active"><CountUp duration={4} end={50} />+</p>
-                                    <span>{page.worktypes[1]}</span>
+                                    <p className="active"><CountUp className={styles.p} duration={4} end={50} />+</p>
+                                    <span className={styles.workTypesTitle}>{page.worktypes[1]}</span>
                                 </div>
                                 <div className={styles.type}>
                                     <p className="active"><CountUp duration={4} end={200} />+</p>
-                                    <span>{page.worktypes[2]}</span>
+                                    <span className={styles.workTypesTitle}>{page.worktypes[2]}</span>
                                 </div>
                                 <div className={styles.type}>
                                     <p className="active"><CountUp duration={4} end={100} />+</p>
-                                    <span>{page.worktypes[3]}</span>
+                                    <span className={styles.workTypesTitle}>{page.worktypes[3]}</span>
                                 </div>
                             </div>
                             <div className={styles.avatars}>
