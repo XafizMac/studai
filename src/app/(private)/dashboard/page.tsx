@@ -32,12 +32,6 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useLang } from "@/hooks/useLang";
 import telegram from "../../../../public/icons/telegram.png";
-import localFont from "next/font/local";
-
-export const Grotesque = localFont({
-    src: '../../../../public/fonts/GetVoIP_Grotesque.otf',
-    display: "swap",
-})
 
 const Dashboard: FC = () => {
   const { store } = useContext(Context);
@@ -108,7 +102,6 @@ const Dashboard: FC = () => {
         >
           <div className={styles.logo}>
             <Image width={60} src={logo} alt="" />
-            <h3 className={`${Grotesque.className} active`}>StudAI</h3>
           </div>
           <Space size={20}>
             <Select
