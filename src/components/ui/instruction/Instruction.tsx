@@ -17,7 +17,7 @@ const Instruction: FC = () => {
             <div className="container">
                 <div className={styles.main_row}>
                     <div className={styles.title}>
-                        <div className="subtitle active">{instructionTrans.title}</div>
+                        <p className="subtitle active">{instructionTrans.title}</p>
                         <Image className={styles.img} src={icon} alt="" />
                     </div>
                     <div className={styles.cards}>
@@ -71,7 +71,7 @@ const Instruction: FC = () => {
                                     {instructionTrans.five[1]}
                                 </p>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>

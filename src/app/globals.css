@@ -7,7 +7,8 @@
 }
 
 :root {
-  --primary-color: linear-gradient(135deg, #FAB43F, #FF6D05),
+  --primary-color: linear-gradient(135deg, #fab43f, #ff6d05);
+  --grotesque: 'GetVoIP_Grotesque', sans-serif;
 }
 
 html,
@@ -17,8 +18,8 @@ body {
   /* overflow-x: hidden; */
 }
 
-.mainPage{
-  background-color: #185D98;
+.mainPage {
+  background-color: #185d98;
 }
 
 .container {
@@ -29,18 +30,25 @@ body {
 }
 
 .active {
-  background: linear-gradient(135deg, #FAB43F, #FF6D05);
+  background: linear-gradient(135deg, #fab43f, #ff6d05);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
+  font-family: var(--grotesque);
 }
 
 .inactive {
   color: white;
 }
 
-.subtitle{
+.subtitle {
   font-weight: 700;
   font-size: 30px;
+}
+
+@media screen and (max-width: 425px) {
+  .subtitle{
+    font-size: 25px;
+  }
 }

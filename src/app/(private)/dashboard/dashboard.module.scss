@@ -16,6 +16,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            .logo{
+                display: flex;
+                align-items: center;
+            }
         }
     }
 
@@ -210,7 +214,7 @@
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 460px) {
     .main {
         background-color: #eef7ff;
         height: max-content;
@@ -220,6 +224,91 @@
             .header_container{
                 .lang {
                     display: none;
+                }
+            }
+        }
+
+        .main_row {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+
+            .workTypesBlock {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .author {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .lang {
+                        display: block;
+                        align-self: flex-end;
+                    }
+                }
+
+                .workTypes {
+                    background-color: $bg-color;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+                    align-items: center;
+                    border-radius: $border-radius - 4px;
+                    padding: 2rem;
+
+                    .title {
+                        color: white;
+                        font-size: 1.3rem;
+                        font-weight: 500;
+                    }
+
+                    .cards {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        row-gap: 20px;
+                        column-gap: 20px;
+
+                        .card {
+                            background-color: white;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            border-radius: 10px;
+                            padding: 15px;
+                            width: 100%;
+
+                            p {
+                                width: 100%;
+                                text-align: center;
+                                color: black;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .main {
+        background-color: #eef7ff;
+        height: max-content;
+        width: 100%;
+
+        .header{
+            .header_container{
+                .lang {
+                    display: none;
+                }
+                .logo{
+                    h3{
+                        display: none;
+                    }
                 }
             }
         }

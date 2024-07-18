@@ -111,7 +111,7 @@ export default class Store {
             return response.data;
         }
         catch(e){
-            console.log(e);
+            console.log("Error google oauth",e);
         }
     }
     async checkAuth() {

@@ -341,7 +341,6 @@
                 display: flex;
                 align-items: center;
                 gap: 20px;
-                font-size: 0.8rem;
                 .img{
                     display: none;
                 }
@@ -350,23 +349,24 @@
             .cards {
                 display: flex;
                 align-items: center;
-                gap: 30px;
+                gap: 13px;
                 flex-direction: column;
     
                 .left {
                     display: flex;
                     flex-direction: column;
-                    gap: 20px;
+                    align-items: flex-start;
+                    gap: 10px;
+                    width: 100%;
     
                     .card {
                         display: flex;
-                        flex-direction: column;
+                        justify-content: flex-start;
                         gap: 10px;
-                        padding: 1rem;
+                        padding: 0;
                         height: max-content;
                         border-width: 2px;
                         border-style: solid;
-                        border-radius: $border-radius + 10px;
     
                         .head {
                             display: flex;
@@ -375,24 +375,28 @@
                             .number{
                                 font-size: 1.4rem;
                                 font-weight: 500;
-                                padding: 5px 10px;
                                 border-radius: $border-radius - 3px;
                                 color: white;
                             }
                             .title{
                                 font-weight: 600;
+                                font-size: 1rem;
                             }
+                        }
+
+                        .content{
+                            display: none;
                         }
     
                         &:first-child {
-                            border-color: $bg-color;
+                            border-color: transparent;
                             .number{
                                 background-color: $bg-color;
                             }
                         }
     
                         &:last-child {
-                            border-color: #52C41A;
+                            border-color: transparent;
                             .number{
                                 background-color: #52C41A;
                             }
@@ -405,7 +409,6 @@
                     width: 100%;
                     .middleblock{
                         position: relative;
-                    
                         .img{
                             display: none;
                             pointer-events: none;
@@ -416,17 +419,18 @@
                             left: 0;
                             transform: translate(0%, 0%);
                             display: flex;
-                            flex-direction: column;
+                            flex-direction: row;
                             align-items: center;
+                            gap: 15px;
                             width: 100%;   
                             p{
                                 text-align: center;
                             }
                             & p:first-child{
                                 background-color: #FF4D4F;
-                                border-radius: 50%;
+                                border-radius: $border-radius;
                                 height: 40px;
-                                width: 40px;
+                                width: 35px;
                                 display: flex;
                                 flex-direction: column;
                                 align-items: center;
@@ -444,18 +448,15 @@
                 .right {
                     display: flex;
                     flex-direction: column;
-                    gap: 20px;
+                    justify-content: flex-start;
+                    gap: 10px;
+                    width: 100%;
     
                     .card {
                         display: flex;
                         flex-direction: column;
-                        gap: 10px;
-                        padding: 1rem;
-                        height: max-content;
-                        border-width: 2px;
-                        border-style: solid;
-                        border-radius: $border-radius + 10px;
-    
+                        gap: 5px;
+                        padding: 0;
                         .head {
                             display: flex;
                             align-items: center;
@@ -469,18 +470,23 @@
                             }
                             .title{
                                 font-weight: 600;
+                                font-size: 1rem;
                             }
+                        }
+
+                        .content{
+                            display: none;
                         }
     
                         &:first-child {
-                            border-color: #FAAD14;
+                            border-color: transparent;
                             .number{
                                 background-color: #FAAD14;
                             }
                         }
     
                         &:last-child {
-                            border-color: #13C2C2;
+                            border-color: transparent;
                             .number{
                                 background-color: #13C2C2;
                             }

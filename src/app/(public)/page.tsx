@@ -24,11 +24,13 @@ export default function Home() {
     const OAuthCallback = async () => {
       try {
         if (state && code) {
+          alert(typeof state)
+          alert(typeof code)
           const response = await store.oAuthCallbacks(state, code);
           console.log(response);
         }
       } catch (err) {
-        console.log("Error", err);
+        console.log("Error google authorization", err);
       }
     };
 
@@ -54,7 +56,7 @@ export default function Home() {
   if (loading) {
     return (
       <div>
-        <Spin size="large" />
+        <Spin fullscreen size="large" />
       </div>
     );
   }

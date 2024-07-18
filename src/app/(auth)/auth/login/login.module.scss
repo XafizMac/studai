@@ -49,9 +49,11 @@
         }
 
         .forgotPassword{
-            margin-top: -40px;
+            margin-top: -10px;
+            margin-bottom: 20px;
             a{
                 color: $bg-color;
+                font-size: 1rem;
                 &:hover{
                     text-decoration: underline;
                 }
@@ -59,6 +61,7 @@
         }
 
         .haveAccount {
+            margin-top: -25px;
             text-align: center;
             font-weight: 300;
 

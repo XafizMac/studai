@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./login.module.scss";
 import logo from "../../../../../public/logo.svg";
 import type { FormProps } from "antd";
-import { Button, Divider, Form, Input, message } from "antd";
+import { Button, Divider, Form, Input, message, Typography } from "antd";
 import { GoogleOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -53,7 +53,11 @@ export default function Login() {
   const error = (message?: string) => {
     messageApi.open({
       type: "error",
-      content: message === "Не найдено активной учетной записи с указанными данными" && "Неправильный логин или пароль" || "Ошибка при входе",
+      content:
+        (message ===
+          "Не найдено активной учетной записи с указанными данными" &&
+          "Неправильный логин или пароль") ||
+        "Ошибка при входе",
     });
   };
 
@@ -127,6 +131,9 @@ export default function Login() {
                 size="large"
               />
             </Form.Item>
+            <Typography className={styles.forgotPassword}>
+              <Link href={"/auth/forgot"}>Забыли пароль?</Link>
+            </Typography>
           </motion.div>
           <Form.Item>
             <Button
@@ -140,9 +147,6 @@ export default function Login() {
             </Button>
           </Form.Item>
         </Form>
-        <p className={styles.forgotPassword}>
-          <Link href={"/auth/forgot"}>Забыли пароль?</Link>
-        </p>
         <p className={styles.haveAccount}>
           Нет аккаунта? <Link href={"/auth/signin"}>Создать сейчас</Link>
         </p>

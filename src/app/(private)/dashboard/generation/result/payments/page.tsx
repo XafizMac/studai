@@ -2,13 +2,32 @@
 
 import React, { FC, useContext, useEffect, useState } from "react";
 import styles from "./payments.module.scss";
-import { Button, Card, Input, Space, Typography, Upload, message } from "antd";
-import { CopyFilled, CopyOutlined, UploadOutlined } from "@ant-design/icons";
+import {
+  Button,
+  Card,
+  Input,
+  Space,
+  Steps,
+  Typography,
+  Upload,
+  message,
+} from "antd";
+import {
+  CheckCircleOutlined,
+  CopyFilled,
+  CopyOutlined,
+  CreditCardOutlined,
+  LoadingOutlined,
+  PayCircleOutlined,
+  SmileOutlined,
+  SolutionOutlined,
+  UploadOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import Image from "next/image";
 import { Context } from "@/app/clientProvider";
 import mbank from "../../../../../../../public/icons/mbank.svg";
 import odengi from "../../../../../../../public/icons/odengi.svg";
-import optima from "../../../../../../../public/icons/optima.svg";
 import balance from "../../../../../../../public/icons/balance.svg";
 import AppHeader from "@/components/ui/dash-header/AppHeader";
 import { useRouter } from "next/navigation";
@@ -127,12 +146,6 @@ const Payments: FC = () => {
       number: "+996 (702)-160-703",
     },
     {
-      url: optima,
-      title: "Optima Bank",
-      name: "Сапарбек уулу Ариет",
-      number: "+996 (702)-160-703",
-    },
-    {
       url: balance,
       title: "Баланс",
       name: "Сапарбек уулу Ариет",
@@ -187,6 +200,36 @@ const Payments: FC = () => {
           <p className={styles.price}>
             К оплате: <span className="active">{cost} сом</span>
           </p>
+          <Steps
+            className={styles.steps}
+            items={[
+              {
+                title: "Выберите реквизиты",
+                status: "finish",
+                icon: <CreditCardOutlined />,
+              },
+              {
+                title: "Оплатите",
+                status: "finish",
+                icon: <PayCircleOutlined />,
+              },
+              {
+                title: "Отправьте чек",
+                status: "finish",
+                icon: <UploadOutlined />,
+              },
+              {
+                title: "Проверка займет 5 минут",
+                status: "finish",
+                icon: <CheckCircleOutlined />,
+              },
+              {
+                title: "Готово",
+                status: "finish",
+                icon: <SmileOutlined />,
+              },
+            ]}
+          />
           <div className={styles.cards}>
             {cardList.map((item, index) => (
               <Card
@@ -228,32 +271,61 @@ const Payments: FC = () => {
             ))}
           </div>
           <div className={styles.uploadBlock}>
-            <Button className={styles.openCamera} type="primary" size="large">
-              Открыть камеру
-            </Button>
-
             <form onSubmit={onFinish}>
-              <input onChange={handleImage} type="file" name="photo" />
-              <Button
-                loading={loading}
-                type="primary"
-                size="large"
-                htmlType="submit"
-              >
-                Отправить
-              </Button>
+              <input
+                id="file"
+                onChange={handleImage}
+                type="file"
+                name="photo"
+                className={styles.htmlInput}
+              />
+              <div className={styles.btns}>
+                <Space>
+                  <Button
+                    size="large"
+                    onClick={() => {
+                      const file = document.getElementById("file");
+                      file?.click();
+                    }}
+                    type="default"
+                  >
+                    Выбрать файл
+                  </Button>
+                  <p>{imageData?.name}</p>
+                </Space>
+                <Button
+                  loading={loading}
+                  type="primary"
+                  size="large"
+                  htmlType="submit"
+                  className={styles.submitBtn}
+                >
+                  Отправить
+                </Button>
+              </div>
             </form>
           </div>
           <div className={styles.telegram}>
-                        <Space>
-                            <Image className={styles.doubt} src={doubt} alt="" />
-                            <div className={styles.div}>
-                                <p>Сомневаешься в качестве работы, <br /> сгенерированной роботом?</p>
-                                <small>Свяжитесь с нами на прямую</small>
-                            </div>
-                        </Space>
-                        <Button href="https://t.me/@Ariet_Amanbekov" target="_blank" type="primary" size="large">Перейти в Telegram</Button>
-                    </div>
+            <Space>
+              <Image className={styles.doubt} src={doubt} alt="" />
+              <div className={styles.div}>
+                <p>
+                  Сомневаешься в качестве работы, <br /> сгенерированной
+                  роботом?
+                </p>
+                <small>Свяжитесь с нами на прямую</small>
+              </div>
+            </Space>
+            <Button
+              href="https://t.me/@Ariet_Amanbekov"
+              target="_blank"
+              type="primary"
+              size="large"
+              className={styles.button}
+            >
+              Перейти в Telegram
+            </Button>
+          </div>
         </div>
       </div>
     </div>

@@ -31,6 +31,13 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useLang } from "@/hooks/useLang";
+import telegram from "../../../../public/icons/telegram.png";
+import localFont from "next/font/local";
+
+export const Grotesque = localFont({
+    src: '../../../../public/fonts/GetVoIP_Grotesque.otf',
+    display: "swap",
+})
 
 const Dashboard: FC = () => {
   const { store } = useContext(Context);
@@ -74,6 +81,7 @@ const Dashboard: FC = () => {
     {
       label: dashboard.profilebtn,
       key: "0",
+      disabled: true,
       icon: <UserOutlined/>,
       onClick: () => router.push("/dashboard/profile")
     },
@@ -100,6 +108,7 @@ const Dashboard: FC = () => {
         >
           <div className={styles.logo}>
             <Image width={60} src={logo} alt="" />
+            <h3 className={`${Grotesque.className} active`}>StudAI</h3>
           </div>
           <Space size={20}>
             <Select
@@ -218,13 +227,21 @@ const Dashboard: FC = () => {
       >
         <FloatButton
           target="_blank"
-          href="https://te.me/@Ariet_Amanbekov"
+          href="https://www.instagram.com/studai.kg"
+          tooltip="Instagram"
           icon={<InstagramOutlined />}
         />
         <FloatButton
           target="_blank"
           href="https://wa.me/+996702160703"
+          tooltip="Whats App"
           icon={<WhatsAppOutlined />}
+        />
+        <FloatButton
+          target="_blank"
+          href="https://te.me/@Ariet_Amanbekov"
+          tooltip="Telegram"
+          icon={<Image style={{ translate: '-2px' }} width={20} height={20} src={telegram} alt="telergam"/>}
         />
       </FloatButton.Group>
     </div>

@@ -6,7 +6,7 @@
     height: 100vh;
     .form {
         display: flex;
-        padding: 0 4rem;
+        padding: 0 2rem;
         flex-direction: column;
         // align-items: center;
         justify-content: center;
@@ -40,7 +40,7 @@
 
         .form {
             background-color: white;
-            padding: 2rem 6rem;
+            padding: 2rem 2rem;
             display: flex;
             gap: 30px;
             flex-direction: column;
@@ -60,33 +60,7 @@
                 font-size: 1.6rem;
                 font-weight: 600;
                 color: $bg-color;
-                text-align: center;
-            }
-
-            .forms {
-                display: flex;
-                flex-direction: column;
-
-                div {
-                    p {
-                        font-size: 1rem;
-                        margin-bottom: 5px;
-                        margin-left: 5px;
-                    }
-                }
-
-                .btn {
-                    width: 100%;
-                    font-weight: 600;
-                }
-            }
-
-            .devider {
-                color: $bg-color;
-            }
-
-            .googleBtn {
-                font-weight: 600;
+                text-align: start;
             }
         }
 
@@ -114,46 +88,14 @@
             align-items: normal;
             overflow: auto;
 
-            .logo {
-                display: flex;
-                align-items: center;
-
-                p {
-                    font-size: 1.6rem;
-                }
-            }
-
             .title {
                 font-size: 1.6rem;
                 font-weight: 600;
                 color: $bg-color;
                 text-align: center;
             }
-
-            .forms {
-                display: flex;
-                flex-direction: column;
-
-                div {
-                    p {
-                        font-size: 1rem;
-                        margin-bottom: 5px;
-                        margin-left: 5px;
-                    }
-                }
-
-                .btn {
-                    width: 100%;
-                    font-weight: 600;
-                }
-            }
-
-            .devider {
-                color: $bg-color;
-            }
-
-            .googleBtn {
-                font-weight: 600;
+            .subtitle{
+                text-align: center;
             }
         }
 
@@ -181,57 +123,12 @@
             align-items: normal;
             overflow: auto;
 
-            .logo {
-                display: flex;
-                align-items: center;
-
-                p {
-                    font-size: 1.6rem;
-                }
-            }
 
             .title {
                 font-size: 1.6rem;
                 font-weight: 600;
                 color: $bg-color;
                 text-align: center;
-            }
-
-            .forms {
-                display: flex;
-                flex-direction: column;
-
-                div {
-                    p {
-                        font-size: 1rem;
-                        margin-bottom: 5px;
-                        margin-left: 5px;
-                    }
-                }
-
-                .btn {
-                    width: 100%;
-                    font-weight: 600;
-                }
-            }
-
-            .haveAccount {
-                text-align: center;
-                margin-top: -25px;
-                font-weight: 300;
-
-                a {
-                    color: $bg-color;
-                    font-weight: 400;
-                }
-            }
-
-            .devider {
-                color: $bg-color;
-            }
-
-            .googleBtn {
-                font-weight: 600;
             }
         }
 
