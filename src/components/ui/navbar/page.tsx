@@ -22,10 +22,10 @@ import logo from "../../../../public/logo.svg";
 import localFont from "next/font/local";
 
 export const Grotesque = localFont({
-    src: '../../../../public/fonts/GetVoIP_Grotesque.otf',
-    display: "swap",
-    variable: '--grotesque',
-})
+  src: "../../../../public/fonts/GetVoIP_Grotesque.otf",
+  display: "swap",
+  variable: "--grotesque",
+});
 
 const Navbar: FC = () => {
   const { lang, translations } = useLang();
@@ -77,7 +77,7 @@ const Navbar: FC = () => {
             <Link href={"/"}>
               <div className={styles.logo}>
                 <Image width={55} height={55} src={logo} alt="" />
-                <p className={`${Grotesque.className} active`}>StudAI</p>
+                <p className={`${Grotesque.className} active`}>Studai</p>
               </div>
             </Link>
           </div>
