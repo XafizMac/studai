@@ -235,7 +235,7 @@ const Dashboard: FC = () => {
         />
         <FloatButton
           target="_blank"
-          href="https://t.me/@studai_app"
+          href="https://t.me/studai_app"
           tooltip="Telegram"
           icon={
             <Image
