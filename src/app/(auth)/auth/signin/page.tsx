@@ -11,6 +11,12 @@ import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "@/app/clientProvider";
 import { useRouter } from "next/navigation";
+import localFont from "next/font/local";
+
+export const Grotesque = localFont({
+  src: "../../../../../public/fonts/GetVoIP_Grotesque.otf",
+  display: "swap",
+});
 
 type FieldType = {
   email: string;
@@ -38,7 +44,7 @@ export default function SignIn() {
         values.email,
         values.firstName,
         values.lastName,
-        values.password
+        values.password,
       );
       console.log(result);
       if (result.status === 201) {
@@ -75,8 +81,8 @@ export default function SignIn() {
       {contextHolder}
       <div className={styles.form}>
         <Link href={"/"} className={styles.logo}>
-          <Image width={60} src={logo} alt="Logo" />
-          <p className="active">Studai</p>
+          <Image width={40} src={logo} alt="Logo" />
+          <p className={`${Grotesque.className} active`}>Studai</p>
         </Link>
         <p className={styles.title}>Регистрация</p>
         <Form

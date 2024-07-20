@@ -12,6 +12,12 @@ import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Context } from "@/app/clientProvider";
 import axios from "axios";
+import localFont from "next/font/local";
+
+export const Grotesque = localFont({
+  src: "../../../../../public/fonts/GetVoIP_Grotesque.otf",
+  display: "swap",
+});
 
 type FieldType = {
   email: string;
@@ -79,8 +85,8 @@ export default function Login() {
       {contextHolder}
       <div className={styles.form}>
         <Link href={"/"} className={styles.logo}>
-          <Image width={60} src={logo} alt="Logo" />
-          <p className="active">Studai</p>
+          <Image width={40} src={logo} alt="Logo" />
+          <p className={`${Grotesque.className} active`}>Studai</p>
         </Link>
         <p className={styles.title}>Войти</p>
         <Form

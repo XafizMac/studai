@@ -1,54 +1,54 @@
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  text-decoration: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
 }
 
 :root {
-  --primary-color: linear-gradient(135deg, #fab43f, #ff6d05);
-  --grotesque: 'GetVoIP_Grotesque', sans-serif;
+    --primary-color: linear-gradient(135deg, #fab43f, #ff6d05);
+    --grotesque: "GetVoIP_Grotesque", sans-serif;
 }
 
 html,
 body {
-  max-width: 100vw;
-  scroll-behavior: smooth;
-  /* overflow-x: hidden; */
+    max-width: 100vw;
+    scroll-behavior: smooth;
+    /* overflow-x: hidden; */
 }
 
 .mainPage {
-  background-color: #185d98;
+    background-color: #185d98;
 }
 
 .container {
-  max-width: 1100px;
-  width: 100%;
-  margin: auto;
-  padding: 0 12px;
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+    padding: 0 12px;
 }
 
 .active {
-  background: linear-gradient(135deg, #fab43f, #ff6d05);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  font-family: var(--grotesque);
+    background: linear-gradient(135deg, #fab43f, #ff6d05);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-family: var(--grotesque);
 }
 
 .inactive {
-  color: white;
+    color: white;
 }
 
 .subtitle {
-  font-weight: 700;
-  font-size: 30px;
+    font-weight: 700;
+    font-size: 30px;
 }
 
 @media screen and (max-width: 425px) {
-  .subtitle{
-    font-size: 25px;
-  }
+    .subtitle {
+        font-size: 25px;
+    }
 }

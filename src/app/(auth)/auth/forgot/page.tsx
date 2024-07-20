@@ -10,7 +10,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useContext, useState } from "react";
 import { Context } from "@/app/clientProvider";
+import localFont from "next/font/local";
 
+export const Grotesque = localFont({
+  src: "../../../../../public/fonts/GetVoIP_Grotesque.otf",
+  display: "swap",
+});
 
 type FieldType = {
   email: string;
@@ -57,8 +62,8 @@ export default function ForgotPassword() {
       {contextHolder}
       <div className={styles.form}>
         <Link href={"/"} className={styles.logo}>
-          <Image width={60} src={logo} alt="Logo" />
-          <p className="active">Studai</p>
+          <Image width={50} src={logo} alt="Logo" />
+          <p className={`${Grotesque.className} active`}>Studai</p>
         </Link>
         {successfull ? (
           <>
@@ -66,7 +71,9 @@ export default function ForgotPassword() {
             <p style={{ textAlign: "center", fontSize: "1.2rem" }}>
               В вашу почту отправлено ссылка для сброса пароля
             </p>
-            <Button type="link" onClick={() => setSuccessfull(false)}>Письмо не пришло?</Button>
+            <Button type="link" onClick={() => setSuccessfull(false)}>
+              Письмо не пришло?
+            </Button>
           </>
         ) : (
           <>
