@@ -156,6 +156,7 @@ const Dashboard: FC = () => {
             transition={{ duration: 0.4 }}
             className={styles.workTypesBlock}
           >
+            <Button></Button>
             <div className={styles.author}>
               <Select
                 className={styles.lang}
@@ -169,6 +170,7 @@ const Dashboard: FC = () => {
                 ]}
               />
             </div>
+
             <div className={styles.workTypes}>
               <p className={styles.title}>{dashboard.whatWillCreate}</p>
               <div className={styles.cards}>

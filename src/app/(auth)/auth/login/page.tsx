@@ -4,7 +4,16 @@ import Image from "next/image";
 import styles from "./login.module.scss";
 import logo from "../../../../../public/logo.svg";
 import type { FormProps } from "antd";
-import { Button, Divider, Form, Input, message, Typography } from "antd";
+import {
+  Badge,
+  Button,
+  Card,
+  Divider,
+  Form,
+  Input,
+  message,
+  Typography,
+} from "antd";
 import { GoogleOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -159,16 +168,20 @@ export default function Login() {
         <Divider className={styles.devider} orientation="center" plain>
           Или
         </Divider>
-        <Button
-          onClick={oAuth}
-          className={styles.googleBtn}
-          size="large"
-          icon={<GoogleOutlined />}
-          type="default"
-          loading={googleLoading}
-        >
-          Войти через Google
-        </Button>
+        <Badge.Ribbon text="Скоро!" color="orange">
+          <Button
+            disabled
+            onClick={oAuth}
+            className={styles.googleBtn}
+            size="large"
+            icon={<GoogleOutlined />}
+            type="default"
+            loading={googleLoading}
+            style={{ width: "100%" }}
+          >
+            Войти через Google
+          </Button>
+        </Badge.Ribbon>
       </div>
       {/* Image */}
       <div className={styles.background}></div>
