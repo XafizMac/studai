@@ -229,13 +229,13 @@ const Dashboard: FC = () => {
         />
         <FloatButton
           target="_blank"
-          href="https://wa.me/+996702160703"
+          href="https://wa.me/+996555355246"
           tooltip="Whats App"
           icon={<WhatsAppOutlined />}
         />
         <FloatButton
           target="_blank"
-          href="https://t.me/@Ariet_Amanbekov"
+          href="https://t.me/@studai_app"
           tooltip="Telegram"
           icon={
             <Image
