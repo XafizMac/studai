@@ -58,7 +58,7 @@ export default function Home() {
 
   return (
     <div className="mainPage">
-      <Button onClick={OAuthCallback}>Enter</Button>
+      {/* <Button onClick={OAuthCallback}>Enter</Button> */}
       <Navbar />
       <MainPage />
       <Services />
