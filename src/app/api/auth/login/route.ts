@@ -6,7 +6,7 @@ export async function POST() {
   response.cookies.set("token", "logged in", {
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development",
-    maxAge: 60 * 60 * 24 * 30, // 30 дней
+    maxAge: 60 * 60 * 24 * 15, // 15 дней
     path: "/",
     sameSite: "strict",
   });
