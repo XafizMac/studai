@@ -123,26 +123,54 @@ export default class Store {
   }
   async oAuth() {
     try {
-      const response = await AuthService.oAuth();
+      const response = await axios.get(
+        `${API_URL}/o/google-oauth2/?redirect_uri=http://127.0.0.1:3000`,
+        { withCredentials: true },
+      );
       console.log(response);
       return { data: response.data };
     } catch (e) {
       console.log("Error oAuth", e);
     }
   }
+
   async oAuthCallbacks(state: string, code: string) {
-    axios.defaults.withCredentials = true;
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      withCredentials: true,
+    };
+
+    const details: any = {
+      state: state,
+      code: code,
+    };
+
+    const formBody = Object.keys(details)
+      .map(
+        (key) =>
+          encodeURIComponent(key) + "=" + encodeURIComponent(details[key]),
+      )
+      .join("&");
+
+    console.log(formBody);
+
     try {
       const response = await axios.post(
-        `${API_URL}/o/google-oauth2/?state=${state}&code=${code}`,
+        `${API_URL}/o/google-oauth2/?${formBody}`,
+        null, // Передаем null, так как данные идут в URL
+        config,
       );
       this.setAuth(true);
       console.log(response);
       return response.data;
     } catch (e) {
       console.log("Error google oauth", e);
+      throw e;
     }
   }
+
   async checkAuth() {
     const refreshToken = localStorage.getItem("RT");
     try {

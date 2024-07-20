@@ -125,17 +125,4 @@ export default class AuthService {
   static deleteWork(id: string) {
     return $api.delete(`/documents/${id}/`);
   }
-
-  static async oAuth() {
-    return $api.get("/o/google-oauth2/?redirect_uri=http://127.0.0.1:3000");
-  }
-  // static async oAuthCallback(
-  //   state: string,
-  //   code: string,
-  // ): Promise<AxiosResponse<AuthResponse>> {
-  //   return axios.post<AuthResponse>(
-  //     `https://api.studai.online/api/o/google-oauth2/?state=${state}&code=${code}`,
-  //     { withCredentials: true },
-  //   );
-  // }
 }

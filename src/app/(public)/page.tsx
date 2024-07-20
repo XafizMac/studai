@@ -8,7 +8,7 @@ import Choises from "@/components/ui/choices/Choises";
 import Instruction from "@/components/ui/instruction/Instruction";
 import { Pricing } from "@/components/ui/pricing/Pricing";
 import { Footer } from "@/components/ui/footer/Footer";
-import { Spin } from "antd";
+import { Button, Spin } from "antd";
 import { useSearchParams } from "next/navigation";
 import { Context } from "../clientProvider";
 
@@ -20,29 +20,26 @@ export default function Home() {
   const state = searchParams.get("state");
   const code = searchParams.get("code");
 
-  useEffect(() => {
-    const OAuthCallback = async () => {
-      try {
-        if (state && code) {
-          const response = await store.oAuthCallbacks(state, code);
-          console.log(response);
-        }
-      } catch (err) {
-        console.log("Error google authorization", err);
-      }
-    };
+  const OAuthCallback = async () => {
+    try {
+      if (state && code) {
+        console.log("OAuth state:", state);
+        console.log("OAuth code:", code);
 
-    if (state && code) {
-      console.log("State: ", state);
-      console.log("Code: ", code);
-      OAuthCallback();
+        const response = await store.oAuthCallbacks(state, code);
+        console.log("OAuth response:", response);
+      } else {
+        console.error("State or code is missing.");
+      }
+    } catch (err) {
+      console.error("Error during OAuth authorization", err);
     }
-  }, [state, code, store]);
+  };
 
   useEffect(() => {
     const checkAuth = async () => {
       const token = localStorage.getItem("token");
-      if (!token) {
+      if (token) {
         await store.checkAuth();
       }
       setLoading(false);
@@ -61,6 +58,7 @@ export default function Home() {
 
   return (
     <div className="mainPage">
+      <Button onClick={OAuthCallback}>Enter</Button>
       <Navbar />
       <MainPage />
       <Services />

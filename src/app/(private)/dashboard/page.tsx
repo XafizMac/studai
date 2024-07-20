@@ -20,7 +20,6 @@ import {
   ArrowRightOutlined,
   CustomerServiceOutlined,
   DownOutlined,
-  GlobalOutlined,
   InstagramOutlined,
   LogoutOutlined,
   UserOutlined,
@@ -121,8 +120,11 @@ const Dashboard: FC = () => {
             />
             <Space size={0}>
               <Badge dot status="success">
-                <Avatar src={store.me.photo} size="large">
-                  {store.me.firstName.charAt(0)}
+                <Avatar
+                  src={store.me.photo ? store.me.photo : null}
+                  size="large"
+                >
+                  {!store.me.photo && store.me.firstName.charAt(0)}
                 </Avatar>
               </Badge>
               <Dropdown menu={{ items }} trigger={["click"]}>

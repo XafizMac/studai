@@ -219,7 +219,7 @@ const Works: FC = () => {
           </p>
           <Table
             style={{
-              minWidth: 890,
+              minWidth: 1000,
             }}
             className={styles.table}
             columns={columns}
