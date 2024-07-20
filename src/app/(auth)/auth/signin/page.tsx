@@ -13,7 +13,7 @@ import { Context } from "@/app/clientProvider";
 import { useRouter } from "next/navigation";
 import localFont from "next/font/local";
 
-export const Grotesque = localFont({
+const Grotesque = localFont({
   src: "../../../../../public/fonts/GetVoIP_Grotesque.otf",
   display: "swap",
 });

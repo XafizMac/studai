@@ -14,7 +14,7 @@ import { Context } from "@/app/clientProvider";
 import axios from "axios";
 import localFont from "next/font/local";
 
-export const Grotesque = localFont({
+const Grotesque = localFont({
   src: "../../../../../public/fonts/GetVoIP_Grotesque.otf",
   display: "swap",
 });
