@@ -13,7 +13,7 @@ export const Pricing: FC = () => {
   const pricingLib = translations[lang].pricing;
   const type = translations[lang].mainpage.worktypes;
   const btn = (
-    <Button href="/dashboard" type="link">
+    <Button href="/dashboard/generation" type="link">
       {pricingLib.table.button}
     </Button>
   );

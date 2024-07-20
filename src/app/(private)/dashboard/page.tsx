@@ -18,6 +18,7 @@ import { setLang } from "@/context/lang";
 import { AllowedLangs } from "@/constants/lang";
 import {
   ArrowRightOutlined,
+  BankOutlined,
   CustomerServiceOutlined,
   DownOutlined,
   InstagramOutlined,
@@ -156,7 +157,14 @@ const Dashboard: FC = () => {
             transition={{ duration: 0.4 }}
             className={styles.workTypesBlock}
           >
-            <Button></Button>
+            <Button
+              href="/dashboard/pricing"
+              icon={<BankOutlined />}
+              type="default"
+              style={{ width: "max-content" }}
+            >
+              Цена
+            </Button>
             <div className={styles.author}>
               <Select
                 className={styles.lang}
