@@ -8,7 +8,7 @@ import Choises from "@/components/ui/choices/Choises";
 import Instruction from "@/components/ui/instruction/Instruction";
 import { Pricing } from "@/components/ui/pricing/Pricing";
 import { Footer } from "@/components/ui/footer/Footer";
-import { Button, Spin } from "antd";
+import { Spin } from "antd";
 import { useSearchParams } from "next/navigation";
 import { Context } from "../clientProvider";
 
@@ -58,7 +58,6 @@ export default function Home() {
 
   return (
     <div className="mainPage">
-      {/* <Button onClick={OAuthCallback}>Enter</Button> */}
       <Navbar />
       <MainPage />
       <Services />

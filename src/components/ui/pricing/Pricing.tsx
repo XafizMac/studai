@@ -5,7 +5,6 @@ import { FC } from "react";
 import styles from "./Pricing.module.scss";
 import icon from "../../../../public/img/pricing-icon.svg";
 import Image from "next/image";
-import Link from "next/link";
 import { useLang } from "@/hooks/useLang";
 import { motion } from "framer-motion";
 

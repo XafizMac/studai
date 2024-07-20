@@ -165,7 +165,6 @@
                 pointer-events: none;
                 z-index: 2;
                 animation: topend 4s linear infinite;
-                // animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
                 transform: translateY(0) translateX(-63%);
 
                 @keyframes topend {
