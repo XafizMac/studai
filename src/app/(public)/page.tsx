@@ -11,6 +11,7 @@ import { Footer } from "@/components/ui/footer/Footer";
 import { Spin } from "antd";
 import { useSearchParams } from "next/navigation";
 import { Context } from "../clientProvider";
+import Team from "@/components/ui/team/page";
 
 export default function Home() {
   const { store } = useContext(Context);
@@ -64,6 +65,7 @@ export default function Home() {
       <Choises />
       <Instruction />
       <Pricing />
+      <Team />
       <Footer />
     </div>
   );

@@ -37,7 +37,8 @@
             .author {
                 width: 100%;
                 display: flex;
-                justify-content: space-between;
+                justify-content: flex-start;
+                gap: 6px;
 
                 .lang {
                     display: none;
@@ -95,7 +96,6 @@
                 .author {
                     width: 100%;
                     display: flex;
-                    justify-content: space-between;
                 }
 
                 .workTypes {
@@ -166,7 +166,6 @@
                 .author {
                     width: 100%;
                     display: flex;
-                    justify-content: space-between;
                 }
 
                 .workTypes {
@@ -241,7 +240,6 @@
                 .author {
                     width: 100%;
                     display: flex;
-                    justify-content: space-between;
 
                     .lang {
                         display: block;

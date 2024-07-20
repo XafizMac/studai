@@ -1,14 +1,13 @@
 .btn {
-    background-color: #eef7ff;
+    background-color: transparent;
     padding: 2rem 4rem;
 }
 
-@media  (max-width: 1108px) {
-    .btn{
+@media (max-width: 1108px) {
+    .btn {
         padding: 1rem 12px;
     }
 }
-
 
 @media screen and (max-width: 580px) {
     .btn {

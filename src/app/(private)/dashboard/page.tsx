@@ -157,15 +157,15 @@ const Dashboard: FC = () => {
             transition={{ duration: 0.4 }}
             className={styles.workTypesBlock}
           >
-            <Button
-              href="/dashboard/pricing"
-              icon={<BankOutlined />}
-              type="default"
-              style={{ width: "max-content" }}
-            >
-              Цена
-            </Button>
             <div className={styles.author}>
+              <Button
+                href="/dashboard/pricing"
+                icon={<BankOutlined />}
+                type="default"
+                style={{ width: "max-content" }}
+              >
+                Цена
+              </Button>
               <Select
                 className={styles.lang}
                 variant="outlined"
