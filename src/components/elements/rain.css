@@ -1,8 +1,8 @@
 .rain_block {
     position: absolute;
-    z-index: 10;
-    /* background-color: red; */
-    width: 100%;
+    z-index: 5;
+    width: 70%;
+    overflow: hidden;
     height: 70%;
 }
 
@@ -10,17 +10,17 @@
     transform: translateY(300px);
     opacity: 0;
     animation: moving 3s linear infinite;
-    animation-timing-function: ease-in cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-timing-function: ease-in cubic-bezier(0.165, 0.84, 0.44, 2);
 }
 
 @keyframes moving {
     0% {
-        transform: translateY(300px);
+        transform: translateY(200px);
         opacity: 0;
     }
 
     50% {
-        transform: translateY(150);
+        transform: translateY(100);
         opacity: 1;
     }
 
