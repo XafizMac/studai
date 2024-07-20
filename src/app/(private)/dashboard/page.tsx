@@ -20,6 +20,7 @@ import {
   ArrowRightOutlined,
   CustomerServiceOutlined,
   DownOutlined,
+  GlobalOutlined,
   InstagramOutlined,
   LogoutOutlined,
   UserOutlined,

@@ -24,8 +24,6 @@ export default function Home() {
     const OAuthCallback = async () => {
       try {
         if (state && code) {
-          alert(typeof state)
-          alert(typeof code)
           const response = await store.oAuthCallbacks(state, code);
           console.log(response);
         }

@@ -1,14 +1,14 @@
 // app/api/auth/login/route.ts
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 export async function POST() {
-  const response = NextResponse.json({ message: 'Logged in' });
-  response.cookies.set('token', 'logged in', { 
+  const response = NextResponse.json({ message: "Logged in" });
+  response.cookies.set("token", "logged in", {
     httpOnly: true,
-    secure: process.env.NODE_ENV !== 'development',
-    maxAge: 60 * 15, // 15 минут
-    path: '/',
-    sameSite: 'strict'
+    secure: process.env.NODE_ENV !== "development",
+    maxAge: 60 * 60 * 24 * 30, // 30 дней
+    path: "/",
+    sameSite: "strict",
   });
 
   return response;
