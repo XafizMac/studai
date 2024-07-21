@@ -4,17 +4,8 @@ import Image from "next/image";
 import styles from "./login.module.scss";
 import logo from "../../../../../public/logo.svg";
 import type { FormProps } from "antd";
-import {
-  Badge,
-  Button,
-  Card,
-  Divider,
-  Form,
-  Input,
-  message,
-  Typography,
-} from "antd";
-import { GoogleOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
+import { Button, Divider, Form, Input, message, Typography } from "antd";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useContext, useState } from "react";
@@ -22,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { Context } from "@/app/clientProvider";
 import axios from "axios";
 import localFont from "next/font/local";
+import OAuth from "@/components/elements/oAuth";
 
 const Grotesque = localFont({
   src: "../../../../../public/fonts/GetVoIP_Grotesque.otf",
@@ -38,7 +30,6 @@ export default function Login() {
   const { push, replace } = useRouter();
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
-  const [googleLoading, setGoogleLoading] = useState(false);
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     setLoading(true);
@@ -76,19 +67,6 @@ export default function Login() {
     });
   };
 
-  const oAuth = async () => {
-    setGoogleLoading(true);
-    try {
-      const response = await store.oAuth();
-      console.log(response?.data.authorizationUrl);
-      window.location.href = await response?.data.authorizationUrl;
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setGoogleLoading(false);
-    }
-  };
-
   return (
     <div className={styles.main}>
       {contextHolder}
@@ -110,7 +88,6 @@ export default function Login() {
             animate={{ opacity: 1, height: "100%" }}
             transition={{ duration: 0.2 }}
           >
-            {/* <p>Электронная почта</p> */}
             <Form.Item<FieldType>
               rules={[
                 {
@@ -133,7 +110,6 @@ export default function Login() {
             animate={{ opacity: 1, height: "100%" }}
             transition={{ duration: 0.8 }}
           >
-            {/* <p>Пароль</p> */}
             <Form.Item<FieldType>
               rules={[
                 { required: true, message: "Пожалуйста, введите пароль!" },
@@ -168,20 +144,7 @@ export default function Login() {
         <Divider className={styles.devider} orientation="center" plain>
           Или
         </Divider>
-        <Badge.Ribbon text="Скоро!" color="orange">
-          <Button
-            disabled
-            onClick={oAuth}
-            className={styles.googleBtn}
-            size="large"
-            icon={<GoogleOutlined />}
-            type="default"
-            loading={googleLoading}
-            style={{ width: "100%" }}
-          >
-            Войти через Google
-          </Button>
-        </Badge.Ribbon>
+        <OAuth />
       </div>
       {/* Image */}
       <div className={styles.background}></div>

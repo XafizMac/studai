@@ -42,13 +42,13 @@
             }
 
             display: flex;
-            gap: 45px;
+            gap: 30px;
 
             .link {
                 color: white;
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                gap: 5px;
                 transition: 0.4s;
             }
 
@@ -80,7 +80,7 @@
     }
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 1000px) {
     .header {
         border-bottom: 1px solid #3282c7e9;
         background-color: rgba($bg-color, 0.2);

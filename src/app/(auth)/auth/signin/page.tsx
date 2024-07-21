@@ -12,6 +12,7 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "@/app/clientProvider";
 import { useRouter } from "next/navigation";
 import localFont from "next/font/local";
+import OAuth from "@/components/elements/oAuth";
 
 const Grotesque = localFont({
   src: "../../../../../public/fonts/GetVoIP_Grotesque.otf",
@@ -198,14 +199,7 @@ export default function SignIn() {
         <Divider className={styles.devider} orientation="center" plain>
           Или
         </Divider>
-        <Button
-          className={styles.googleBtn}
-          size="large"
-          icon={<GoogleOutlined />}
-          type="default"
-        >
-          Войти через Google
-        </Button>
+        <OAuth />
       </div>
       {/* Image */}
       <div className={styles.background}></div>

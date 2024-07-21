@@ -1,0 +1,100 @@
+.main {
+    background-color: white;
+    padding: 7rem 0;
+    .main_row {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        text-align: center;
+        .cards {
+            display: grid;
+            justify-content: space-between;
+            grid-template-columns: repeat(4, auto);
+            gap: 20px;
+
+            .card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+
+                &:first-child .avatar {
+                    border: 5px solid lightgreen;
+                }
+                &:nth-child(2) .avatar {
+                    border: 5px solid orange;
+                }
+                &:nth-child(3) .avatar {
+                    border: 5px solid lightblue;
+                }
+                &:last-child .avatar {
+                    border: 5px solid violet;
+                }
+
+                p {
+                    font-weight: 600;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .main {
+        background-color: white;
+        padding: 7rem 0;
+        .main_row {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+            text-align: center;
+            .cards {
+                display: grid;
+                justify-content: space-evenly;
+                grid-template-columns: repeat(2, auto);
+                .card {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 20px;
+
+                    p {
+                        font-weight: 600;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 475px) {
+    .main {
+        background-color: white;
+        padding: 3rem 0;
+        .main_row {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+            text-align: center;
+            .cards {
+                display: grid;
+                justify-content: space-evenly;
+                grid-template-columns: repeat(1, auto);
+                .card {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 20px;
+                    padding-bottom: 30px;
+                    border-bottom: 1px solid lightgray;
+
+                    p {
+                        font-weight: 600;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}

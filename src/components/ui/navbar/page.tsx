@@ -11,6 +11,7 @@ import {
   HomeFilled,
   MenuOutlined,
   TagsFilled,
+  TeamOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -131,6 +132,16 @@ const Navbar: FC = () => {
             >
               <BankFilled />
               {translations[lang].header.menu[3]}
+            </Link>
+            <Link
+              onClick={handleModalSwitch}
+              className={`${styles.link} ${
+                pathname == "#inctruction" && "active"
+              }`}
+              href="#team"
+            >
+              <TeamOutlined />
+              {translations[lang].header.menu[4]}
             </Link>
             <Space className={styles.select} align="center">
               <Typography

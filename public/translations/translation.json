@@ -1,167 +1,263 @@
 {
-    "ru": {
-        "header": {
-            "menu": ["Главная", "Услуги", "Инструкции", "Цена"],
-            "button": "Войти"
-        },
-        "mainpage": {
-            "title": ["Учись легко: генерация учебных работ", "с помощью ИИ"],
-            "description": "Уникальные работы, созданные нашим ИИ, помогут вам выделиться и достичь успеха в учебе без лишних усилий",
-            "works": ["Сделанные работы", "Помогали более 1000 студентам"],
-            "worktypes": ["Реферат", "Доклад", "СРС", "Курсовая работа"],
-            "button": "Начать генерацию"
-        },
-        "service": {
-            "title": "Наши услуги"
-        },
-        "choises": {
-            "title": "Причины выбрать нас",
-            "content": {
-                "operative": ["Оперативно", "Наша команда всегда на связи, готова помочь в любое время суток 24/7!"],
-                "opportunity": ["Возможность", "Возможность получить готовые работы на трех языков. Русский, кыргызский, англиский"],
-                "quality": ["Качетсво", "Мы гарантируем высокую скорость выполнения и отличное качество каждой работы"],
-                "profitably": ["Супервыгодно", "Получайте готовые к использованию учебные работы без лишних усилий и задержек"]
-            }
-        },
-        "instruction": {
-            "title": "Инструкция пользования",
-            "one": ["Выберите тему для работы"],
-            "two": ["ИИ составит план работы бесплатно", "Наш ИИ готов предложить план работы по выбранной вами теме абсолютно бесплатно. Если предложенный план вас не устроит, его можно будет пересоставить без дополнительных затрат"],
-            "three": ["Процес оплаты", "Если вы согласны с планом работы, выполните оплату для дальнейшего написания полной работы. Оплата подтверждает ваше согласие и запускает процесс написания"],
-            "four": ["ИИ готовит полную работу", "После подтверждения оплаты, наш ИИ начнет работу над полным текстом. В течение 5 минут вы получите готовую работу, соответствующую всем вашим требованиям и ожиданиям"],
-            "five": ["Скачивание", "Готовая работа будет доступна для скачивания в формате .docx (MS Word). Вы сможете легко редактировать и использовать документ по своему усмотрению"]
-        }, 
-        "pricing": {
-            "title": "Цены наших услуг",
-            "table": {
-                "title": "Тип работы",
-                "button": "Выбрать"
-            }
-        },
-        "footer": {
-            "details": ["Меню", "Контакты", "Наш Instagram"]
-        },
-        "dashboard": {
-            "logoutbtn": "Выйти",
-            "profilebtn": "Мой кабинет",
-            "empty": "Однажды это пространство будет наполнено мозговыми штурмами и яркими идеями",
-            "whatWillCreate": "Что вы создадите сегодня?",
-            "workCount": "Все работы",
-            "table": {
-                "head": ["Название", "Страница", "Тип работы", "Язык работы", "Статус", "Действие"],
-                "status": ["Готово", "Ожидание", "Отклонен"],
-                "actions": ["Посмотреть", "Скачать", "Удалить"]
-            }
-        }
+  "ru": {
+    "header": {
+      "menu": ["Главная", "Услуги", "Инструкции", "Цена", "О нас"],
+      "button": "Войти"
     },
-    "kg": {
-        "header": {
-            "menu": ["Башкы Бет", "Кызматтар", "Нускама", "Баалар"],
-            "button": "Кирүү"
-        },
-        "mainpage": {
-            "title": ["Оңой окуу: окуу иштерин",  "ЖИ аркылуу түзүү"],
-            "description": "Биздин ЖИ тарабынан түзүлгөн уникалдуу иштер сизге айырмаланууга жана окууда ашыкча аракеттерсиз ийгиликке жетүүгө жардам берет",
-            "works": ["Аткарылган жумуштар", "1000ден ашуун студенттерге жардам берилди"],
-            "worktypes": ["Реферат", "Доклад", "СӨИ", "Курстук иш"],
-            "button": "Генерацияны баштоо"
-        },
-        "service": {
-            "title": "Биздин кызматтар"
-        },
-        "choises": {
-            "title": "Бизди тандоонун себептери",
-            "content": {
-                "operative": ["Ыкчам", "Биздин команда дайыма байланышта, күндүн каалаган убагында 24/7 жардам берүүгө даяр!"],
-                "opportunity": ["Мүмкүнчүлүк", "Үч тилде даяр иштерди алуу мүмкүнчүлүгү. Орусча, кыргызча, англисче"],
-                "quality": ["Сапат", "Биз ар бир иштин жогорку аткаруу ылдамдыгын жана мыкты сапатын камсыз кылабыз"],
-                "profitably": ["Супер ыңгайлуу", "Көп күч-аракет жумшабастан жана кечиктирбей колдонууга даяр окуу иштерин алуу"]
-            }
-        },
-        "instruction": {
-            "title": "Колдонуу нускамасы",
-            "one": ["Иш тилин тандаңыз"],
-            "two": ["ЖИ менен иш планын бекер түзүү", "Биздин жасалма интеллект сиз тандаган тема боюнча иш планын акысыз сунуштоого даяр. Эгер сунуш кылынган план сизди канааттандырбаса, анда аны эч кандай кошумча чыгымдарсыз кайра жасоого болот"],
-            "three": ["Төлөм процесси", "Если вы согласны с планом работы, выполните оплату для дальнейшего написания полной работы. Оплата подтверждает ваше согласие и запускает процесс написания"],
-            "four": ["ЖИ менен толук жумуш даярдоо", "Төлөм ырасталгандан кийин, биздин ЖИ толук тексттин үстүнөн иштей баштайт. 5 мүнөттүн ичинде сиз бардык талаптарга жана күтүүлөргө жооп берген даяр жумушка ээ болосуз"],
-            "five": ["Көчүрүп алуу", "Даяр болгон чыгарманы форматта жүктөп алууга болот .docx (MS Word). Документти оңой эле оңдоп, каалагандай колдоно аласыз"]
-        },
-        "pricing": {
-            "title": "Биздин кызматтын баалары",
-            "table": {
-                "title": "Иштин тили",
-                "button": "Тандоо"
-            }
-        },
-        "footer": {
-            "details": ["Меню", "Контакттар", "Биздин Instagram"]
-        },
-        "dashboard": {
-            "logoutbtn": "Чыгуу",
-            "profilebtn": "Менин кабинетим",
-            "empty": "Бир күнү бул боштук мээ чабуулдары жана жаркын идеялар менен толтурулат",
-            "whatWillCreate": "Бүгүн эмне түзүүнү каалайсыз?",
-            "workCount": "Баардык иштер",
-            "table": {
-                "head": ["Аталышы", "Бети", "Иштин тиби", "Иштин тили", "Абалы", "Кыймыл"],
-                "status": ["Даяр", "Күтүү", "Жокко чыгарылды"],
-                "actions": ["Көрүү", "Жүктөө", "Өчүрүү"]
-            }
-        }
+    "mainpage": {
+      "title": ["Учись легко: генерация учебных работ", "с помощью ИИ"],
+      "description": "Уникальные работы, созданные нашим ИИ, помогут вам выделиться и достичь успеха в учебе без лишних усилий",
+      "works": ["Сделанные работы", "Помогали более 1000 студентам"],
+      "worktypes": ["Реферат", "Доклад", "СРС", "Курсовая работа"],
+      "button": "Начать генерацию"
     },
-    "en": {
-        "header": {
-            "menu": ["Main", "Services", "Inctruction", "Pricing"],
-            "button": "Enter"
-        },
-        "mainpage": {
-            "title": ["Learn easily: Generating learning papers", "using AI"],
-            "description": "The unique works created by our AI will help you stand out and achieve academic success without unnecessary effort",
-            "works": ["The done works", "More than 1000 students were helped"],
-            "worktypes": ["Report", "Presentation", "SIW", "Coursework"],
-            "button": "Start generating"
-        },
-        "service":{
-             "title": "Our services"
-        },
-        "choises": {
-            "title": "Reasons to choose us",
-            "content": {
-                "operative": ["Promptly", "Our team is always in touch, ready to help at any time of the day 24/7!"],
-                "opportunity": ["Opportunity", "The opportunity to receive finished works in three languages. Russian, Kyrgyz, English"],
-                "quality": ["Quality", "We guarantee high speed of execution and excellent quality of each work"],
-                "profitably": ["Super profitable", "Get ready-to-use training papers without unnecessary effort and delays"]
-            }
-        },
-        "instruction": {
-            "title": "Instructions for use",
-            "one": ["Choose a topic to work on"],
-            "two": ["AI makes a work plan for free", "Our AI is ready to offer a work plan on your chosen topic absolutely free of charge If the proposed plan does not suit you, it can be resubmitted at no additional cost"],
-            "three": ["The payment process", "If you agree with the work plan, make the payment for further writing of the full work. The payment confirms your consent and starts the writing process"],
-            "four": ["The AI is preparing the full work", "After confirming the payment, our AI will start working on the full text. Within 5 minutes you will receive a finished work that meets all your requirements and expectations"],
-            "five": ["Download", "The finished work will be available for download in the format.docx (MS Word). You can easily edit and use the document as you wish."]
-        },
-        "pricing": {
-            "title": "Prices of our services",
-            "table": {
-                "title": "Work type",
-                "button": "Choose"
-            }
-        },
-        "footer": {
-            "details": ["Menu", "Contacts", "Our Instagram"]
-        },
-        "dashboard": {
-            "logoutbtn": "Logout",
-            "profilebtn": "My profile",
-            "empty": "One day this space will be filled with brainstorming sessions and bright ideas",
-            "whatWillCreate": "What would you like to create today?",
-            "workCount": "Total works",
-            "table": {
-                "head": ["Name", "Pages", "Work type", "Work language", "Status", "Actions"],
-                "status": ["Ready", "Expectation", "Rejected"],
-                "actions": ["View", "Download", "Delete"]
-            }
-        }
+    "service": {
+      "title": "Наши услуги"
+    },
+    "choises": {
+      "title": "Причины выбрать нас",
+      "content": {
+        "operative": [
+          "Оперативно",
+          "Наша команда всегда на связи, готова помочь в любое время суток 24/7!"
+        ],
+        "opportunity": [
+          "Возможность",
+          "Возможность получить готовые работы на трех языков. Русский, кыргызский, англиский"
+        ],
+        "quality": [
+          "Качетсво",
+          "Мы гарантируем высокую скорость выполнения и отличное качество каждой работы"
+        ],
+        "profitably": [
+          "Супервыгодно",
+          "Получайте готовые к использованию учебные работы без лишних усилий и задержек"
+        ]
+      }
+    },
+    "instruction": {
+      "title": "Инструкция пользования",
+      "one": ["Выберите тему для работы"],
+      "two": [
+        "ИИ составит план работы бесплатно",
+        "Наш ИИ готов предложить план работы по выбранной вами теме абсолютно бесплатно. Если предложенный план вас не устроит, его можно будет пересоставить без дополнительных затрат"
+      ],
+      "three": [
+        "Процес оплаты",
+        "Если вы согласны с планом работы, выполните оплату для дальнейшего написания полной работы. Оплата подтверждает ваше согласие и запускает процесс написания"
+      ],
+      "four": [
+        "ИИ готовит полную работу",
+        "После подтверждения оплаты, наш ИИ начнет работу над полным текстом. В течение 5 минут вы получите готовую работу, соответствующую всем вашим требованиям и ожиданиям"
+      ],
+      "five": [
+        "Скачивание",
+        "Готовая работа будет доступна для скачивания в формате .docx (MS Word). Вы сможете легко редактировать и использовать документ по своему усмотрению"
+      ]
+    },
+    "pricing": {
+      "title": "Цены наших услуг",
+      "table": {
+        "title": "Тип работы",
+        "button": "Выбрать"
+      }
+    },
+    "footer": {
+      "details": ["Меню", "Контакты", "Наш Instagram"]
+    },
+    "dashboard": {
+      "logoutbtn": "Выйти",
+      "profilebtn": "Мой кабинет",
+      "empty": "Однажды это пространство будет наполнено мозговыми штурмами и яркими идеями",
+      "whatWillCreate": "Что вы создадите сегодня?",
+      "workCount": "Все работы",
+      "table": {
+        "head": [
+          "Название",
+          "Страница",
+          "Тип работы",
+          "Язык работы",
+          "Статус",
+          "Действие"
+        ],
+        "status": ["Готово", "Ожидание", "Отклонен"],
+        "actions": ["Посмотреть", "Скачать", "Удалить"]
+      }
     }
+  },
+  "kg": {
+    "header": {
+      "menu": ["Башкы Бет", "Кызматтар", "Нускама", "Баалар", "Биз жөнүндө"],
+      "button": "Кирүү"
+    },
+    "mainpage": {
+      "title": ["Оңой окуу: окуу иштерин", "ЖИ аркылуу түзүү"],
+      "description": "Биздин ЖИ тарабынан түзүлгөн уникалдуу иштер сизге айырмаланууга жана окууда ашыкча аракеттерсиз ийгиликке жетүүгө жардам берет",
+      "works": [
+        "Аткарылган жумуштар",
+        "1000ден ашуун студенттерге жардам берилди"
+      ],
+      "worktypes": ["Реферат", "Доклад", "СӨИ", "Курстук иш"],
+      "button": "Генерацияны баштоо"
+    },
+    "service": {
+      "title": "Биздин кызматтар"
+    },
+    "choises": {
+      "title": "Бизди тандоонун себептери",
+      "content": {
+        "operative": [
+          "Ыкчам",
+          "Биздин команда дайыма байланышта, күндүн каалаган убагында 24/7 жардам берүүгө даяр!"
+        ],
+        "opportunity": [
+          "Мүмкүнчүлүк",
+          "Үч тилде даяр иштерди алуу мүмкүнчүлүгү. Орусча, кыргызча, англисче"
+        ],
+        "quality": [
+          "Сапат",
+          "Биз ар бир иштин жогорку аткаруу ылдамдыгын жана мыкты сапатын камсыз кылабыз"
+        ],
+        "profitably": [
+          "Супер ыңгайлуу",
+          "Көп күч-аракет жумшабастан жана кечиктирбей колдонууга даяр окуу иштерин алуу"
+        ]
+      }
+    },
+    "instruction": {
+      "title": "Колдонуу нускамасы",
+      "one": ["Иш тилин тандаңыз"],
+      "two": [
+        "ЖИ менен иш планын бекер түзүү",
+        "Биздин жасалма интеллект сиз тандаган тема боюнча иш планын акысыз сунуштоого даяр. Эгер сунуш кылынган план сизди канааттандырбаса, анда аны эч кандай кошумча чыгымдарсыз кайра жасоого болот"
+      ],
+      "three": [
+        "Төлөм процесси",
+        "Если вы согласны с планом работы, выполните оплату для дальнейшего написания полной работы. Оплата подтверждает ваше согласие и запускает процесс написания"
+      ],
+      "four": [
+        "ЖИ менен толук жумуш даярдоо",
+        "Төлөм ырасталгандан кийин, биздин ЖИ толук тексттин үстүнөн иштей баштайт. 5 мүнөттүн ичинде сиз бардык талаптарга жана күтүүлөргө жооп берген даяр жумушка ээ болосуз"
+      ],
+      "five": [
+        "Көчүрүп алуу",
+        "Даяр болгон чыгарманы форматта жүктөп алууга болот .docx (MS Word). Документти оңой эле оңдоп, каалагандай колдоно аласыз"
+      ]
+    },
+    "pricing": {
+      "title": "Биздин кызматтын баалары",
+      "table": {
+        "title": "Иштин тили",
+        "button": "Тандоо"
+      }
+    },
+    "footer": {
+      "details": ["Меню", "Контакттар", "Биздин Instagram"]
+    },
+    "dashboard": {
+      "logoutbtn": "Чыгуу",
+      "profilebtn": "Менин кабинетим",
+      "empty": "Бир күнү бул боштук мээ чабуулдары жана жаркын идеялар менен толтурулат",
+      "whatWillCreate": "Бүгүн эмне түзүүнү каалайсыз?",
+      "workCount": "Баардык иштер",
+      "table": {
+        "head": [
+          "Аталышы",
+          "Бети",
+          "Иштин тиби",
+          "Иштин тили",
+          "Абалы",
+          "Кыймыл"
+        ],
+        "status": ["Даяр", "Күтүү", "Жокко чыгарылды"],
+        "actions": ["Көрүү", "Жүктөө", "Өчүрүү"]
+      }
+    }
+  },
+  "en": {
+    "header": {
+      "menu": ["Main", "Services", "Inctruction", "Pricing", "About us"],
+      "button": "Enter"
+    },
+    "mainpage": {
+      "title": ["Learn easily: Generating learning papers", "using AI"],
+      "description": "The unique works created by our AI will help you stand out and achieve academic success without unnecessary effort",
+      "works": ["The done works", "More than 1000 students were helped"],
+      "worktypes": ["Report", "Presentation", "SIW", "Coursework"],
+      "button": "Start generating"
+    },
+    "service": {
+      "title": "Our services"
+    },
+    "choises": {
+      "title": "Reasons to choose us",
+      "content": {
+        "operative": [
+          "Promptly",
+          "Our team is always in touch, ready to help at any time of the day 24/7!"
+        ],
+        "opportunity": [
+          "Opportunity",
+          "The opportunity to receive finished works in three languages. Russian, Kyrgyz, English"
+        ],
+        "quality": [
+          "Quality",
+          "We guarantee high speed of execution and excellent quality of each work"
+        ],
+        "profitably": [
+          "Super profitable",
+          "Get ready-to-use training papers without unnecessary effort and delays"
+        ]
+      }
+    },
+    "instruction": {
+      "title": "Instructions for use",
+      "one": ["Choose a topic to work on"],
+      "two": [
+        "AI makes a work plan for free",
+        "Our AI is ready to offer a work plan on your chosen topic absolutely free of charge If the proposed plan does not suit you, it can be resubmitted at no additional cost"
+      ],
+      "three": [
+        "The payment process",
+        "If you agree with the work plan, make the payment for further writing of the full work. The payment confirms your consent and starts the writing process"
+      ],
+      "four": [
+        "The AI is preparing the full work",
+        "After confirming the payment, our AI will start working on the full text. Within 5 minutes you will receive a finished work that meets all your requirements and expectations"
+      ],
+      "five": [
+        "Download",
+        "The finished work will be available for download in the format.docx (MS Word). You can easily edit and use the document as you wish."
+      ]
+    },
+    "pricing": {
+      "title": "Prices of our services",
+      "table": {
+        "title": "Work type",
+        "button": "Choose"
+      }
+    },
+    "footer": {
+      "details": ["Menu", "Contacts", "Our Instagram"]
+    },
+    "dashboard": {
+      "logoutbtn": "Logout",
+      "profilebtn": "My profile",
+      "empty": "One day this space will be filled with brainstorming sessions and bright ideas",
+      "whatWillCreate": "What would you like to create today?",
+      "workCount": "Total works",
+      "table": {
+        "head": [
+          "Name",
+          "Pages",
+          "Work type",
+          "Work language",
+          "Status",
+          "Actions"
+        ],
+        "status": ["Ready", "Expectation", "Rejected"],
+        "actions": ["View", "Download", "Delete"]
+      }
+    }
+  }
 }
