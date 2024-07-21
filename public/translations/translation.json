@@ -62,8 +62,33 @@
         "button": "Выбрать"
       }
     },
+    "team": {
+      "title": "Наше руководство и люди",
+      "manager": {
+        "name": "Ариет Сапарбек уулу",
+        "position": "Проект Менеджер"
+      },
+      "frontend": {
+        "name": "Абдулхафиз Жолдошов",
+        "position": "Frontend разработчик"
+      },
+      "backend": {
+        "name": "Курманбек Асанов",
+        "position": "Backend разработчик"
+      },
+      "designer": {
+        "name": "Канышай Касымова",
+        "position": "UX/UI дизайнер"
+      }
+    },
     "footer": {
-      "details": ["Меню", "Контакты", "Наш Instagram"]
+      "details": ["Меню", "Контакты", "Наш Instagram"],
+      "privacy": [
+        "Используя Studai.app, вы принимаете",
+        "  пользовательское соглашение",
+        "  и политику обработки",
+        "  персональных данных"
+      ]
     },
     "dashboard": {
       "logoutbtn": "Выйти",
@@ -151,8 +176,33 @@
         "button": "Тандоо"
       }
     },
+    "team": {
+      "title": "Биздин жетекчилик жана команда",
+      "manager": {
+        "name": "Ариет Сапарбек уулу",
+        "position": "Проект Менеджер"
+      },
+      "frontend": {
+        "name": "Абдулхафиз Жолдошов",
+        "position": "Frontend иштеп чыгуучу"
+      },
+      "backend": {
+        "name": "Курманбек Асанов",
+        "position": "Backend иштеп чыгуучу"
+      },
+      "designer": {
+        "name": "Канышай Касымова",
+        "position": "UX/UI дизайнер"
+      }
+    },
     "footer": {
-      "details": ["Меню", "Контакттар", "Биздин Instagram"]
+      "details": ["Меню", "Контакттар", "Биздин Instagram"],
+      "privacy": [
+        "Используя Studai.app, вы принимаете",
+        " пользовательское соглашение",
+        " и политику обработки",
+        " персональных данных"
+      ]
     },
     "dashboard": {
       "logoutbtn": "Чыгуу",
@@ -238,7 +288,32 @@
       }
     },
     "footer": {
-      "details": ["Menu", "Contacts", "Our Instagram"]
+      "details": ["Menu", "Contacts", "Our Instagram"],
+      "privacy": [
+        "By using Studai.app, you agree to the",
+        " terms of service",
+        " and",
+        " privacy policy"
+      ]
+    },
+    "team": {
+      "title": "Our management and people",
+      "manager": {
+        "name": "Ariet Saparbek uulu",
+        "position": "Product Manager"
+      },
+      "frontend": {
+        "name": "Abdulhafiz Joldoshov",
+        "position": "Frontend developer"
+      },
+      "backend": {
+        "name": "Kurmanbek Asanov",
+        "position": "Backend developer"
+      },
+      "designer": {
+        "name": "Kanyshai Kasymova",
+        "position": "UX/UI designer"
+      }
     },
     "dashboard": {
       "logoutbtn": "Logout",

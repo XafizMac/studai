@@ -8,7 +8,7 @@ import whatsapp from "../../../../public/icons/Social Icons-1.svg";
 import telegram from "../../../../public/icons/Social Icons.svg";
 import instagram from "../../../../public/icons/Social Icons-2.svg";
 import Link from "next/link";
-import instaPhoto from "../../../../public/img/iPhone 13 Pro.svg";
+import instaPhoto from "../../../../public/img/iPhone 13 Pro.png";
 
 import { useLang } from "@/hooks/useLang";
 
@@ -54,14 +54,13 @@ export const Footer: FC = () => {
                 {translations[lang].header.menu[2]}
               </Link>
               <Link href={"#pricing"}>{translations[lang].header.menu[3]}</Link>
+              <Link href={"#team"}>{translations[lang].header.menu[4]}</Link>
             </div>
             <div className={styles.contact}>
               <p>{footerLib.details[1]}</p>
-              <Link href={"https://contact.me/+996702160703"}>
-                +996 702 160 703
-              </Link>
-              <Link href={""}>+996 779 079 279</Link>
-              <Link href={""}>+996 778 087 629</Link>
+              <Link href={"#"}>+996 702 160 703</Link>
+              <Link href={"#"}>+996 779 079 279</Link>
+              <Link href={"#"}>+996 778 087 629</Link>
             </div>
           </div>
           <div className={styles.instagram}>
@@ -78,20 +77,19 @@ export const Footer: FC = () => {
         </div>
         <div>
           <p style={{ color: "white", fontSize: "0.9rem" }}>
-            Используя <span className="active">Studai.app</span>, вы принимаете 
+            {translations[lang].footer.privacy[0]}
             <Link
               style={{ color: "white", textDecoration: "underline" }}
               href={"/agreement"}
             >
-              пользовательское соглашение 
+              {translations[lang].footer.privacy[1]} 
             </Link>
-            и политику обработки{" "}
+            {translations[lang].footer.privacy[2]}
             <Link
               style={{ color: "white", textDecoration: "underline" }}
               href={"personal-policy"}
             >
-              {" "}
-              персональных данных
+              {translations[lang].footer.privacy[3]}
             </Link>
           </p>
         </div>

@@ -164,7 +164,7 @@ const Dashboard: FC = () => {
                 type="default"
                 style={{ width: "max-content" }}
               >
-                Цена
+                {translations[lang].header.menu[3]}
               </Button>
               <Select
                 className={styles.lang}

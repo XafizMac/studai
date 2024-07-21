@@ -31,6 +31,14 @@
                     border: 5px solid violet;
                 }
 
+                .avatar {
+                    overflow: hidden;
+                    transition: 0.3s;
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+
                 p {
                     font-weight: 600;
                     font-size: 1.2rem;

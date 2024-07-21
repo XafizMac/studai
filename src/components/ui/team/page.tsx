@@ -1,17 +1,11 @@
-import { Avatar, Grid, Space, Tag } from "antd";
+import { Avatar, Space, Tag } from "antd";
 import styles from "./team.module.scss";
 import {
-  AntDesignOutlined,
   BehanceOutlined,
-  BehanceSquareOutlined,
-  DockerOutlined,
   DribbbleOutlined,
   GithubOutlined,
-  GitlabOutlined,
   InstagramOutlined,
   JavaScriptOutlined,
-  LinkedinOutlined,
-  OpenAIOutlined,
   PythonOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
@@ -20,13 +14,20 @@ import ariet from "../../../../public/img/ariet.jpg";
 import backend from "../../../../public/img/backend.jpeg";
 import designer from "../../../../public/img/designer.jpeg";
 import Link from "next/link";
+import { useContext } from "react";
+import { Context } from "@/app/clientProvider";
+import { useLang } from "@/hooks/useLang";
 
 export default function Team() {
+  const { store } = useContext(Context);
+  const { lang, translations } = useLang();
+  const teamLang = translations[lang].team;
+
   return (
     <div id="team" className={styles.main}>
       <div className="container">
         <div className={styles.main_row}>
-          <p className="active subtitle">Наше руководство и люди</p>
+          <p className="active subtitle">{teamLang.title}</p>
           <div className={styles.cards}>
             {/* Ariet */}
             <div className={styles.card}>
@@ -35,9 +36,9 @@ export default function Team() {
                 src={ariet.src}
                 size={{ xs: 100, sm: 100, md: 150, lg: 180, xl: 200, xxl: 220 }}
               />
-              <p>Ариет Сапарбек уулу</p>
+              <p>{teamLang.manager.name}</p>
               <Tag icon={<TeamOutlined />} color="green">
-                Проект Менеджер
+                {teamLang.manager.position}
               </Tag>
               <Space size={10}>
                 <Link
@@ -63,9 +64,9 @@ export default function Team() {
                 src={frontend.src}
                 size={{ xs: 100, sm: 100, md: 150, lg: 180, xl: 200, xxl: 220 }}
               />
-              <p>Абдулхафиз Жолдошов</p>
+              <p>{teamLang.frontend.name}</p>
               <Tag icon={<JavaScriptOutlined />} color="gold">
-                Frontend разработчик
+                {teamLang.frontend.position}
               </Tag>
               <Space size={10}>
                 <Link
@@ -91,9 +92,9 @@ export default function Team() {
                 src={backend.src}
                 size={{ xs: 100, sm: 100, md: 150, lg: 180, xl: 200, xxl: 220 }}
               />
-              <p>Курманбек Асанов</p>
+              <p>{teamLang.backend.name}</p>
               <Tag icon={<PythonOutlined />} color="blue">
-                Backend разработчик
+                {teamLang.backend.position}
               </Tag>
               <Space size={10}>
                 <Link
@@ -119,14 +120,14 @@ export default function Team() {
                 src={designer.src}
                 size={{ xs: 100, sm: 100, md: 150, lg: 180, xl: 200, xxl: 220 }}
               />
-              <p>Канышай Касымова</p>
+              <p>{teamLang.designer.name}</p>
               <Tag icon={<DribbbleOutlined />} color="magenta">
-                UX/UI дизайнер
+                {teamLang.designer.position}
               </Tag>
               <Space size={10}>
                 <Link
                   href={
-                    "https://www.instagram.com/hafizbey_official?igsh=MWRybWZ3ZzByc3IxNg=="
+                    "https://www.instagram.com/kanyshai_kasymova_?igsh=N3Z0ZDNqMGdocXBi"
                   }
                 >
                   <InstagramOutlined
