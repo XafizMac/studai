@@ -20,6 +20,7 @@ import { CustomerServiceOutlined, StarOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import generateIcon from "../../../../../public/icons/generate.svg";
 import AppHeader from "@/components/ui/dash-header/AppHeader";
+import { useLang } from "@/hooks/useLang";
 
 type FieldType = {
   workType: string;
@@ -40,14 +41,16 @@ const Generation: FC = () => {
   const [isCheckbox, setCheckbox] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
   const { store } = useContext(Context);
-  const { replace, push, forward } = useRouter();
+  const { push } = useRouter();
+  const { lang, translations } = useLang();
+  const genLang = translations[lang].generation;
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       store.checkAuth();
     }
-  }, [store.isAuth, store])
+  }, [store.isAuth, store]);
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     setLoading(true);
@@ -68,7 +71,7 @@ const Generation: FC = () => {
         values.university,
         values.authorName,
         values.groupName,
-        values.teacherName
+        values.teacherName,
       );
       localStorage.setItem("price", JSON.stringify(values));
       console.log();
@@ -118,7 +121,7 @@ const Generation: FC = () => {
         >
           <Space>
             <p style={{ fontSize: clamp(0.1, 30, 40), fontWeight: 500 }}>
-              Сгенерировать план
+              {genLang.title}
             </p>
             <Image className={styles.title_icon} src={generateIcon} alt="" />
           </Space>
@@ -141,20 +144,32 @@ const Generation: FC = () => {
               >
                 <Select
                   size="large"
-                  defaultValue="Тип работы"
+                  defaultValue={genLang.type}
                   style={{ width: "100%" }}
                   options={[
-                    { value: "1", label: "Реферат" },
-                    { value: "2", label: "СРС" },
-                    { value: "3", label: "Курсовая работа" },
-                    { value: "4", label: "Доклад" },
+                    {
+                      value: "1",
+                      label: translations[lang].mainpage.worktypes[0],
+                    },
+                    {
+                      value: "2",
+                      label: translations[lang].mainpage.worktypes[2],
+                    },
+                    {
+                      value: "3",
+                      label: translations[lang].mainpage.worktypes[3],
+                    },
+                    {
+                      value: "4",
+                      label: translations[lang].mainpage.worktypes[1],
+                    },
                   ]}
                 />
               </Form.Item>
             </div>
             <Space className={styles.space}>
               <div>
-                <p>Тема работы</p>
+                <p>{genLang.theme[0]}</p>
                 <Form.Item<FieldType>
                   rules={[
                     {
@@ -166,13 +181,13 @@ const Generation: FC = () => {
                 >
                   <Input
                     type="text"
-                    placeholder="Введение в программирование"
+                    placeholder={genLang.theme[1]}
                     size="large"
                   />
                 </Form.Item>
               </div>
               <div>
-                <p>Дисциплина</p>
+                <p>{genLang.discipline[0]}</p>
                 <Form.Item<FieldType>
                   rules={[
                     {
@@ -184,18 +199,18 @@ const Generation: FC = () => {
                 >
                   <Input
                     type="text"
-                    placeholder="Алгоритмические языки программирования"
+                    placeholder={genLang.discipline[1]}
                     size="large"
                   />
                 </Form.Item>
               </div>
             </Space>
             <div>
-              <p>Описание</p>
+              <p>{genLang.overview[0]}</p>
               <Form.Item<FieldType> name={"wishes"}>
                 <Input.TextArea
                   autoSize={{ minRows: 3, maxRows: 5 }}
-                  placeholder="Запиши, в каких сферах используется язык Python"
+                  placeholder={genLang.overview[1]}
                   size="large"
                 />
               </Form.Item>
@@ -203,7 +218,7 @@ const Generation: FC = () => {
             <Space className={styles.langSpace}>
               <Space className={styles.langSpaceBlock}>
                 <div>
-                  <p>Язык</p>
+                  <p>{genLang.lang}</p>
                   <Form.Item<FieldType>
                     name="languageOfWork"
                     rules={[
@@ -212,7 +227,7 @@ const Generation: FC = () => {
                   >
                     <Select
                       size="large"
-                      defaultValue="Язык"
+                      defaultValue={genLang.lang}
                       defaultActiveFirstOption
                       style={{ width: "100%" }}
                       options={[
@@ -224,7 +239,7 @@ const Generation: FC = () => {
                   </Form.Item>
                 </div>
                 <div>
-                  <p>Страница</p>
+                  <p>{genLang.page[0]}</p>
                   <Form.Item<FieldType>
                     name="pageCount"
                     rules={[
@@ -237,12 +252,24 @@ const Generation: FC = () => {
                     <Select
                       size="large"
                       style={{ width: "100%" }}
-                      defaultValue="Количество"
+                      defaultValue={genLang.page[0]}
                       options={[
-                        { value: "1", label: "1-10 страница" },
-                        { value: "2", label: "10-20 страница" },
-                        { value: "3", label: "20-30 страница" },
-                        { value: "4", label: "30-40 страница" },
+                        {
+                          value: "1",
+                          label: `1-10 ${genLang.page[1]}`,
+                        },
+                        {
+                          value: "2",
+                          label: `10-20 ${genLang.page[1]}`,
+                        },
+                        {
+                          value: "3",
+                          label: `20-30 ${genLang.page[1]}`,
+                        },
+                        {
+                          value: "4",
+                          label: `30-40 ${genLang.page[1]}`,
+                        },
                       ]}
                     />
                   </Form.Item>
@@ -254,7 +281,7 @@ const Generation: FC = () => {
                   onChange={handleCheckboxChange}
                   className={styles.checkbox}
                 >
-                  Титульный лист
+                  {genLang.titlepage}
                 </Checkbox>
               </Form.Item>
             </Space>
@@ -262,11 +289,11 @@ const Generation: FC = () => {
             {isCheckbox && (
               <div className={styles.space}>
                 <p style={{ marginBottom: 20, fontSize: "1.3rem" }}>
-                  Детали титульного листа
+                  {genLang.details}
                 </p>
                 <Space className={styles.space}>
                   <div>
-                    <p>ФИО студента</p>
+                    <p>{genLang.studant[0]}</p>
                     <Form.Item<FieldType>
                       rules={[
                         {
@@ -278,13 +305,13 @@ const Generation: FC = () => {
                     >
                       <Input
                         type="text"
-                        placeholder="Асанов Адилет"
+                        placeholder={genLang.studant[1]}
                         size="large"
                       />
                     </Form.Item>
                   </div>
                   <div>
-                    <p>ФИО преподавателя</p>
+                    <p>{genLang.tutor[0]}</p>
                     <Form.Item<FieldType>
                       rules={[
                         {
@@ -296,14 +323,14 @@ const Generation: FC = () => {
                     >
                       <Input
                         type="text"
-                        placeholder="Асанова Айгуль"
+                        placeholder={genLang.tutor[1]}
                         size="large"
                       />
                     </Form.Item>
                   </div>
                 </Space>
                 <div>
-                  <p>Группа студента</p>
+                  <p>{genLang.group[0]}</p>
                   <Form.Item<FieldType>
                     rules={[
                       {
@@ -313,11 +340,15 @@ const Generation: FC = () => {
                     ]}
                     name="groupName"
                   >
-                    <Input type="text" placeholder="Группа" size="large" />
+                    <Input
+                      type="text"
+                      placeholder={genLang.group[1]}
+                      size="large"
+                    />
                   </Form.Item>
                 </div>
                 <div>
-                  <p>Учебное заведение</p>
+                  <p>{genLang.university[0]}</p>
                   <Form.Item<FieldType>
                     rules={[
                       {
@@ -329,7 +360,7 @@ const Generation: FC = () => {
                   >
                     <Input
                       type="text"
-                      placeholder="Кыргызский Государьственный Технический Университет"
+                      placeholder={genLang.university[1]}
                       size="large"
                     />
                   </Form.Item>
@@ -348,30 +379,13 @@ const Generation: FC = () => {
                   type="primary"
                   htmlType="submit"
                 >
-                  Сгенерировать план
+                  {genLang.button}
                 </Button>
               </Form.Item>
             </div>
           </Form>
         </motion.div>
       </div>
-
-      <FloatButton.Group
-        trigger="click"
-        type="primary"
-        style={{ right: 24 }}
-        icon={<CustomerServiceOutlined />}
-      >
-        <Select
-          defaultValue={"Русский"}
-          options={[
-            {
-              label: "Русский",
-              value: "ru",
-            },
-          ]}
-        />
-      </FloatButton.Group>
     </div>
   );
 };

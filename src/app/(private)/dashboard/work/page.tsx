@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC } from "react";
 import styles from "./work.module.scss";
 import AppHeader from "@/components/ui/dash-header/AppHeader";
 import { Anchor, Button, Space } from "antd";
@@ -10,15 +10,17 @@ import DocViewer, {
   DocViewerRenderers,
   IDocument,
 } from "@cyntler/react-doc-viewer";
+import { useLang } from "@/hooks/useLang";
 
 const Work: FC = () => {
+  const { lang, translations } = useLang();
   const params = useSearchParams();
   const file = params.get("file");
   const theme = params.get("theme");
   const subtopicParam = params.get("subtopics");
   const subtopic = subtopicParam ? subtopicParam.split(",") : [];
   const docs: IDocument[] = [
-    { uri: file ?? "", fileType: "docx", fileName: "Документ"}
+    { uri: file ?? "", fileType: "docx", fileName: theme ? theme : "" },
   ];
 
   const handleDownloadDoc = (file: string) => {
@@ -35,7 +37,7 @@ const Work: FC = () => {
       <AppHeader />
       <div className={styles.main_row}>
         <div className={styles.navigation}>
-          <p>Навигация</p>
+          <p>{translations[lang].work.navigation}</p>
           <Anchor
             className={styles.anchor}
             affix={false}
@@ -43,12 +45,20 @@ const Work: FC = () => {
               {
                 key: "1",
                 href: "#components-anchor-demo-basic",
-                title: <span style={{fontSize: '1.1rem', fontWeight: 400}}>{subtopic[0]}</span>,
+                title: (
+                  <span style={{ fontSize: "1.1rem", fontWeight: 400 }}>
+                    {subtopic[0]}
+                  </span>
+                ),
               },
               {
                 key: "2",
                 href: "#components-anchor-demo-static",
-                title: <span style={{fontSize: '1.1rem', fontWeight: 400}}>{subtopic[1]}</span>,
+                title: (
+                  <span style={{ fontSize: "1.1rem", fontWeight: 400 }}>
+                    {subtopic[1]}
+                  </span>
+                ),
                 children: [
                   {
                     key: "3",
@@ -64,13 +74,17 @@ const Work: FC = () => {
                     key: "5",
                     href: "#components-anchor-demo-auto-focus",
                     title: subtopic[4],
-                  }
+                  },
                 ],
               },
               {
                 key: "6",
                 href: "#api",
-                title: <span style={{fontSize: '1.1rem', fontWeight: 400}}>{subtopic[5]}</span>,
+                title: (
+                  <span style={{ fontSize: "1.1rem", fontWeight: 400 }}>
+                    {subtopic[5]}
+                  </span>
+                ),
                 children: [
                   {
                     key: "7",
@@ -86,45 +100,56 @@ const Work: FC = () => {
                     key: "9",
                     href: "#anchor-event",
                     title: subtopic[8],
-                  }
+                  },
                 ],
               },
               {
                 key: "10",
                 href: "#FAQ",
-                title: <span style={{fontSize: '1.1rem', fontWeight: 400}}>{subtopic[9]}</span>,
+                title: (
+                  <span style={{ fontSize: "1.1rem", fontWeight: 400 }}>
+                    {subtopic[9]}
+                  </span>
+                ),
               },
               {
                 key: "11",
                 href: "#examples",
-                title: <span style={{fontSize: '1.1rem', fontWeight: 400}}>{subtopic[10]}</span>,
-              }
+                title: (
+                  <span style={{ fontSize: "1.1rem", fontWeight: 400 }}>
+                    {subtopic[10]}
+                  </span>
+                ),
+              },
             ]}
           />
         </div>
         <div className={styles.document}>
           <div className={styles.theme}>
             <div className={styles.title_btns}>
-              <p className={styles.title}>Тема</p>
+              <p className={styles.title}>{translations[lang].work.theme}</p>
               <div className={styles.btns}>
                 <Space>
                   <Button href="/dashboard/generation" icon={<PlusOutlined />}>
-                    Создать новый
+                    {translations[lang].work.btns[0]}
                   </Button>
                   <Button
                     onClick={() => handleDownloadDoc(docs[0].uri)}
                     type="primary"
                     icon={<UploadOutlined />}
                   >
-                    Экпорт
+                    {translations[lang].work.btns[1]}
                   </Button>
                 </Space>
               </div>
             </div>
-            <div className={styles.themeContainer}>{theme}</div>
           </div>
           <div className={styles.paperScrollable}>
-            <DocViewer style={{width: "100%"}} pluginRenderers={DocViewerRenderers} documents={docs} />
+            <DocViewer
+              style={{ width: "100%" }}
+              pluginRenderers={DocViewerRenderers}
+              documents={docs}
+            />
           </div>
         </div>
       </div>

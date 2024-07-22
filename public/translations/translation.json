@@ -1,5 +1,6 @@
 {
   "ru": {
+    "backbtn": "Назад",
     "header": {
       "menu": ["Главная", "Услуги", "Инструкции", "Цена", "О нас"],
       "button": "Войти"
@@ -108,9 +109,61 @@
         "status": ["Готово", "Ожидание", "Отклонен"],
         "actions": ["Посмотреть", "Скачать", "Удалить"]
       }
+    },
+    "generation": {
+      "type": "Тип работы",
+      "title": "Сгенерировать план",
+      "theme": ["Тема работы", "Введение в программирование"],
+      "discipline": ["Дисциплина", "Алгоритмические языки программирования"],
+      "overview": ["Описание", "Напиши, где используется язык Python"],
+      "lang": "Язык",
+      "page": ["Страница", "страница"],
+      "titlepage": "Титульный лист",
+      "details": "Детали титульного листа",
+      "studant": ["ФИО студента", "Асанов Адилет"],
+      "tutor": ["ФИО преподавателя", "Асанова Айгуль"],
+      "group": ["Группа студента", "Группа"],
+      "university": [
+        "Учебное заведение",
+        "Кыргызский Государственный Технический Университет"
+      ],
+      "button": "Сгенерировать план"
+    },
+    "result": {
+      "title": "Ваш результат",
+      "theme": "Тема",
+      "overview": "Содержание",
+      "btns": ["Перегенерировать", "Продолжить"],
+      "footer": [
+        "Сомневаешься в качестве работы, сгенерированной роботом?",
+        "Свяжитесь с нами на прямую",
+        "Перейти в Telegram"
+      ]
+    },
+    "payments": {
+      "title": "К оплате",
+      "warning": [
+        "Перед оплаты рекомендуем внимательно прочитать",
+        "Важная информация для пользователей!"
+      ],
+      "steps": [
+        "Выберите реквизиты",
+        "Оплатите",
+        "Отправьте чек",
+        "Проверка займет 5 минут",
+        "Готово"
+      ],
+      "copy": ["Скопировать", "Скопировано!"],
+      "btns": ["Выбрать файл", "Выбрать другой", "Выбран", "Отправить"]
+    },
+    "work": {
+      "navigation": "Оглавление",
+      "theme": "Тема",
+      "btns": ["Создать новый", "Экспорт"]
     }
   },
   "kg": {
+    "backbtn": "Артка",
     "header": {
       "menu": ["Башкы Бет", "Кызматтар", "Нускама", "Баалар", "Биз жөнүндө"],
       "button": "Кирүү"
@@ -222,9 +275,58 @@
         "status": ["Даяр", "Күтүү", "Жокко чыгарылды"],
         "actions": ["Көрүү", "Жүктөө", "Өчүрүү"]
       }
+    },
+    "generation": {
+      "type": "Иштин тиби",
+      "title": "План түзүү",
+      "theme": ["Иштин темасы", "Программалоого киришүү"],
+      "discipline": ["Дисциплина", "Алгоритмдик программалоо тилдери"],
+      "overview": ["Баяндоо", "Python тилинин артыкчылыктары"],
+      "lang": "Иштин тили",
+      "page": ["Бети", "бет"],
+      "titlepage": "Титулдук баракча",
+      "details": "Титулдук барактын чоо-жайы",
+      "studant": ["студенттин ФИО", "Асанов Адилет"],
+      "tutor": ["мугалимдин ФИО", "Асанова Айгуль"],
+      "group": ["Студенттин группасы", "Группа"],
+      "university": ["Окуу жай", "Кыргыз Мамлекеттик Техникалык Университети"],
+      "button": "План түзүү"
+    },
+    "result": {
+      "title": "Сиздин результат",
+      "theme": "Тема",
+      "overview": "Мазмун",
+      "btns": ["Кайра түзүү", "Улантуу"],
+      "footer": [
+        "ЖИ жараткан иштин сапатынан күмөн санап жатасызбы?",
+        "Биз менен түз байланышыңыз",
+        "Telegram'га өтүү"
+      ]
+    },
+    "payments": {
+      "title": "Төлөөгө",
+      "warning": [
+        "Төлөмдүн алдында кунт коюп окуп чыгууңузду суранабыз",
+        "Колдонуучулар үчүн маанилүү маалымат!"
+      ],
+      "steps": [
+        "Реквизит тандоо",
+        "Төлөө",
+        "Чекти жөнөтүү",
+        "Текшерүү 5 мүнөттө аяктайт",
+        "Даяр"
+      ],
+      "copy": ["Көчүрүп алуу", "Көчүрүлүп алынды!"],
+      "btns": ["Файлды тандоо", "Башканы тандоо", "Тандалды", "Жөнөтүү"]
+    },
+    "work": {
+      "navigation": "Мазмун",
+      "theme": "Тема",
+      "btns": ["Жаңы түзүү", "Экспорт"]
     }
   },
   "en": {
+    "backbtn": "Back",
     "header": {
       "menu": ["Main", "Services", "Inctruction", "Pricing", "About us"],
       "button": "Enter"
@@ -333,6 +435,57 @@
         "status": ["Ready", "Expectation", "Rejected"],
         "actions": ["View", "Download", "Delete"]
       }
+    },
+    "generation": {
+      "type": "Type",
+      "title": "Generate a plan",
+      "theme": ["Theme", "Introduction to Programming"],
+      "discipline": ["Disciplines", "Algorithmic programming languages"],
+      "overview": ["Description", "Advantages of the Python language"],
+      "lang": "Language",
+      "page": ["Pages", "page"],
+      "titlepage": "Add the title page",
+      "details": "Details of the title page",
+      "studant": ["Student's name", "Asanov Adilet"],
+      "tutor": ["Teacher's name", "Asanova Aigul"],
+      "group": ["Student group", "Group"],
+      "university": [
+        "Educational institution",
+        "Kyrgyz State Technical University"
+      ],
+      "button": "Generate a plan"
+    },
+    "result": {
+      "title": "Your result",
+      "theme": "Theme",
+      "overview": "Content",
+      "btns": ["Regenerate", "Continue"],
+      "footer": [
+        "Do you doubt the quality of the work created by AI?",
+        "Contact us directly",
+        "Go to Telegram"
+      ]
+    },
+    "payments": {
+      "title": "To be paid",
+      "warning": [
+        "Before paying, we recommend that you carefully read",
+        "Important information for users!"
+      ],
+      "steps": [
+        "Select banking details",
+        "Pay",
+        "Send the receipt",
+        "The check will take 5 minutes",
+        "Ready"
+      ],
+      "copy": ["Copy", "Copied!"],
+      "btns": ["Select file", "Select another", "Selected", "Send"]
+    },
+    "work": {
+      "navigation": "Content",
+      "theme": "Theme",
+      "btns": ["Create new", "Export"]
     }
   }
 }

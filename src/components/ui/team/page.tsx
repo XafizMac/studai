@@ -99,14 +99,14 @@ export default function Team() {
               <Space size={10}>
                 <Link
                   href={
-                    "https://www.instagram.com/hafizbey_official?igsh=MWRybWZ3ZzByc3IxNg=="
+                    "https://www.instagram.com/aacrif?igsh=eWRxNXllbHNiaHdk"
                   }
                 >
                   <InstagramOutlined
                     style={{ color: "violet", fontSize: "1.5rem" }}
                   />
                 </Link>
-                <Link href={"https://github.com/XafizMac"}>
+                <Link href={"https://github.com/KUMA-ORIGINAL"}>
                   <GithubOutlined
                     style={{ color: "black", fontSize: "1.5rem" }}
                   />

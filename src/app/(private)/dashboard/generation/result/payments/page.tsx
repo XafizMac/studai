@@ -22,6 +22,7 @@ import { useRouter } from "next/navigation";
 import doubt from "../../../../../../../public/icons/doubt.svg";
 import warning from "../../../../../../../public/img/warning.webp";
 import Link from "next/link";
+import { useLang } from "@/hooks/useLang";
 
 interface Data {
   pageCount: string;
@@ -45,6 +46,8 @@ const Payments: FC = () => {
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
   const { push, back } = useRouter();
+  const { lang, translations } = useLang();
+  const paymentLang = translations[lang].payments;
 
   useEffect(() => {
     fetchData();
@@ -188,14 +191,14 @@ const Payments: FC = () => {
       <div className="container">
         <div className={styles.main_row}>
           <p className={styles.price}>
-            К оплате: <span className="active">{cost} сом</span>
+            {paymentLang.title}: <span className="active">{cost} сом</span>
           </p>
           <div className={styles.warning}>
             <Image width={90} height={90} src={warning} alt="" />
             <p>
-              Перед оплаты рекомендуем внимательно прочитать{" "}
+              {paymentLang.warning[0]}{" "}
               <Link href={"/dashboard/privacy-policy/"}>
-                Важная информация для пользователей!
+                {paymentLang.warning[1]}
               </Link>
             </p>
           </div>
@@ -203,27 +206,27 @@ const Payments: FC = () => {
             className={styles.steps}
             items={[
               {
-                title: "Выберите реквизиты",
+                title: paymentLang.steps[0],
                 status: "finish",
                 icon: <CreditCardOutlined />,
               },
               {
-                title: "Оплатите",
+                title: paymentLang.steps[1],
                 status: "finish",
                 icon: <PayCircleOutlined />,
               },
               {
-                title: "Отправьте чек",
+                title: paymentLang.steps[2],
                 status: "finish",
                 icon: <UploadOutlined />,
               },
               {
-                title: "Проверка займет 5 минут",
+                title: paymentLang.steps[3],
                 status: "finish",
                 icon: <CheckCircleOutlined />,
               },
               {
-                title: "Готово",
+                title: paymentLang.steps[4],
                 status: "finish",
                 icon: <SmileOutlined />,
               },
@@ -247,10 +250,10 @@ const Payments: FC = () => {
                         />,
                         <CopyFilled key="copy-filled" />,
                       ],
-                      tooltips: ["Скопировать", "Скопировано!"],
+                      tooltips: [paymentLang.copy[0], paymentLang.copy[1]],
                     }}
                   >
-                    Скопировать
+                    {paymentLang.copy[0]}
                   </Paragraph>
                 }
               >
@@ -288,9 +291,13 @@ const Payments: FC = () => {
                     }}
                     type="default"
                   >
-                    {!imageData ? "Выбрать файл" : "Выбрать другой"}
+                    {!imageData ? paymentLang.btns[0] : paymentLang.btns[1]}
                   </Button>
-                  {imageData && <p>Выбран файл {imageData?.name}</p>}
+                  {imageData && (
+                    <p>
+                      {paymentLang.btns[2]} {imageData?.name}
+                    </p>
+                  )}
                 </Space>
                 <Button
                   loading={loading}
@@ -299,7 +306,7 @@ const Payments: FC = () => {
                   htmlType="submit"
                   className={styles.submitBtn}
                 >
-                  Отправить
+                  {paymentLang.btns[3]}
                 </Button>
               </div>
             </form>
@@ -308,21 +315,18 @@ const Payments: FC = () => {
             <Space>
               <Image className={styles.doubt} src={doubt} alt="" />
               <div className={styles.div}>
-                <p>
-                  Сомневаешься в качестве работы, <br /> сгенерированной
-                  роботом?
-                </p>
-                <small>Свяжитесь с нами на прямую</small>
+                <p>{translations[lang].result.footer[0]}</p>
+                <small>{translations[lang].result.footer[1]}</small>
               </div>
             </Space>
             <Button
-              href="https://t.me/@Ariet_Amanbekov"
+              href="https://t.me/Ariet_Amanbekov"
               target="_blank"
               type="primary"
               size="large"
               className={styles.button}
             >
-              Перейти в Telegram
+              {translations[lang].result.footer[2]}
             </Button>
           </div>
         </div>
