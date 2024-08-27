@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = 'https://api.studai.online/api';
+export const API_URL = 'https://<some-url😊>';
 
 const $api = axios.create({
   withCredentials: true,
